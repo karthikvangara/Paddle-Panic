@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fbf95ed51974404796e5db01fa0fb85, type: 3}
+  m_Name: RiverMapsSO
+  m_EditorClassIdentifier: 
+  riverMapPrefabs:
+  - {fileID: 8228125394039411974, guid: 92b59b8c34d655843bbbcb38cd9e53bf, type: 3}
+  - {fileID: 2762248754526481307, guid: 6923953658a5cb4489afe78a0feeac32, type: 3}
+  - {fileID: 6896576612361538972, guid: 5c65cd303cab11941885c52ed09d1a77, type: 3}
+  - {fileID: 6102562155770683490, guid: bc7344f6de6184f4ab20b403d9ed419e, type: 3}
+  - {fileID: 9174758069711420721, guid: 8bb52bfe75860924e95bec0489e4fcc1, type: 3}
