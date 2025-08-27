@@ -122,6 +122,129 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &118141640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 118141645}
+  - component: {fileID: 118141644}
+  - component: {fileID: 118141643}
+  - component: {fileID: 118141642}
+  - component: {fileID: 118141641}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &118141641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118141640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661f3335bb1fb9d4296372b5066a5f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioLoudnesDetection: {fileID: 1335334031}
+  minScale: {x: 1, y: 1, z: 1}
+  maxScale: {x: 4, y: 4, z: 4}
+  loudnessSensibility: 1
+  loudnessThreshold: 0.1
+--- !u!65 &118141642
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118141640}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &118141643
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118141640}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &118141644
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118141640}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &118141645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118141640}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 919.49396, y: 2481.8242, z: 3871.2214}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,6 +562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1335334029}
   - component: {fileID: 1335334030}
+  - component: {fileID: 1335334031}
   m_Layer: 0
   m_Name: BoatGame
   m_TagString: Untagged
@@ -479,7 +603,20 @@ MonoBehaviour:
   defaultMapDistance: 1000
   startingMapPosition: {x: 0, y: 0, z: 0}
   currentPlayersMapIndex: 0
-  respawnMapAfterIndex: 2
+  maxMapsLoadInGame: 0
+--- !u!114 &1335334031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335334028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428b5b33ee9a5564fb68b52e5acafb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioWindowWidth: 64
 --- !u!1 &1735128437
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,13 +628,11 @@ GameObject:
   - component: {fileID: 1735128438}
   - component: {fileID: 1735128441}
   - component: {fileID: 1735128440}
-  - component: {fileID: 1735128439}
   - component: {fileID: 1735128447}
   - component: {fileID: 1735128446}
   - component: {fileID: 1735128445}
   - component: {fileID: 1735128444}
   - component: {fileID: 1735128443}
-  - component: {fileID: 1735128442}
   m_Layer: 0
   m_Name: BoatPivot
   m_TagString: Untagged
@@ -521,27 +656,6 @@ Transform:
   - {fileID: 1068863679}
   m_Father: {fileID: 1335334029}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1735128439
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735128437}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1735128440
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -592,19 +706,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735128437}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1735128442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735128437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 245860168d7f8b345a801e90b7ffb82f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  riverMapController: {fileID: 0}
 --- !u!114 &1735128443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,8 +733,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 1735128446}
   checkPointManager: {fileID: 1735128445}
-  maxHealth: 1000
+  maxHealth: 100000
   currHealth: 0
+  isRespawning: 0
 --- !u!114 &1735128445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,6 +748,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fde9bf7c7544c14784bbd930c96f0fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthManager: {fileID: 1735128444}
+  riverMapController: {fileID: 1335334030}
   recentCheckpointPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1735128446
 MonoBehaviour:
@@ -702,3 +806,4 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 1335334029}
+  - {fileID: 118141645}
