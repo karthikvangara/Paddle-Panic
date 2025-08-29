@@ -9,24 +9,29 @@ public class RiverMapController : MonoBehaviour
     public float defaultMapDistance = 1000f;
     public Vector3 startingMapPosition;
     public int currentPlayersMapIndex;
-    public int respawnMapAfterIndex;
+    public int maxMapsLoadInGame;
 
-    private int riverMapPointer;
     private float currentMapDistance;
 
     public void Awake()
+    {
+        currentPlayersMapIndex = -1;
+        LoadRiverMapsFromSO();
+        SortAndLoadRiverMaps();
+        ArrangeRiverMaps();
+    }
+
+    public void LoadRiverMapsFromSO()
     {
         for (int i = 0; i < riverMapsSO.riverMapPrefabs.Count; i++)
         {
             riverMaps.Add(riverMapsSO.riverMapPrefabs[i]);
         }
-        SortAndLoadRiverMaps();
-        ArrangeRiverMaps();
     }
 
     public void SortAndLoadRiverMaps()
     {
-        Debug.Log("Karthik SortAndLoadRiverMaps");
+        //Debug.Log("Karthik SortAndLoadRiverMaps");
         Vector3 instantiationPosition;
         for (int i = 0; i < riverMaps.Count-1; i++)
         {
@@ -47,29 +52,21 @@ public class RiverMapController : MonoBehaviour
 
     public void ArrangeRiverMaps()
     {
-        Debug.Log("Karthik ArrangeRiverMaps");
-        foreach(GameObject riverMap in riverMaps)
+        //Debug.Log("Karthik ArrangeRiverMaps");
+        for (int i = 0; i < riverMaps.Count; i++)
         {
-            riverMap.transform.position = new Vector3(startingMapPosition.x, startingMapPosition.y, startingMapPosition.z + currentMapDistance);
+            riverMaps[i].transform.position = new Vector3(startingMapPosition.x, startingMapPosition.y, startingMapPosition.z + currentMapDistance);
             currentMapDistance += defaultMapDistance;
         }
     }
 
     public void RespawnRiverMaps()
     {
-        Debug.Log("Karthik RespawnRiverMaps "+currentPlayersMapIndex);
-
-        if (riverMapPointer > riverMaps.Count)
+        //Debug.Log("Karthik RespawnRiverMaps "+currentPlayersMapIndex);
+        if (currentPlayersMapIndex > 0)
         {
-            riverMapPointer = 0;
-        }
-
-        if (currentPlayersMapIndex%riverMaps.Count >= respawnMapAfterIndex)
-        {
-            riverMaps[riverMapPointer].transform.position= new Vector3(startingMapPosition.x, startingMapPosition.y, startingMapPosition.z + currentMapDistance);
+            riverMaps[(currentPlayersMapIndex-1)%riverMaps.Count].transform.position = new Vector3(startingMapPosition.x, startingMapPosition.y, startingMapPosition.z + currentMapDistance);
             currentMapDistance += defaultMapDistance;
-            riverMapPointer += 1;
-            currentPlayersMapIndex -= 1;
         }
     }
 }

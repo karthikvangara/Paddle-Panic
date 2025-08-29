@@ -9,6 +9,7 @@ public class HealthManager : MonoBehaviour
     public CheckPointManager checkPointManager;
     public int maxHealth = 3;
     public int currHealth;
+    public bool isRespawning;
 
     public void Awake()
     {
@@ -25,6 +26,7 @@ public class HealthManager : MonoBehaviour
 
     public void DecreaseHealth()
     {
+        
         currHealth -= 1;
         Respawn();
         if (currHealth <= 0)
@@ -36,6 +38,8 @@ public class HealthManager : MonoBehaviour
 
     public void Respawn()
     {
+        Debug.Log("Repawn");
+        isRespawning = true;
         if (checkPointManager.recentCheckpointPosition != null || !movement.isInRiver)
         {
             transform.position = checkPointManager.recentCheckpointPosition;
