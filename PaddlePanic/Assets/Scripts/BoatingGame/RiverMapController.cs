@@ -62,7 +62,7 @@ public class RiverMapController : MonoBehaviour
 
     public void RespawnRiverMaps()
     {
-        Debug.Log("Karthik RespawnRiverMaps "+currentPlayersMapIndex);
+        //Debug.Log("Karthik RespawnRiverMaps "+currentPlayersMapIndex);
         if (currentPlayersMapIndex > 0)
         {
             riverMaps[(currentPlayersMapIndex-1)%riverMaps.Count].transform.position = new Vector3(startingMapPosition.x, startingMapPosition.y, startingMapPosition.z + currentMapDistance);
