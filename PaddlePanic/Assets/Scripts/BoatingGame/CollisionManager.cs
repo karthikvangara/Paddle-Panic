@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class CollisionManager : MonoBehaviour
 {
+    public Movement movement;
     public HealthManager healthManager;
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Obstacles"))
+        Debug.Log("Collided");
+        if (collision.gameObject.CompareTag("Obstacles"))
         {
-            healthManager.DecreaseHealth();
+            healthManager.UpdateDamage(movement.currMovementSpeed);
         }
     }
+
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public Rigidbody rb;
     public GameObject player1InputController;
     public GameObject player2InputController;
     public HealthManager healthManager;
@@ -26,6 +27,21 @@ public class Movement : MonoBehaviour
 
     public void Update()
     {
+        /*CheckForInput();
+        if (isInRiver)
+        {
+            CheckForMovement();
+            CheckForRotation();
+        }
+        else
+        {
+            //healthManager.DecreaseHealth();
+        }*/
+    }
+
+    public void FixedUpdate()
+    {
+        CheckForRiver();
         CheckForInput();
         if (isInRiver)
         {
@@ -34,13 +50,8 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            healthManager.DecreaseHealth();
+            //healthManager.DecreaseHealth();
         }
-    }
-
-    public void FixedUpdate()
-    {
-        CheckForRiver();
     }
 
     public void CheckForInput()
@@ -59,6 +70,7 @@ public class Movement : MonoBehaviour
     public void CheckForRiver()
     {
         isInRiver = Physics.Raycast(transform.position, Vector3.down, rayLength, layers);
+        Debug.Log(isInRiver);
     }
 
     [Header("Movement")]
@@ -70,13 +82,14 @@ public class Movement : MonoBehaviour
     public float startMovementSpeed = 0.1f;
     public float movementSpeedInc = 0.1f;
 
-    private float currMovementSpeed;
+    public float currMovementSpeed;
 
     public void CheckForMovement()
     {
         if (isLeftPressed) currMovementSpeed += movementSpeedInc;
         if (isRightPressed) currMovementSpeed += movementSpeedInc;
-        if (!isRightPressed && !isLeftPressed) currMovementSpeed -= movementSpeedInc/2;
+        //if (!isRightPressed && !isLeftPressed) currMovementSpeed -= movementSpeedInc/2;
+        if (!isRightPressed && !isLeftPressed) currMovementSpeed = 0;
         if (currMovementSpeed < startMovementSpeed) currMovementSpeed = startMovementSpeed;
         if (currMovementSpeed > maxMovementSpeed) currMovementSpeed = maxMovementSpeed;
         Move();
@@ -85,7 +98,8 @@ public class Movement : MonoBehaviour
 
     public void Move()
     {
-        transform.position += transform.forward * currMovementSpeed;
+        //transform.position += transform.forward * currMovementSpeed;
+        rb.AddForce(transform.forward*currMovementSpeed, ForceMode.Force);
     }
 
     [Header("Rotation")]
@@ -102,32 +116,39 @@ public class Movement : MonoBehaviour
    
     public void CheckForRotation()
     {
-        if(isRightPressed) RotateLeft();
-        if(isLeftPressed) RotateRight();
+        if (isLeftPressed && isRightPressed) { }
+        else
+        {
+            if (isRightPressed) RotateLeft();
+            if (isLeftPressed) RotateRight();
+        }
         if (!isLeftPressed && !isRightPressed) RetrieveRotation();
         
     }
 
     public void RotateLeft()
     {
-        transform.Rotate(-Vector3.up * currRotationSpeed);
+        //transform.Rotate(-Vector3.up * currRotationSpeed);
         currRotationSpeed += rotationInc;
         //Debug.Log(currRotationSpeed);
         if (currRotationSpeed > maxRotationSpeed)
         {
             currRotationSpeed = maxRotationSpeed;
         }
+
+        rb.angularVelocity=new Vector3(0f,-currRotationSpeed,0f)*Time.deltaTime;
     }
 
     public void RotateRight()
     {
-        transform.Rotate(Vector3.up * currRotationSpeed);
+        //transform.Rotate(Vector3.up * currRotationSpeed);
         currRotationSpeed += rotationInc;
         //Debug.Log(currRotationSpeed);
         if (currRotationSpeed > maxRotationSpeed)
         {
             currRotationSpeed = maxRotationSpeed;
         }
+        rb.angularVelocity = new Vector3(0f, currRotationSpeed, 0f)*Time.deltaTime;
     }
 
     public void RetrieveRotation()
