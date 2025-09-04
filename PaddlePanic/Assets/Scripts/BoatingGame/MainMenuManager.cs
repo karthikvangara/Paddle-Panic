@@ -5,24 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public float waitMemeTime=10f;
-
-    private bool once;
-    private float waitMemeTimer;
     public void Start()
     {
         StartCoroutine(LoadGameSceneInBackground());
-        WelcomeMeme();
+        StartCoroutine(Idle());
     }
 
-    public void Update()
+    private IEnumerator Idle()
     {
-        if (waitMemeTimer > waitMemeTime && !once)
-        {
-            WaitingForLongTimeMeme();
-            once = true;
-        }
-        waitMemeTimer += Time.deltaTime;
+        yield return new WaitForSeconds(30);
+        if(MemeManager.instance != null) MemeManager.instance.EnableWaitingForLongTimeMeme();
+        yield return new WaitForSeconds(30);
+        if(MemeManager.instance != null) MemeManager.instance.DisableWaitingForLongTimeMeme();
     }
 
     //Play
@@ -109,15 +103,4 @@ public class MainMenuManager : MonoBehaviour
         ExitPanel.SetActive(false);
     }
 
-    //Memes
-
-    public void WelcomeMeme()
-    {
-        MemeManager.instance.Welcome();
-    }
-
-    public void WaitingForLongTimeMeme()
-    {
-        MemeManager.instance.WaitingForLongTime();
-    }
 }

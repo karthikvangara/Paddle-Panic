@@ -70,7 +70,7 @@ public class Movement : MonoBehaviour
     public void CheckForRiver()
     {
         isInRiver = Physics.Raycast(transform.position, Vector3.down, rayLength, layers);
-        Debug.Log(isInRiver);
+        //Debug.Log(isInRiver);
     }
 
     [Header("Movement")]
@@ -81,15 +81,17 @@ public class Movement : MonoBehaviour
     public float maxMovementSpeed = 5f;
     public float startMovementSpeed = 0.1f;
     public float movementSpeedInc = 0.1f;
+    public float movementOpposingForce = 10f;
 
     public float currMovementSpeed;
 
     public void CheckForMovement()
     {
+        //OpposeMotion();
         if (isLeftPressed) currMovementSpeed += movementSpeedInc;
         if (isRightPressed) currMovementSpeed += movementSpeedInc;
-        //if (!isRightPressed && !isLeftPressed) currMovementSpeed -= movementSpeedInc/2;
-        if (!isRightPressed && !isLeftPressed) currMovementSpeed = 0;
+        if (!isRightPressed && !isLeftPressed)  //OpposeMotion();
+        //if (!isRightPressed && !isLeftPressed) OpposeMotion();
         if (currMovementSpeed < startMovementSpeed) currMovementSpeed = startMovementSpeed;
         if (currMovementSpeed > maxMovementSpeed) currMovementSpeed = maxMovementSpeed;
         Move();
@@ -99,7 +101,14 @@ public class Movement : MonoBehaviour
     public void Move()
     {
         //transform.position += transform.forward * currMovementSpeed;
-        rb.AddForce(transform.forward*currMovementSpeed, ForceMode.Force);
+        rb.AddForce(transform.forward*currMovementSpeed*2, ForceMode.Force);
+    }
+
+    public void OpposeMotion()
+    {
+        currMovementSpeed -= movementSpeedInc;
+        Debug.Log(rb.velocity.magnitude);
+        rb.AddForce((-transform.forward) * currMovementSpeed, ForceMode.Force);
     }
 
     [Header("Rotation")]
@@ -108,8 +117,8 @@ public class Movement : MonoBehaviour
 
     Quaternion actualRotation;
     public float maxRotationSpeed;
-    public float rotationInc = 0.1f;
     public float startRotationSpeed = 0.1f;
+    public float rotationInc = 0.1f;
     public float rotationSensivity;
 
     private float currRotationSpeed;
