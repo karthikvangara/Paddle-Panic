@@ -5,13 +5,13 @@ using UnityEngine;
 public class MemeManager : MonoBehaviour
 {
     public static MemeManager instance;
-    public AudioSource beforeAcceptingMeme;
-    public AudioSource acceptingMeme;
-    public AudioSource beforeLogin;
-    public AudioSource welcome;
-    public AudioSource waitingForLongTime;
-    public AudioSource hittingObstacles;
-    public AudioSource crash;
+
+    public GameObject welcome;
+    public GameObject acceptingMeme;
+    public GameObject beforeLogin;
+    public GameObject waitingForLongTime;
+    public GameObject hittingObstacles;
+    public GameObject crash;
 
     public void Awake()
     {
@@ -20,42 +20,69 @@ public class MemeManager : MonoBehaviour
 
     public void Start()
     {
-        Invoke("BeforeAcceptingMeme", 0.5f);
-    }
-    public void BeforeAcceptingMeme()
-    {
-        beforeAcceptingMeme.Play();
+        EnableWelcomeMeme();
     }
 
-    public void AcceptingMeme()
+    public void EnableWelcomeMeme()
     {
-        acceptingMeme.Play();
-        Invoke("BeforeLogin", 1.5f);
+        welcome.SetActive(true);
     }
 
-    public void BeforeLogin()
+    public void DisableWelcomeMeme()
     {
-        beforeLogin.Play();
+        welcome.SetActive(false);
+    }
+
+    public void EnableAcceptingMeme()
+    {
+        acceptingMeme.SetActive(true);
+    }
+
+    public void DisableAcceptingMeme()
+    {
+        acceptingMeme.SetActive(false);
     }
 
 
-    public void Welcome()
+    public void EnableLoginMeme()
     {
-        welcome.Play();
+        beforeLogin.SetActive(true);
     }
 
-    public void WaitingForLongTime()
+    
+    public void DisableLoginMeme()
     {
-        waitingForLongTime.Play();
+        beforeLogin.SetActive(false);
     }
 
-    public void HittingObstacles()
+
+    public void EnableWaitingForLongTimeMeme()
     {
-        hittingObstacles.Play();
+        waitingForLongTime.SetActive(true);
     }
 
-    public void Crashed()
+    public void DisableWaitingForLongTimeMeme()
     {
-        crash.Play();
+        waitingForLongTime.SetActive(true);
+    }
+
+    public void EnableHittingObstaclesMeme()
+    {
+        hittingObstacles.SetActive(true);
+    }
+
+    public void DisableHittingObstaclesMeme()
+    {
+        hittingObstacles.SetActive(true);
+    }
+
+    public void EnableCrashedMeme()
+    {
+        crash.SetActive(true);
+    }
+
+    public void DisableCrashedMeme()
+    {
+        crash.SetActive(false);
     }
 }
