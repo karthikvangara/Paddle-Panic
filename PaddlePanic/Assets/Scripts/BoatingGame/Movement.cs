@@ -20,9 +20,9 @@ public class Movement : MonoBehaviour
     {
         player1TouchField = player1InputController.GetComponent<TouchField>();
         player2TouchField = player2InputController.GetComponent<TouchField>();
-        currMovementSpeed = startMovementSpeed;
+        //currMovementSpeed = startMovementSpeed;
         actualRotation = transform.rotation;
-        currRotationSpeed = startRotationSpeed;
+        //currRotationSpeed = startRotationSpeed;
     }
 
     public void Update()
@@ -77,38 +77,59 @@ public class Movement : MonoBehaviour
 
     //Movement
 
+    public float maxPaddleForce = 300f;
+    public float incPaddleForce = 1f;
+    public float leftPaddleForce = 0f;
+    public float rightPaddleForce = 0f;
+    public float overallPaddleForce = 0f;
+    public float dragCoefficient = 5f;
+    public float drag = 0f;
 
-    public float maxMovementSpeed = 5f;
+    /*public float maxMovementSpeed = 5f;
     public float startMovementSpeed = 0.1f;
     public float movementSpeedInc = 0.1f;
     public float movementOpposingForce = 10f;
 
-    public float currMovementSpeed;
+    public float currMovementSpeed;*/
 
     public void CheckForMovement()
     {
         //OpposeMotion();
-        if (isLeftPressed) currMovementSpeed += movementSpeedInc;
+        /*if (isLeftPressed) currMovementSpeed += movementSpeedInc;
         if (isRightPressed) currMovementSpeed += movementSpeedInc;
         if (!isRightPressed && !isLeftPressed)  //OpposeMotion();
         //if (!isRightPressed && !isLeftPressed) OpposeMotion();
         if (currMovementSpeed < startMovementSpeed) currMovementSpeed = startMovementSpeed;
-        if (currMovementSpeed > maxMovementSpeed) currMovementSpeed = maxMovementSpeed;
-        Move();
+        if (currMovementSpeed > maxMovementSpeed) currMovementSpeed = maxMovementSpeed;*/
+
+        leftPaddleForce = isLeftPressed ? leftPaddleForce + incPaddleForce : (leftPaddleForce - incPaddleForce) *0.9f >0? (leftPaddleForce-incPaddleForce) * 0.9f:0;
+        rightPaddleForce = isRightPressed ? rightPaddleForce + incPaddleForce : (rightPaddleForce - incPaddleForce) *0.9f > 0 ? (rightPaddleForce - incPaddleForce) * 0.9f : 0;
+        overallPaddleForce = leftPaddleForce + rightPaddleForce;
+        overallPaddleForce = Mathf.Min(overallPaddleForce, maxPaddleForce);
+        overallPaddleForce = Mathf.Max(overallPaddleForce, 0);
+        drag = dragCoefficient * rb.velocity.magnitude;
+        ApplyForwardForceToBoat();
+        if(overallPaddleForce<=0 && rb.velocity.magnitude>0f && isInRiver) ApplyDragToBoat();
         
     }
 
-    public void Move()
+    public void ApplyForwardForceToBoat()
     {
         //transform.position += transform.forward * currMovementSpeed;
-        rb.AddForce(transform.forward*currMovementSpeed*2, ForceMode.Force);
+        //rb.AddForce(transform.forward*currMovementSpeed*2, ForceMode.Force);
+        rb.AddForce(transform.forward * overallPaddleForce, ForceMode.Force);
+    }
+
+    public void ApplyDragToBoat()
+    {
+        rb.AddForce(-transform.forward * drag, ForceMode.Force);
     }
 
     public void OpposeMotion()
     {
-        currMovementSpeed -= movementSpeedInc;
+        /*currMovementSpeed -= movementSpeedInc;
         Debug.Log(rb.velocity.magnitude);
-        rb.AddForce((-transform.forward) * currMovementSpeed, ForceMode.Force);
+        rb.AddForce((-transform.forward) * currMovementSpeed, ForceMode.Force);*/
     }
 
     [Header("Rotation")]
@@ -116,26 +137,54 @@ public class Movement : MonoBehaviour
     //Rotation
 
     Quaternion actualRotation;
-    public float maxRotationSpeed;
-    public float startRotationSpeed = 0.1f;
-    public float rotationInc = 0.1f;
+    public float currRotationAngle=0f;
+    public float incRotationAngle=1f;
+    public float turnVelocity = 2f;
     public float rotationSensivity;
 
-    private float currRotationSpeed;
+    /*public float maxRotationSpeed;
+    public float startRotationSpeed = 0.1f;
+    public float rotationInc = 0.1f;
+
+    private float currRotationSpeed;*/
    
     public void CheckForRotation()
     {
-        if (isLeftPressed && isRightPressed) { }
+        /*if (isLeftPressed && isRightPressed) { }
         else
         {
             if (isRightPressed) RotateLeft();
             if (isLeftPressed) RotateRight();
         }
+        if (!isLeftPressed && !isRightPressed) RetrieveRotation();*/
+
+        if(isRightPressed) RotateLeft();
+        if(isLeftPressed) RotateRight();
         if (!isLeftPressed && !isRightPressed) RetrieveRotation();
+        Rotate();
         
     }
 
+
     public void RotateLeft()
+    {
+        //transform.Rotate(-transform.up * overallPaddleForce*0.5f*Time.deltaTime);
+        currRotationAngle -= incRotationAngle;
+    }
+
+    public void RotateRight()
+    {
+        //transform.Rotate(transform.up * overallPaddleForce*0.5f*Time.deltaTime);
+        currRotationAngle += incRotationAngle;
+    }
+
+    public void Rotate()
+    {
+        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, currRotationAngle, ref turnVelocity, 0.1f);
+        transform.rotation = Quaternion.Euler(0f, angle, 0f);
+    }
+
+    /*public void RotateLeft()
     {
         //transform.Rotate(-Vector3.up * currRotationSpeed);
         currRotationSpeed += rotationInc;
@@ -159,14 +208,9 @@ public class Movement : MonoBehaviour
         }
         rb.angularVelocity = new Vector3(0f, currRotationSpeed, 0f)*Time.deltaTime;
     }
-
+    */
     public void RetrieveRotation()
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, actualRotation, rotationSensivity * Time.deltaTime);
-        currRotationSpeed -= rotationInc;
-        if (currRotationSpeed < 0f)
-        {
-            currRotationSpeed = 0f;
-        }
     }
 }

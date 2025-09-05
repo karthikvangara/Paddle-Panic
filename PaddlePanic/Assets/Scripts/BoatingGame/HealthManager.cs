@@ -57,7 +57,7 @@ public class HealthManager : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log(currentDamage);
+        //Debug.Log(currentDamage);
         if (currentDamage >= 100)
         {
             healthUIManager.Display0PerHealth();
