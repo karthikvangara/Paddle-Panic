@@ -11,7 +11,7 @@ public class CollisionManager : MonoBehaviour
         Debug.Log("Collided");
         if (collision.gameObject.CompareTag("Obstacles"))
         {
-            healthManager.UpdateDamage(movement.currMovementSpeed);
+            //healthManager.UpdateDamage(movement.currMovementSpeed);
         }
     }
 
