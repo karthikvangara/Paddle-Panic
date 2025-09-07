@@ -11,6 +11,11 @@ public class LoginSceneManager : MonoBehaviour
     public GameObject loginInfoPanel;
     public string menuScene;
 
+    public void Awake()
+    {
+        DontDestroyOnLoad(memeManagerPanel);
+    }
+
     public void Update()
     {
         StartCoroutine(MemeInfo());
@@ -38,13 +43,14 @@ public class LoginSceneManager : MonoBehaviour
         DisableMemeInfoPanel();
         if (MemeManager.instance != null) MemeManager.instance.EnableAcceptingMeme();
         StartCoroutine(LoginInfoPanel());
-        DontDestroyOnLoad(memeManagerPanel);
     }
 
     public void OnClickDeclineMeme()
     {
         DisableMemeInfoPanel();
         EnableLoginInfoPanel();
+        if (MemeManager.instance != null) MemeManager.instance.memesEnabled = false;
+        memeManagerPanel.SetActive(false);
     }
 
     IEnumerator LoginInfoPanel()
