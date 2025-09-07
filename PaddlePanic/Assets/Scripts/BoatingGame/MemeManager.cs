@@ -6,6 +6,8 @@ public class MemeManager : MonoBehaviour
 {
     public static MemeManager instance;
 
+    public bool memesEnabled = true;
+
     public GameObject welcome;
     public GameObject acceptingMeme;
     public GameObject beforeLogin;

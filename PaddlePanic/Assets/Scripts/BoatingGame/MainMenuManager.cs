@@ -66,15 +66,34 @@ public class MainMenuManager : MonoBehaviour
     [Header("Settings")]
 
     public GameObject settingsPanel;
+    public GameObject memesOnImage;
+    public GameObject memesOffImage;
 
     public void OnClickSettings()
     {
         settingsPanel.SetActive(true);
+        if (MemeManager.instance!=null && !MemeManager.instance.memesEnabled) OnClickDisableMemes();
     }
 
     public void OnCloseSettings()
     {
         settingsPanel.SetActive(false);
+    }
+
+    public void OnClickEnableMemes()
+    {
+        if(MemeManager.instance!=null) MemeManager.instance.gameObject.SetActive(true);
+        if (MemeManager.instance != null) MemeManager.instance.memesEnabled = true;
+        memesOnImage.SetActive(true);
+        memesOffImage.SetActive(false);
+    }
+
+    public void OnClickDisableMemes()
+    {
+        if(MemeManager.instance!=null) MemeManager.instance.gameObject.SetActive(false);
+        if (MemeManager.instance != null) MemeManager.instance.memesEnabled = false;
+        memesOnImage.SetActive(false);
+        memesOffImage.SetActive(true);
     }
 
 
