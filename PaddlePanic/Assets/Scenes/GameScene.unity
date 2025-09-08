@@ -278,12 +278,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 78.4
+  m_fontSize: 25
   m_fontSizeBase: 78.4
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 25
+  m_fontSizeMax: 25
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1317,13 +1317,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19680177, y: 0, z: 0, w: 0.98044336}
-  m_LocalPosition: {x: 0, y: 167, z: -1231}
+  m_LocalRotation: {x: 0.24192187, y: 0, z: 0, w: 0.9702957}
+  m_LocalPosition: {x: 0, y: 210, z: -1140}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 22.7, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 28, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2242,8 +2242,8 @@ Transform:
   m_GameObject: {fileID: 1688481219}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 31.99, z: 89498}
-  m_LocalScale: {x: 30, y: 1, z: 20000}
+  m_LocalPosition: {x: 0, y: -2, z: 1546.69}
+  m_LocalScale: {x: 2000, y: 1, z: 5000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2261,6 +2261,7 @@ GameObject:
   - component: {fileID: 1735128440}
   - component: {fileID: 1735128447}
   - component: {fileID: 1735128448}
+  - component: {fileID: 1735128449}
   - component: {fileID: 1735128446}
   - component: {fileID: 1735128445}
   - component: {fileID: 1735128444}
@@ -2280,7 +2281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735128437}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 50, z: -945}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_ConstrainProportionsScale: 1
@@ -2405,17 +2406,23 @@ MonoBehaviour:
     m_Bits: 64
   isLeftPressed: 0
   isRightPressed: 0
-  maxPaddleForce: 200
+  maxPaddleForce: 360
+  minPaddleForce: 0
   incPaddleForce: 1
   leftPaddleForce: 0
   rightPaddleForce: 0
   overallPaddleForce: 0
-  dragCoefficient: 1
+  dragCoefficient: 3
   drag: 0
-  currRotationAngle: 0
-  incRotationAngle: 1
+  angularDrag: 1
+  actualRotation: {x: 0, y: 0, z: 0, w: 0}
   turnVelocity: 2
-  rotationSensivity: 100
+  rotationAngle: 0
+  rotateLeftAngle: 0
+  rotateRightAngle: 0
+  rotationMultiplyer: 30
+  rotationRetrivalMultiplyer: 10
+  diffPaddleForce: 0
 --- !u!65 &1735128447
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2462,8 +2469,24 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 2
+--- !u!114 &1735128449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735128437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a92794a7f5a30441a2bd46654dbe06e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layers:
+    serializedVersion: 2
+    m_Bits: 0
+  rayLength: 20
 --- !u!1 &1888683844
 GameObject:
   m_ObjectHideFlags: 0
@@ -3533,12 +3556,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.2
+  m_fontSize: 18
   m_fontSizeBase: 52.2
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 18
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -4043,12 +4066,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51.1
+  m_fontSize: 20
   m_fontSizeBase: 51.1
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 20
+  m_fontSizeMax: 20
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
