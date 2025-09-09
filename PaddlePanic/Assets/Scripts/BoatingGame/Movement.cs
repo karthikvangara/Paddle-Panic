@@ -83,9 +83,10 @@ public class Movement : MonoBehaviour
     public float leftPaddleForce = 0f;
     public float rightPaddleForce = 0f;
     public float overallPaddleForce = 0f;
-    public float dragCoefficient = 5f;
+    //public float dragCoefficient = 5f;
     public float drag = 0f;
-    public float angularDrag = 2f;
+    //public float angularDrag = 2f;
+    public float driftFactor = 0.9f;
 
     /*public float maxMovementSpeed = 5f;
     public float startMovementSpeed = 0.1f;
@@ -116,11 +117,12 @@ public class Movement : MonoBehaviour
         overallPaddleForce = leftPaddleForce + rightPaddleForce;
         overallPaddleForce = Mathf.Max(overallPaddleForce, 0);
 
-        drag = dragCoefficient * rb.velocity.magnitude;
+        //drag = dragCoefficient * rb.velocity.magnitude;
 
         ApplyForwardForceToBoat();
         //ApplyAngularDrag();
-        //if(overallPaddleForce<=0 && rb.velocity.magnitude>0f && isInRiver) ApplyDragToBoat();
+        if(!isLeftPressed && !isRightPressed && overallPaddleForce>minPaddleForce*2 && isInRiver && rb.velocity.magnitude>minPaddleForce) ApplyDragToBoat();
+        ControlDrift();
         
     }
 
@@ -128,27 +130,37 @@ public class Movement : MonoBehaviour
     {
         //transform.position += transform.forward * currMovementSpeed;
         //rb.AddForce(transform.forward*currMovementSpeed*2, ForceMode.Force);
-        rb.AddForce(transform.forward * overallPaddleForce, ForceMode.Acceleration);
+        rb.AddForce(rb.transform.forward * overallPaddleForce, ForceMode.Acceleration);
 
-        Debug.DrawRay(transform.position, Vector3.forward * 1000f,Color.white);
+        //Debug.DrawRay(rb.transform.position, rb.transform.forward * 1000f,Color.white);
     }
 
-    public void ApplyAngularDrag()
+    public void ControlDrift()
+    {
+        Vector3 localVel = transform.InverseTransformDirection(rb.velocity);
+        localVel.x *= driftFactor;
+        rb.velocity = transform.TransformDirection(localVel);
+    }
+
+    /*public void ApplyAngularDrag()
     {
         rb.angularDrag = angularDrag;
     }
-
+    */
     public void ApplyDragToBoat()
     {
-        rb.AddForce(-transform.forward * drag, ForceMode.Force);
+        //Debug.Log("hi");
+        //rb.AddForce(-rb.transform.forward * (overallPaddleForce/2), ForceMode.Acceleration);
+        rb.velocity-=rb.transform.forward*drag;
+
     }
 
-    public void OpposeMotion()
+    /*public void OpposeMotion()
     {
-        /*currMovementSpeed -= movementSpeedInc;
+        currMovementSpeed -= movementSpeedInc;
         Debug.Log(rb.velocity.magnitude);
-        rb.AddForce((-transform.forward) * currMovementSpeed, ForceMode.Force);*/
-    }
+        rb.AddForce((-transform.forward) * currMovementSpeed, ForceMode.Force);
+    }*/
 
     [Header("Rotation")]
 
@@ -157,13 +169,13 @@ public class Movement : MonoBehaviour
     public Quaternion actualRotation;
     /*public float currRotationAngle=0f;
     public float incRotationAngle=1f;*/
-    public float turnVelocity = 2f;
-    public float rotationAngle = 0f;
-    public float rotateLeftAngle = 0f;
-    public float rotateRightAngle = 0f;
-    public float rotationMultiplyer = 5f;
+    //public float turnVelocity = 2f;
+    //public float rotationAngle = 0f;
+    //public float rotateLeftAngle = 0f;
+    //public float rotateRightAngle = 0f;
+    //public float rotationMultiplyer = 5f;
     public float rotationRetrivalMultiplyer = 10f;
-    public float diffPaddleForce = 0f;
+    //public float diffPaddleForce = 0f;
 
     /*public float maxRotationSpeed;
     public float startRotationSpeed = 0.1f;
@@ -181,17 +193,19 @@ public class Movement : MonoBehaviour
         }
         if (!isLeftPressed && !isRightPressed) RetrieveRotation();*/
 
-        rotateLeftAngle = rightPaddleForce / 360;
-        rotateRightAngle = leftPaddleForce / 360;
+        //rotateLeftAngle = rightPaddleForce / 360;
+        //rotateRightAngle = leftPaddleForce / 360;
         //rotationAngle = rotateRightAngle-rotateLeftAngle;
         //Debug.Log(rotationAngle);
         //if(isRightPressed) RotateLeft();
         //if(isLeftPressed) RotateRight();
         if (!isLeftPressed && !isRightPressed) RetrieveRotation();
-        //if(isRightPressed) RotateLeft();
+        //if(isRightPressed) RotateLeft(); 
         //if(isLeftPressed) RotateRight();
-        diffPaddleForce = leftPaddleForce - rightPaddleForce;
-        Rotate();
+        //diffPaddleForce = leftPaddleForce - rightPaddleForce;
+        //Rotate();
+        if (isRightPressed && !isLeftPressed) RotateLeft();
+        if (isLeftPressed && !isRightPressed) RotateRight();
     }
 
 
@@ -207,7 +221,7 @@ public class Movement : MonoBehaviour
         currRotationAngle += incRotationAngle;
     }*/
 
-    public void Rotate()
+    /*public void Rotate()
     {
         rb.AddRelativeTorque(0f, diffPaddleForce*rotationMultiplyer,0f,ForceMode.Acceleration);
 
@@ -218,20 +232,32 @@ public class Movement : MonoBehaviour
         Quaternion target = Quaternion.Euler(0, current.eulerAngles.y, 0);
         rb.rotation = Quaternion.Slerp(current, target, Time.fixedDeltaTime * 2f);
     }
-
+    */
     public void RotateLeft()
     {
         //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, currRotationAngle, ref turnVelocity, 0.1f);
         /*float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, (transform.eulerAngles.y-rotateLeftAngle*rotationMultiplyer), ref turnVelocity, 0.1f);
         transform.rotation = Quaternion.Euler(0f, angle, 0f);*/
-        rb.AddTorque(-Vector3.up *rightPaddleForce*rotationMultiplyer,ForceMode.Force);
+        //rb.AddTorque(-Vector3.up *rightPaddleForce*rotationMultiplyer,ForceMode.Force);
+        Vector3 direction = new Vector3(-rightPaddleForce, 0f, 0f);
+        if (direction.sqrMagnitude > 0.01f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            rb.MoveRotation(Quaternion.Slerp(rb.rotation,targetRotation,0.01f));
+        }
     }
 
     public void RotateRight()
     {
         /*float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, (transform.eulerAngles.y + rotateRightAngle * rotationMultiplyer), ref turnVelocity, 0.1f);
         transform.rotation = Quaternion.Euler(0f, angle, 0f);*/
-        rb.AddTorque(Vector3.up *leftPaddleForce*rotationMultiplyer, ForceMode.Force);
+        //rb.AddTorque(Vector3.up *leftPaddleForce*rotationMultiplyer, ForceMode.Force);
+        Vector3 direction = new Vector3(leftPaddleForce, 0f, 0f);
+        if (direction.sqrMagnitude > 0.01f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, 0.01f));
+        }
     }
 
     /*public void RotateLeft()
