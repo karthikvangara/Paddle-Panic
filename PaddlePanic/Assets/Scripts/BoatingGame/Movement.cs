@@ -83,6 +83,9 @@ public class Movement : MonoBehaviour
     public float leftPaddleForce = 0f;
     public float rightPaddleForce = 0f;
     public float overallPaddleForce = 0f;
+    public float maxVelocity = 1500f;
+    public float minVelocity = 15f;
+    public float velocityMagnitude;
     //public float dragCoefficient = 5f;
     public float drag = 0f;
     //public float angularDrag = 2f;
@@ -111,18 +114,21 @@ public class Movement : MonoBehaviour
         leftPaddleForce = Mathf.Min(leftPaddleForce, maxPaddleForce);
         rightPaddleForce = Mathf.Min(rightPaddleForce, maxPaddleForce);
 
-        leftPaddleForce = Mathf.Max(leftPaddleForce, minPaddleForce);
-        rightPaddleForce = Mathf.Max(rightPaddleForce, minPaddleForce);
+        //leftPaddleForce = Mathf.Max(leftPaddleForce, minPaddleForce);
+        //rightPaddleForce = Mathf.Max(rightPaddleForce, minPaddleForce);
         
         overallPaddleForce = leftPaddleForce + rightPaddleForce;
         overallPaddleForce = Mathf.Max(overallPaddleForce, 0);
 
         //drag = dragCoefficient * rb.velocity.magnitude;
 
-        ApplyForwardForceToBoat();
+        velocityMagnitude = rb.velocity.magnitude;
+        if (isLeftPressed || isRightPressed) ApplyForwardForceToBoat();
+        ControlVelocity();   //  Control Moving Forward
+        //ControlVelocity();  // Control Max and Min velocity
         //ApplyAngularDrag();
-        if(!isLeftPressed && !isRightPressed && overallPaddleForce>minPaddleForce*2 && isInRiver && rb.velocity.magnitude>minPaddleForce) ApplyDragToBoat();
-        ControlDrift();
+        //if (!isLeftPressed && !isRightPressed && isInRiver) ApplyDragToBoat();   //  Controls veclocity when nothing is pressed
+        ControlDrift();  //  Controls velocity when only one side is pressed
         
     }
 
@@ -130,9 +136,23 @@ public class Movement : MonoBehaviour
     {
         //transform.position += transform.forward * currMovementSpeed;
         //rb.AddForce(transform.forward*currMovementSpeed*2, ForceMode.Force);
-        rb.AddForce(rb.transform.forward * overallPaddleForce, ForceMode.Acceleration);
+        rb.AddForce(rb.transform.forward * overallPaddleForce, ForceMode.Force);
 
-        //Debug.DrawRay(rb.transform.position, rb.transform.forward * 1000f,Color.white);
+        Debug.DrawRay(rb.transform.position, rb.transform.forward * 3000f,Color.white);
+
+    }
+    public void ControlVelocity()
+    {
+        if (rb.velocity.magnitude > maxVelocity)
+        {
+            rb.velocity = rb.transform.forward * maxVelocity;
+        }
+
+        /*if (rb.velocity.magnitude < minVelocity)
+        {
+            rb.velocity = rb.transform.forward * minVelocity;
+        }*/
+        rb.AddForce(-rb.transform.forward * overallPaddleForce/minPaddleForce, ForceMode.Force);
     }
 
     public void ControlDrift()
@@ -141,19 +161,25 @@ public class Movement : MonoBehaviour
         localVel.x *= driftFactor;
         rb.velocity = transform.TransformDirection(localVel);
     }
+    /*
+    public void ApplyDragToBoat()
+    {
+        //Debug.Log("hi");
+        //rb.AddForce(-rb.transform.forward * (overallPaddleForce/2), ForceMode.Acceleration);
+        rb.velocity -= rb.transform.forward * drag;
+        ControlVelocity();
+
+    }*/  
+
+
+
 
     /*public void ApplyAngularDrag()
     {
         rb.angularDrag = angularDrag;
     }
     */
-    public void ApplyDragToBoat()
-    {
-        //Debug.Log("hi");
-        //rb.AddForce(-rb.transform.forward * (overallPaddleForce/2), ForceMode.Acceleration);
-        rb.velocity-=rb.transform.forward*drag;
 
-    }
 
     /*public void OpposeMotion()
     {

@@ -27,3 +27,8 @@ SysInfo.txt
 # OS
 .DS_Store
 Thumbs.db
+*.ma
+*.mb
+*.obj
+*.png
+*.zip

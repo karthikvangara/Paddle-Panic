@@ -12,9 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbf95ed51974404796e5db01fa0fb85, type: 3}
   m_Name: RiverMapsSO
   m_EditorClassIdentifier: 
-  riverMapPrefabs:
-  - {fileID: 8228125394039411974, guid: 92b59b8c34d655843bbbcb38cd9e53bf, type: 3}
-  - {fileID: 2762248754526481307, guid: 6923953658a5cb4489afe78a0feeac32, type: 3}
-  - {fileID: 6896576612361538972, guid: 5c65cd303cab11941885c52ed09d1a77, type: 3}
-  - {fileID: 6102562155770683490, guid: bc7344f6de6184f4ab20b403d9ed419e, type: 3}
-  - {fileID: 9174758069711420721, guid: 8bb52bfe75860924e95bec0489e4fcc1, type: 3}
+  easyRiverMapPrefabs:
+  - {fileID: 4873903386162887378, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
+  - {fileID: 4873903386162887378, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
+  - {fileID: 4873903386162887378, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
+  - {fileID: 4873903386162887378, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
+  - {fileID: 4873903386162887378, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
+  mediumRiverMapPrefabs:
+  - {fileID: 4873903386162887378, guid: cddaabd6d43b01a49b1111ca912a751f, type: 3}
+  - {fileID: 4873903386162887378, guid: cddaabd6d43b01a49b1111ca912a751f, type: 3}
+  - {fileID: 4873903386162887378, guid: cddaabd6d43b01a49b1111ca912a751f, type: 3}
+  - {fileID: 4873903386162887378, guid: cddaabd6d43b01a49b1111ca912a751f, type: 3}
+  - {fileID: 4873903386162887378, guid: cddaabd6d43b01a49b1111ca912a751f, type: 3}
+  hardRiverMapPrefabs:
+  - {fileID: 4873903386162887378, guid: 2091c36d0e6777e408d7a229df0760e5, type: 3}
+  - {fileID: 4873903386162887378, guid: 2091c36d0e6777e408d7a229df0760e5, type: 3}
+  - {fileID: 4873903386162887378, guid: 2091c36d0e6777e408d7a229df0760e5, type: 3}
+  - {fileID: 4873903386162887378, guid: 2091c36d0e6777e408d7a229df0760e5, type: 3}
+  - {fileID: 4873903386162887378, guid: 2091c36d0e6777e408d7a229df0760e5, type: 3}
