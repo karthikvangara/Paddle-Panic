@@ -5,5 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="RiverMapsSO", menuName ="RiverMapsSO")]
 public class RiverMapsSO : ScriptableObject
 {
-    public List<GameObject> riverMapPrefabs;
+    public List<GameObject> easyRiverMapPrefabs;
+    public List<GameObject> mediumRiverMapPrefabs;
+    public List<GameObject> hardRiverMapPrefabs;
 }

@@ -6,20 +6,21 @@ public class CheckPointManager : MonoBehaviour
 {
     public HealthManager healthManager;
     public RiverMapController riverMapController;
-    public Vector3 recentCheckpointPosition;
+    //public Vector3 recentCheckpointPosition;
 
     public void Awake()
     {
-        recentCheckpointPosition = transform.position;
+        //recentCheckpointPosition = transform.position;
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("CheckPoint"))
+        if (other.gameObject.CompareTag("HardMapEndPosition"))
         {
-            riverMapController.RespawnRiverMaps();
-            riverMapController.currentPlayersMapIndex += 1;
-            recentCheckpointPosition = new Vector3(other.gameObject.transform.position.x, transform.position.y, other.gameObject.transform.position.z);
+            //riverMapController.RespawnRiverMaps();
+            riverMapController.playerHardMapCurrentIndex += 1;
+            riverMapController.RespawnHardRiverMaps();
+            //recentCheckpointPosition = new Vector3(other.gameObject.transform.position.x, transform.position.y, other.gameObject.transform.position.z);
         }
     }
 }
