@@ -15,11 +15,11 @@ public class CheckPointManager : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("HardMapEndPosition"))
+        if (other.CompareTag("MapEnd"))
         {
             //riverMapController.RespawnRiverMaps();
             riverMapController.playerHardMapCurrentIndex += 1;
-            riverMapController.RespawnHardRiverMaps();
+            if (riverMapController.playerHardMapCurrentIndex % riverMapController.mapPositionsToRespawn.Count == 0) riverMapController.RespawnHardRiverMaps();
             //recentCheckpointPosition = new Vector3(other.gameObject.transform.position.x, transform.position.y, other.gameObject.transform.position.z);
         }
     }
