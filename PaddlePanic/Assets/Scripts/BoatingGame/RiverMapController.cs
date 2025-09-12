@@ -57,7 +57,7 @@ public class RiverMapController : MonoBehaviour
             instantiationPosition = previousMapEndPosition;
             riverMaps[i].SceneInstance = Instantiate(riverMaps[i].Map, instantiationPosition,Quaternion.identity);
             MapsInfoController mapsInfoController = riverMaps[i].SceneInstance.GetComponent<MapsInfoController>();
-            previousMapEndPosition = mapsInfoController.endPosition.position;
+            previousMapEndPosition = new Vector3(mapsInfoController.endPosition.position.x,0f,mapsInfoController.endPosition.position.z);
             mapsInfoController.endPosition.transform.tag = "MapEnd";
         }
 
