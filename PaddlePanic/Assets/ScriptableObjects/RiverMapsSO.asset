@@ -12,21 +12,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbf95ed51974404796e5db01fa0fb85, type: 3}
   m_Name: RiverMapsSO
   m_EditorClassIdentifier: 
-  easyRiverMapPrefabs:
-  - {fileID: 4873903386162887378, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
-  - {fileID: 4873903386162887378, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
-  - {fileID: 4873903386162887378, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
-  - {fileID: 4873903386162887378, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
-  - {fileID: 4873903386162887378, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
-  mediumRiverMapPrefabs:
-  - {fileID: 4873903386162887378, guid: cddaabd6d43b01a49b1111ca912a751f, type: 3}
-  - {fileID: 4873903386162887378, guid: cddaabd6d43b01a49b1111ca912a751f, type: 3}
-  - {fileID: 4873903386162887378, guid: cddaabd6d43b01a49b1111ca912a751f, type: 3}
-  - {fileID: 4873903386162887378, guid: cddaabd6d43b01a49b1111ca912a751f, type: 3}
-  - {fileID: 4873903386162887378, guid: cddaabd6d43b01a49b1111ca912a751f, type: 3}
-  hardRiverMapPrefabs:
-  - {fileID: 4873903386162887378, guid: 2091c36d0e6777e408d7a229df0760e5, type: 3}
-  - {fileID: 4873903386162887378, guid: 2091c36d0e6777e408d7a229df0760e5, type: 3}
-  - {fileID: 4873903386162887378, guid: 2091c36d0e6777e408d7a229df0760e5, type: 3}
-  - {fileID: 4873903386162887378, guid: 2091c36d0e6777e408d7a229df0760e5, type: 3}
-  - {fileID: 4873903386162887378, guid: 2091c36d0e6777e408d7a229df0760e5, type: 3}
+  riverMapPrefabsFromEasyToHard:
+  - Map: {fileID: 4873903386162887378, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
+    mapDifficulty: 0
+    SceneInstance: {fileID: 0}
+  - Map: {fileID: 4873903386162887378, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
+    mapDifficulty: 0
+    SceneInstance: {fileID: 0}
+  - Map: {fileID: 4873903386162887378, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
+    mapDifficulty: 0
+    SceneInstance: {fileID: 0}
+  - Map: {fileID: 4873903386162887378, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
+    mapDifficulty: 0
+    SceneInstance: {fileID: 0}
+  - Map: {fileID: 4873903386162887378, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
+    mapDifficulty: 0
+    SceneInstance: {fileID: 0}
+  - Map: {fileID: 4873903386162887378, guid: cddaabd6d43b01a49b1111ca912a751f, type: 3}
+    mapDifficulty: 1
+    SceneInstance: {fileID: 0}
+  - Map: {fileID: 4873903386162887378, guid: cddaabd6d43b01a49b1111ca912a751f, type: 3}
+    mapDifficulty: 1
+    SceneInstance: {fileID: 0}
+  - Map: {fileID: 4873903386162887378, guid: cddaabd6d43b01a49b1111ca912a751f, type: 3}
+    mapDifficulty: 1
+    SceneInstance: {fileID: 0}
+  - Map: {fileID: 4873903386162887378, guid: cddaabd6d43b01a49b1111ca912a751f, type: 3}
+    mapDifficulty: 1
+    SceneInstance: {fileID: 0}
+  - Map: {fileID: 4873903386162887378, guid: cddaabd6d43b01a49b1111ca912a751f, type: 3}
+    mapDifficulty: 1
+    SceneInstance: {fileID: 0}
+  - Map: {fileID: 4873903386162887378, guid: 2091c36d0e6777e408d7a229df0760e5, type: 3}
+    mapDifficulty: 2
+    SceneInstance: {fileID: 0}
+  - Map: {fileID: 4873903386162887378, guid: 2091c36d0e6777e408d7a229df0760e5, type: 3}
+    mapDifficulty: 2
+    SceneInstance: {fileID: 0}
+  - Map: {fileID: 4873903386162887378, guid: 2091c36d0e6777e408d7a229df0760e5, type: 3}
+    mapDifficulty: 2
+    SceneInstance: {fileID: 0}
+  - Map: {fileID: 4873903386162887378, guid: 2091c36d0e6777e408d7a229df0760e5, type: 3}
+    mapDifficulty: 2
+    SceneInstance: {fileID: 0}
+  - Map: {fileID: 4873903386162887378, guid: 2091c36d0e6777e408d7a229df0760e5, type: 3}
+    mapDifficulty: 2
+    SceneInstance: {fileID: 0}

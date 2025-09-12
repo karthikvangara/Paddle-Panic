@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public RiverMapController riverMapController;
     public Rigidbody rb;
     public GameObject player1InputController;
     public GameObject player2InputController;
@@ -18,6 +19,7 @@ public class Movement : MonoBehaviour
     private TouchField player2TouchField;
     public void Awake()
     {
+        playerStartingPosition = transform.position;
         player1TouchField = player1InputController.GetComponent<TouchField>();
         player2TouchField = player2InputController.GetComponent<TouchField>();
         //currMovementSpeed = startMovementSpeed;
@@ -71,6 +73,18 @@ public class Movement : MonoBehaviour
     {
         isInRiver = Physics.Raycast(transform.position, Vector3.down, rayLength, layers);
         //Debug.Log(isInRiver);
+    }
+
+
+    [Header("Respawn Map")]
+
+    public Vector3 playerStartingPosition;
+    public Vector3 playerPositionBeforeRespawn;
+
+    public void RespawnPlayerForLoopFeel()
+    {
+        playerPositionBeforeRespawn = transform.position;
+        transform.position = new Vector3(playerPositionBeforeRespawn.x, playerPositionBeforeRespawn.y, playerStartingPosition.z);
     }
 
     [Header("Movement")]
