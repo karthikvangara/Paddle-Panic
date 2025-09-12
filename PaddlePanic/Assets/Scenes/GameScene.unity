@@ -2116,7 +2116,7 @@ Transform:
   m_GameObject: {fileID: 1335334028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2, z: -1000}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2134,14 +2134,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add139b4a6291da458f5332c91b34057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 1735128446}
   riverMapsSO: {fileID: 11400000, guid: 8429f781461b52546bcef3ecc2ab2b2c, type: 2}
-  easyRiverMaps: []
-  mediumRiverMaps: []
-  hardRiverMaps: []
+  riverMaps: []
   defaultMapDistance: 2000
-  startingMapPosition: {x: 0, y: -2, z: -1000}
+  startingMapPosition: {x: 0, y: 0, z: 0}
   playerHardMapCurrentIndex: 0
   previousMapEndPosition: {x: 0, y: 0, z: 0}
+  respawnBefore: 2
+  mapPositionsToRespawn: []
 --- !u!1 &1380852275
 GameObject:
   m_ObjectHideFlags: 0
@@ -2321,7 +2322,7 @@ Transform:
   m_GameObject: {fileID: 1601302972}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2, z: -1000}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1000}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2481,7 +2482,7 @@ Transform:
   m_GameObject: {fileID: 1735128437}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 50, z: -945}
+  m_LocalPosition: {x: 0, y: 20, z: 20}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2593,6 +2594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecc7bec892152741a3cff3ddd32d5d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  riverMapController: {fileID: 1335334030}
   rb: {fileID: 1735128448}
   player1InputController: {fileID: 491449785}
   player2InputController: {fileID: 627880533}
@@ -2604,6 +2606,8 @@ MonoBehaviour:
     m_Bits: 64
   isLeftPressed: 0
   isRightPressed: 0
+  playerStartingPosition: {x: 0, y: 0, z: 0}
+  playerPositionBeforeRespawn: {x: 0, y: 0, z: 0}
   maxPaddleForce: 180
   minPaddleForce: 10
   incPaddleForce: 1
