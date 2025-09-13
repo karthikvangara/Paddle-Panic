@@ -105,6 +105,7 @@ public class MainMenuManager : MonoBehaviour
     public void OnClickExit()
     {
         ExitPanel.SetActive(true);
+        if (MemeManager.instance != null) MemeManager.instance.EnableTryingToExit();
     }
 
     public void OnClickYes()
@@ -120,6 +121,7 @@ public class MainMenuManager : MonoBehaviour
     public void OnCloseExit()
     {
         ExitPanel.SetActive(false);
+        if (MemeManager.instance != null) MemeManager.instance.DisableTryingToExit();
     }
 
 }

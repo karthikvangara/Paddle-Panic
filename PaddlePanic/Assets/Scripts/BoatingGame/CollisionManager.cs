@@ -12,6 +12,8 @@ public class CollisionManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacles"))
         {
             //healthManager.UpdateDamage(movement.currMovementSpeed);
+            float damage = 90 * (movement.overallPaddleForce / (movement.minPaddleForce * 2)) * (collision.gameObject.transform.localScale.magnitude / 100);
+            Debug.Log(damage);
         }
     }
 

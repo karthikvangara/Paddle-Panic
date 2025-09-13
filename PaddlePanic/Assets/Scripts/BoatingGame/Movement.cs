@@ -104,6 +104,7 @@ public class Movement : MonoBehaviour
     public float drag = 0f;
     //public float angularDrag = 2f;
     public float driftFactor = 0.9f;
+    public float maxJump = 5f;
 
     /*public float maxMovementSpeed = 5f;
     public float startMovementSpeed = 0.1f;
@@ -143,7 +144,9 @@ public class Movement : MonoBehaviour
         //ApplyAngularDrag();
         //if (!isLeftPressed && !isRightPressed && isInRiver) ApplyDragToBoat();   //  Controls veclocity when nothing is pressed
         ControlDrift();  //  Controls velocity when only one side is pressed
-        
+        ControlJumpHeight();    // Controls player jump height 
+
+
     }
 
     public void ApplyForwardForceToBoat()
@@ -184,6 +187,16 @@ public class Movement : MonoBehaviour
         ControlVelocity();
 
     }*/  
+
+    public void ControlJumpHeight()
+    {
+        if (transform.position.y > playerStartingPosition.y + maxJump)
+        {
+            Debug.Log("jumped");
+            rb.velocity = new Vector3((rb.velocity.x/rb.velocity.magnitude)*maxJump, 0f, (rb.velocity.z/rb.velocity.magnitude)*maxJump);
+            //rb.AddForce(-transform.up * overallPaddleForce, ForceMode.Force);
+        }
+    }
 
 
 
