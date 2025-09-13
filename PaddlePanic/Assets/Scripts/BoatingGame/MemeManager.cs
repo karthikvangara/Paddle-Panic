@@ -12,6 +12,7 @@ public class MemeManager : MonoBehaviour
     public GameObject acceptingMeme;
     public GameObject beforeLogin;
     public GameObject waitingForLongTime;
+    public GameObject tryingToExit;
     public GameObject hittingObstacles;
     public GameObject crash;
 
@@ -61,11 +62,21 @@ public class MemeManager : MonoBehaviour
     public void EnableWaitingForLongTimeMeme()
     {
         waitingForLongTime.SetActive(true);
+        Invoke("DisableWaitingForLongTimeMeme", 3f);
     }
 
     public void DisableWaitingForLongTimeMeme()
     {
-        waitingForLongTime.SetActive(true);
+        waitingForLongTime.SetActive(false);
+    }
+
+    public void EnableTryingToExit()
+    {
+        tryingToExit.SetActive(true);
+    }
+    public void DisableTryingToExit()
+    {
+        tryingToExit.SetActive(false);
     }
 
     public void EnableHittingObstaclesMeme()
@@ -75,7 +86,7 @@ public class MemeManager : MonoBehaviour
 
     public void DisableHittingObstaclesMeme()
     {
-        hittingObstacles.SetActive(true);
+        hittingObstacles.SetActive(false);
     }
 
     public void EnableCrashedMeme()
