@@ -18,8 +18,10 @@ public class CheckPointManager : MonoBehaviour
         if (other.CompareTag("MapEnd"))
         {
             //riverMapController.RespawnRiverMaps();
-            riverMapController.playerHardMapCurrentIndex += 1;
-            if (riverMapController.playerHardMapCurrentIndex % riverMapController.mapPositionsToRespawn.Count == 0) riverMapController.RespawnHardRiverMaps();
+            riverMapController.playerCurrentMapIndex += 1;
+            riverMapController.EnableNextMaps();
+            riverMapController.DisablePreviousMap();
+            if (riverMapController.playerCurrentMapIndex % riverMapController.mapPositionsToRespawn.Count == 0) riverMapController.RespawnHardRiverMaps();
             //recentCheckpointPosition = new Vector3(other.gameObject.transform.position.x, transform.position.y, other.gameObject.transform.position.z);
         }
     }

@@ -7,20 +7,18 @@ public class RiverMapController : MonoBehaviour
     public Movement movement;
     public RiverMapsSO riverMapsSO;
     public List<RiverMap> riverMaps;
-    public float defaultMapDistance;
     public Vector3 startingMapPosition;
-    public int playerHardMapCurrentIndex=0;
+    public int playerCurrentMapIndex=0;
     public Vector3 previousMapEndPosition;
     public int respawnBefore = 2;
     public List<Vector3> mapPositionsToRespawn;
-
-    private float currentMapDistance;
+    public int enableNumberOfNextMaps = 2;
+    public int disableNumberOfPreviousMaps = 2;
 
     public void Awake()
     {
         startingMapPosition = transform.position;
         previousMapEndPosition = startingMapPosition;
-        defaultMapDistance = 2000f;
         LoadRiverMapsFromSO();
         SortAndLoadRiverMaps();
         //ArrangeRiverMaps();
@@ -59,6 +57,11 @@ public class RiverMapController : MonoBehaviour
             MapsInfoController mapsInfoController = riverMaps[i].SceneInstance.GetComponent<MapsInfoController>();
             previousMapEndPosition = new Vector3(mapsInfoController.endPosition.position.x,0f,mapsInfoController.endPosition.position.z);
             mapsInfoController.endPosition.transform.tag = "MapEnd";
+
+            if (i > enableNumberOfNextMaps && i<riverMaps.Count-respawnBefore)
+            {
+                riverMaps[i].SceneInstance.SetActive(false);
+            }
         }
 
     }
@@ -72,6 +75,25 @@ public class RiverMapController : MonoBehaviour
             currentMapDistance += defaultMapDistance;
         }
     }*/
+    public void EnableNextMaps()
+    {
+        for(int i = 1; i <= enableNumberOfNextMaps; i++)
+        {
+            int idx = (playerCurrentMapIndex % mapPositionsToRespawn.Count) + i;
+            if (idx < riverMaps.Count)
+            {
+                riverMaps[idx].SceneInstance.SetActive(true);
+            }
+        }
+    }
+
+    public void DisablePreviousMap()
+    {
+        int idx = (playerCurrentMapIndex - disableNumberOfPreviousMaps) % mapPositionsToRespawn.Count;
+        if (idx >= 0) {
+            riverMaps[idx].SceneInstance.SetActive(false);
+        }
+    }
 
     public void RespawnHardRiverMaps()
     {
@@ -90,6 +112,15 @@ public class RiverMapController : MonoBehaviour
             riverMaps[i] = riverMaps[randInt];
             riverMaps[randInt] = tempMap;
 
+            if (i > enableNumberOfNextMaps)
+            {
+                riverMaps[i].SceneInstance.SetActive(false);
+            }
+            else
+            {
+                riverMaps[i].SceneInstance.SetActive(true);
+
+            }
             riverMaps[i].SceneInstance.transform.position = mapPositionsToRespawn[i];
             riverMaps[randInt].SceneInstance.transform.position = mapPositionsToRespawn[randInt];
         }
