@@ -32,3 +32,6 @@ Thumbs.db
 *.obj
 *.png
 *.zip
+
+# Android build files
+*.apk
