@@ -44,7 +44,11 @@ public class Movement : MonoBehaviour
     public void FixedUpdate()
     {
         CheckForRiver();
-        CheckForInput();
+
+        if (healthManager.isAlive)
+        {
+            CheckForInput();
+        }
         if (isInRiver)
         {
             CheckForMovement();
@@ -61,14 +65,11 @@ public class Movement : MonoBehaviour
         isLeftPressed = player1TouchField.Pressed;
         isRightPressed = player2TouchField.Pressed;
 
-        Debug.Log(isLeftPressed);
-        Debug.Log(isRightPressed);
-
 #if UNITY_EDITOR
 
         if (Input.GetKey(KeyCode.RightArrow)) isRightPressed = true;
         else isRightPressed = false;
-      
+
 
         if (Input.GetKey(KeyCode.LeftArrow)) isLeftPressed = true;
         else isLeftPressed = false;
@@ -129,15 +130,15 @@ public class Movement : MonoBehaviour
         if (currMovementSpeed < startMovementSpeed) currMovementSpeed = startMovementSpeed;
         if (currMovementSpeed > maxMovementSpeed) currMovementSpeed = maxMovementSpeed;*/
 
-        leftPaddleForce = isLeftPressed ? leftPaddleForce + incPaddleForce : (leftPaddleForce - incPaddleForce) *0.9f >0? (leftPaddleForce-incPaddleForce) * 0.9f:0;
-        rightPaddleForce = isRightPressed ? rightPaddleForce + incPaddleForce : (rightPaddleForce - incPaddleForce) *0.9f > 0 ? (rightPaddleForce - incPaddleForce) * 0.9f : 0;
+        leftPaddleForce = isLeftPressed ? leftPaddleForce + incPaddleForce : (leftPaddleForce - incPaddleForce) * 0.9f > 0 ? (leftPaddleForce - incPaddleForce) * 0.9f : 0;
+        rightPaddleForce = isRightPressed ? rightPaddleForce + incPaddleForce : (rightPaddleForce - incPaddleForce) * 0.9f > 0 ? (rightPaddleForce - incPaddleForce) * 0.9f : 0;
 
         leftPaddleForce = Mathf.Min(leftPaddleForce, maxPaddleForce);
         rightPaddleForce = Mathf.Min(rightPaddleForce, maxPaddleForce);
 
         //leftPaddleForce = Mathf.Max(leftPaddleForce, minPaddleForce);
         //rightPaddleForce = Mathf.Max(rightPaddleForce, minPaddleForce);
-        
+
         overallPaddleForce = leftPaddleForce + rightPaddleForce;
         overallPaddleForce = Mathf.Max(overallPaddleForce, 0);
 
@@ -161,7 +162,7 @@ public class Movement : MonoBehaviour
         //rb.AddForce(transform.forward*currMovementSpeed*2, ForceMode.Force);
         rb.AddForce(rb.transform.forward * overallPaddleForce, ForceMode.Force);
 
-        Debug.DrawRay(rb.transform.position, rb.transform.forward * 3000f,Color.white);
+        Debug.DrawRay(rb.transform.position, rb.transform.forward * 3000f, Color.white);
 
     }
     public void ControlVelocity()
@@ -175,7 +176,7 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = rb.transform.forward * minVelocity;
         }*/
-        rb.AddForce(-rb.transform.forward * overallPaddleForce/minPaddleForce, ForceMode.Force);
+        rb.AddForce(-rb.transform.forward * overallPaddleForce / minPaddleForce, ForceMode.Force);
     }
 
     public void ControlDrift()
@@ -192,14 +193,14 @@ public class Movement : MonoBehaviour
         rb.velocity -= rb.transform.forward * drag;
         ControlVelocity();
 
-    }*/  
+    }*/
 
     public void ControlJumpHeight()
     {
         if (transform.position.y > playerStartingPosition.y + maxJump)
         {
             Debug.Log("jumped");
-            rb.velocity = new Vector3((rb.velocity.x/rb.velocity.magnitude)*maxJump, 0f, (rb.velocity.z/rb.velocity.magnitude)*maxJump);
+            rb.velocity = new Vector3((rb.velocity.x / rb.velocity.magnitude) * maxJump, 0f, (rb.velocity.z / rb.velocity.magnitude) * maxJump);
             //rb.AddForce(-transform.up * overallPaddleForce, ForceMode.Force);
         }
     }
@@ -234,6 +235,7 @@ public class Movement : MonoBehaviour
     //public float rotateRightAngle = 0f;
     //public float rotationMultiplyer = 5f;
     public float rotationRetrivalMultiplyer = 10f;
+    public bool isCollidedWithObstacles;
     //public float diffPaddleForce = 0f;
 
     /*public float maxRotationSpeed;
@@ -241,7 +243,7 @@ public class Movement : MonoBehaviour
     public float rotationInc = 0.1f;
 
     private float currRotationSpeed;*/
-   
+
     public void CheckForRotation()
     {
         /*if (isLeftPressed && isRightPressed) { }
@@ -258,7 +260,8 @@ public class Movement : MonoBehaviour
         //Debug.Log(rotationAngle);
         //if(isRightPressed) RotateLeft();
         //if(isLeftPressed) RotateRight();
-        if (!isLeftPressed && !isRightPressed) RetrieveRotation();
+
+        if (!isLeftPressed && !isRightPressed && !isCollidedWithObstacles) RetrieveRotation();
         //if(isRightPressed) RotateLeft(); 
         //if(isLeftPressed) RotateRight();
         //diffPaddleForce = leftPaddleForce - rightPaddleForce;
@@ -302,7 +305,7 @@ public class Movement : MonoBehaviour
         if (direction.sqrMagnitude > 0.01f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(direction);
-            rb.MoveRotation(Quaternion.Slerp(rb.rotation,targetRotation,0.01f));
+            rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, 0.01f));
         }
     }
 
@@ -346,6 +349,20 @@ public class Movement : MonoBehaviour
     */
     public void RetrieveRotation()
     {
+        //Debug.Log("rotation retrieved");
         transform.rotation = Quaternion.Slerp(transform.rotation, actualRotation, rotationRetrivalMultiplyer * Time.deltaTime);
+    }
+
+    public void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacles"))
+        {
+            isCollidedWithObstacles = true;
+        }
+    }
+
+    public void OnCollisionExit(Collision collision)
+    {
+        isCollidedWithObstacles = false;
     }
 }
