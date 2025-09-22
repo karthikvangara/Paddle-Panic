@@ -64,12 +64,15 @@ public class Movement : MonoBehaviour
         Debug.Log(isLeftPressed);
         Debug.Log(isRightPressed);
 
-        /*if (Input.GetKey(KeyCode.RightArrow)) isRightPressed = true;
+#if UNITY_EDITOR
+
+        if (Input.GetKey(KeyCode.RightArrow)) isRightPressed = true;
         else isRightPressed = false;
       
 
         if (Input.GetKey(KeyCode.LeftArrow)) isLeftPressed = true;
-        else isLeftPressed = false;*/
+        else isLeftPressed = false;
+#endif
     }
 
     public void CheckForRiver()
