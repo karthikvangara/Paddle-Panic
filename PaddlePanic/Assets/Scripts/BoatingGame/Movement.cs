@@ -61,12 +61,18 @@ public class Movement : MonoBehaviour
         isLeftPressed = player1TouchField.Pressed;
         isRightPressed = player2TouchField.Pressed;
 
+        Debug.Log(isLeftPressed);
+        Debug.Log(isRightPressed);
+
+#if UNITY_EDITOR
+
         if (Input.GetKey(KeyCode.RightArrow)) isRightPressed = true;
         else isRightPressed = false;
       
 
         if (Input.GetKey(KeyCode.LeftArrow)) isLeftPressed = true;
         else isLeftPressed = false;
+#endif
     }
 
     public void CheckForRiver()
