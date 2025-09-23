@@ -13,6 +13,7 @@ public class LoginSceneManager : MonoBehaviour
     public GameObject memeManagerPanel;
     public GameObject loginInfoPanel;
     public GameObject loginInputFieldError;
+    public GameObject UserDataManagerObject;
     public TMP_InputField playerName;
     public string menuScene;
 
@@ -21,13 +22,16 @@ public class LoginSceneManager : MonoBehaviour
     public void Awake()
     {
         DontDestroyOnLoad(memeManagerPanel);
+        DontDestroyOnLoad(UserDataManagerObject);
+        userData=new UserData();
     }
 
     public void Update()
     {
         if(UserDataManager.instance!=null) userData=UserDataManager.instance.LoadPlayerInfo();
-        if(userData!=null && userData.isFirstTime) StartCoroutine(MemeInfo());
-        if(userData!=null && !userData.isFirstTime) LoadMainMenuScene();
+        //if (userData == null) Debug.Log("User Data is Null");
+        StartCoroutine(MemeInfo());
+        
     }
 
     IEnumerator MemeInfo()
@@ -35,7 +39,9 @@ public class LoginSceneManager : MonoBehaviour
         //Debug.Log("Meme Info Coroutine called");
         yield return new WaitForSeconds(2);
         if(MemeManager.instance!=null) MemeManager.instance.DisableWelcomeMeme();
-        EnableMemeInfoPanel();
+
+        if (userData != null && !userData.isFirstTime) LoadMainMenuScene();
+        else EnableMemeInfoPanel();
     }
 
     public void EnableMemeInfoPanel()

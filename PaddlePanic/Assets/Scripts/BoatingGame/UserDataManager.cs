@@ -15,6 +15,7 @@ public class UserDataManager : MonoBehaviour
     }
     public void UpdatePlayerInfo(UserData userData)
     {
+        //Debug.Log("UpdatePlayerInfo called");
         string json;
         if (!File.Exists(path))
         {
@@ -27,7 +28,7 @@ public class UserDataManager : MonoBehaviour
 
         if (userData == null)
         {
-            Debug.Log("UserData is Null");
+            //Debug.Log("UserData is Null");
             return;
         }   
 
@@ -39,7 +40,9 @@ public class UserDataManager : MonoBehaviour
 
     public UserData LoadPlayerInfo()
     {
+        //Debug.Log("LoadPlayerInfo Called");
         UserData userData = new UserData();
+        if (userData == null) Debug.Log("UserData is Null");
         if (File.Exists(path))
         {
             string loadedJson = File.ReadAllText(path);
@@ -49,3 +52,13 @@ public class UserDataManager : MonoBehaviour
         return userData;
     }
 }
+
+[System.Serializable]
+public class UserData
+{
+    public string playerName;
+    public int playerScore;
+    public bool isFirstTime = true;
+    public bool isMemeAccepted = true;
+}
+

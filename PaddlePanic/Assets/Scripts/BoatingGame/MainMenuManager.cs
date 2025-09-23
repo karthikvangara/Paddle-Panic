@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,7 +8,7 @@ public class MainMenuManager : MonoBehaviour
 {
     public void Start()
     {
-        StartCoroutine(LoadGameSceneInBackground());
+        //StartCoroutine(LoadGameSceneInBackground());
         StartCoroutine(Idle());
     }
 
@@ -21,32 +22,39 @@ public class MainMenuManager : MonoBehaviour
 
     //Play
 
+    #region
+
     [Header("Play / Load Scene")]
     public string gameScene;
 
-    private AsyncOperation asyncOp;
+    /*private AsyncOperation asyncOp;
 
     private IEnumerator LoadGameSceneInBackground()
     {
         asyncOp = SceneManager.LoadSceneAsync(gameScene);
         asyncOp.allowSceneActivation = false;
         yield return null;
-    }
+    }*/
 
     public void OnClickPlay()
     {
-        ActivateGameScene();
+        //ActivateGameScene();
+        SceneManager.LoadScene(gameScene);
     }
 
-    public void ActivateGameScene()
+    /*public void ActivateGameScene()
     {
         if (asyncOp != null)
         {
             asyncOp.allowSceneActivation = true;
         }
-    }
+    }*/
+
+    #endregion
 
     //Multiplayer
+
+    #region
     [Header("Multiplayer")]
 
     public GameObject multiplayerPanel;
@@ -61,8 +69,11 @@ public class MainMenuManager : MonoBehaviour
         multiplayerPanel.SetActive(false);
     }
 
+    #endregion
 
     //Settings
+
+    #region
     [Header("Settings")]
 
     public GameObject settingsPanel;
@@ -95,9 +106,11 @@ public class MainMenuManager : MonoBehaviour
         memesOnImage.SetActive(false);
         memesOffImage.SetActive(true);
     }
-
+    #endregion
 
     //Exit
+
+    #region
     [Header("Exit")]
 
     public GameObject ExitPanel;
@@ -123,5 +136,44 @@ public class MainMenuManager : MonoBehaviour
         ExitPanel.SetActive(false);
         if (MemeManager.instance != null) MemeManager.instance.DisableTryingToExit();
     }
+
+    #endregion
+
+
+    //PlayerProfile
+    #region
+
+    [Header("PlayerProfile")]
+
+    public TMP_Text playerNamePanel;
+    public TMP_Text highScore;
+    public Animator animator;
+    public bool isPlayerProfileOpened;
+
+    public void OnClickPlayerProfile()
+    {
+        if(isPlayerProfileOpened) ClosePlayerProfile();
+        if (!isPlayerProfileOpened) OpenPlayerProfile();
+        isPlayerProfileOpened=!isPlayerProfileOpened;
+    }
+
+    private void OpenPlayerProfile()
+    {
+        animator.Play("PlayerProfileOpen");
+        UserData userData = new UserData();
+        //if (UserDataManager.instance == null) Debug.Log("UserDataManager is NUll");
+        if (UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
+        //Debug.Log(userData.playerName);
+        playerNamePanel.text=userData.playerName;
+        highScore.text=userData.playerScore.ToString();
+        
+    }
+
+    private void ClosePlayerProfile()
+    {
+        animator.Play("PlayerProfileClose");
+    }
+
+    #endregion 
 
 }

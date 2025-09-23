@@ -51,6 +51,7 @@ public class Movement : MonoBehaviour
         }
         if (isInRiver)
         {
+            UpdateScore();
             CheckForMovement();
             CheckForRotation();
         }
@@ -94,9 +95,13 @@ public class Movement : MonoBehaviour
         transform.position = new Vector3(playerPositionBeforeRespawn.x, playerPositionBeforeRespawn.y, playerStartingPosition.z);
     }
 
+    //Movement
+
+    #region
+
     [Header("Movement")]
 
-    //Movement
+    
 
     public float maxPaddleForce = 360f;
     public float minPaddleForce = 10f;
@@ -105,7 +110,7 @@ public class Movement : MonoBehaviour
     public float rightPaddleForce = 0f;
     public float overallPaddleForce = 0f;
     public float maxVelocity = 1500f;
-    public float minVelocity = 15f;
+    //public float minVelocity = 15f;
     public float velocityMagnitude;
     //public float dragCoefficient = 5f;
     public float drag = 0f;
@@ -222,9 +227,15 @@ public class Movement : MonoBehaviour
         rb.AddForce((-transform.forward) * currMovementSpeed, ForceMode.Force);
     }*/
 
-    [Header("Rotation")]
+    #endregion
 
     //Rotation
+
+    #region
+
+    [Header("Rotation")]
+
+   
 
     public Quaternion actualRotation;
     /*public float currRotationAngle=0f;
@@ -365,4 +376,26 @@ public class Movement : MonoBehaviour
     {
         isCollidedWithObstacles = false;
     }
+
+    #endregion
+
+    //Score
+
+    #region
+
+    [Header("Score")]
+    public float score;
+    public float minVelocityToUpdateScore=1f;
+
+
+    public void UpdateScore()
+    {
+        if(rb.velocity.magnitude> minVelocityToUpdateScore)
+        {
+            //Debug.Log(score);
+            score += Time.deltaTime;
+        }
+    }
+
+    #endregion
 }

@@ -486,6 +486,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnowCliffs_LargeStone_3
       objectReference: {fileID: 0}
+    - target: {fileID: 1327185925968594, guid: d6a78d392a35a9049954084cffebb1e7, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 4064459029905576, guid: d6a78d392a35a9049954084cffebb1e7, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.75
@@ -641,6 +645,10 @@ PrefabInstance:
     - target: {fileID: 1327185925968594, guid: d6a78d392a35a9049954084cffebb1e7, type: 3}
       propertyPath: m_Name
       value: SnowCliffs_LargeStone_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327185925968594, guid: d6a78d392a35a9049954084cffebb1e7, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 4064459029905576, guid: d6a78d392a35a9049954084cffebb1e7, type: 3}
       propertyPath: m_LocalScale.x
@@ -881,6 +889,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrackyCliffs_LargeStone_6 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1863705776879614, guid: a8126bd40e553d64285f3152e5e7147a, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 4012661869335196, guid: a8126bd40e553d64285f3152e5e7147a, type: 3}
       propertyPath: m_LocalScale.x
       value: 6.25
@@ -1012,6 +1024,10 @@ PrefabInstance:
     - target: {fileID: 1863705776879614, guid: a8126bd40e553d64285f3152e5e7147a, type: 3}
       propertyPath: m_Name
       value: CrackyCliffs_LargeStone_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863705776879614, guid: a8126bd40e553d64285f3152e5e7147a, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 4012661869335196, guid: a8126bd40e553d64285f3152e5e7147a, type: 3}
       propertyPath: m_LocalScale.x
@@ -1210,6 +1226,10 @@ PrefabInstance:
     - target: {fileID: 1327185925968594, guid: d6a78d392a35a9049954084cffebb1e7, type: 3}
       propertyPath: m_Name
       value: SnowCliffs_LargeStone_3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327185925968594, guid: d6a78d392a35a9049954084cffebb1e7, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 4064459029905576, guid: d6a78d392a35a9049954084cffebb1e7, type: 3}
       propertyPath: m_LocalScale.x
@@ -1450,6 +1470,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrackyCliffs_LargeStone_3
       objectReference: {fileID: 0}
+    - target: {fileID: 1914170822073484, guid: 6fcb1754e114c484aae2e0550fc31b76, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 4750443130135216, guid: 6fcb1754e114c484aae2e0550fc31b76, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.75
@@ -1581,6 +1605,10 @@ PrefabInstance:
     - target: {fileID: 1327185925968594, guid: d6a78d392a35a9049954084cffebb1e7, type: 3}
       propertyPath: m_Name
       value: SnowCliffs_LargeStone_3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327185925968594, guid: d6a78d392a35a9049954084cffebb1e7, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 4064459029905576, guid: d6a78d392a35a9049954084cffebb1e7, type: 3}
       propertyPath: m_LocalScale.x
@@ -1714,6 +1742,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrackyCliffs_LargeStone_6 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1863705776879614, guid: a8126bd40e553d64285f3152e5e7147a, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 4012661869335196, guid: a8126bd40e553d64285f3152e5e7147a, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -1845,6 +1877,10 @@ PrefabInstance:
     - target: {fileID: 1682421167929520, guid: d6929fcf7d2802f4a94588790a2af60c, type: 3}
       propertyPath: m_Name
       value: MossCliffs_LargeStone_3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682421167929520, guid: d6929fcf7d2802f4a94588790a2af60c, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 4703461310982926, guid: d6929fcf7d2802f4a94588790a2af60c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2033,6 +2069,10 @@ PrefabInstance:
     - target: {fileID: 1863705776879614, guid: a8126bd40e553d64285f3152e5e7147a, type: 3}
       propertyPath: m_Name
       value: CrackyCliffs_LargeStone_6 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863705776879614, guid: a8126bd40e553d64285f3152e5e7147a, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 4012661869335196, guid: a8126bd40e553d64285f3152e5e7147a, type: 3}
       propertyPath: m_LocalScale.x
