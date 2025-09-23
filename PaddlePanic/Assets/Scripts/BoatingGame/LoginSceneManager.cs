@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.Text.RegularExpressions;
+using TMPro;
 
 public class LoginSceneManager : MonoBehaviour
 {
@@ -9,7 +12,11 @@ public class LoginSceneManager : MonoBehaviour
     public GameObject memeInfoPanel;
     public GameObject memeManagerPanel;
     public GameObject loginInfoPanel;
+    public GameObject loginInputFieldError;
+    public TMP_InputField playerName;
     public string menuScene;
+
+    public UserData userData;
 
     public void Awake()
     {
@@ -18,11 +25,14 @@ public class LoginSceneManager : MonoBehaviour
 
     public void Update()
     {
-        StartCoroutine(MemeInfo());
+        if(UserDataManager.instance!=null) userData=UserDataManager.instance.LoadPlayerInfo();
+        if(userData!=null && userData.isFirstTime) StartCoroutine(MemeInfo());
+        if(userData!=null && !userData.isFirstTime) LoadMainMenuScene();
     }
 
     IEnumerator MemeInfo()
     {
+        //Debug.Log("Meme Info Coroutine called");
         yield return new WaitForSeconds(2);
         if(MemeManager.instance!=null) MemeManager.instance.DisableWelcomeMeme();
         EnableMemeInfoPanel();
@@ -73,8 +83,26 @@ public class LoginSceneManager : MonoBehaviour
 
     public void OnClickLogin()
     {
-        DisableLoginInfoPanel();
-        if(MemeManager.instance!=null) MemeManager.instance.DisableLoginMeme();
+        string playerNameWithoutSpaces = Regex.Replace(playerName.text, @"\s+", "");
+        if (playerNameWithoutSpaces.Length > 0)
+        {
+            if (userData != null) userData.playerName = playerName.text;
+            if(UserDataManager.instance!=null) UserDataManager.instance.UpdatePlayerInfo(userData);
+            DisableLoginInfoPanel();
+            if (MemeManager.instance != null) MemeManager.instance.DisableLoginMeme();
+            LoadMainMenuScene();
+        }
+        else
+        {
+            loginInputFieldError.SetActive(true);
+        }
+    }
+
+
+    public void LoadMainMenuScene()
+    {
+        if (userData != null) userData.isFirstTime = false;
+        if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo(userData);
         SceneManager.LoadScene(menuScene);
     }
     /*public void DisableLoadingUIAndEnableAcceptingMemeUI()

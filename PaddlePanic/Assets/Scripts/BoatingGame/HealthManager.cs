@@ -51,41 +51,68 @@ public class HealthManager : MonoBehaviour
         }
     }*/
 
-    public HealthUIManager healthUIManager;
-    public float currentDamage;
-    public float updateValue=15f;
+    /* public HealthUIManager healthUIManager;
+     public float currentDamage;
+     public float updateValue=15f;
 
-    public void Update()
+     public void Update()
+     {
+         //Debug.Log(currentDamage);
+         if (currentDamage >= 100)
+         {
+             healthUIManager.Display0PerHealth();
+         }
+         else if(currentDamage >= 80)
+         {
+             healthUIManager.Display20PerHealth();
+         }
+         else if(currentDamage >= 60)
+         {
+             healthUIManager.Display40PerHealth();
+         }
+         else if(currentDamage >= 40)
+         {
+             healthUIManager.Display60PerHealth();
+         }
+         else if(currentDamage >= 20)
+         {
+             healthUIManager.Display80PerHealth();
+         }
+         else
+         {
+             healthUIManager.Display100PerHealth();
+         }
+     }
+
+     public void UpdateDamage(float boatSpeed)
+     {
+         currentDamage = currentDamage+boatSpeed * updateValue*Time.deltaTime;
+     }*/
+
+    public Movement movement;
+    public float currHealth;
+    public float maxHealth = 100f;
+    public float maxBoatSpeed;
+    public int impactCounts = 1;
+    public float impactReduceBy = 0.1f;
+    public bool isAlive = true;
+
+    public void Start()
     {
-        //Debug.Log(currentDamage);
-        if (currentDamage >= 100)
+        maxBoatSpeed = movement.maxVelocity;
+        maxHealth = movement.maxVelocity;
+        currHealth = maxHealth;
+    }
+
+    public void CalculateHealth(float boatSpeed)
+    {
+        currHealth -= boatSpeed * impactReduceBy;
+        impactCounts += 1;
+        Debug.Log(currHealth);
+        if (currHealth <= 0f)
         {
-            healthUIManager.Display0PerHealth();
-        }
-        else if(currentDamage >= 80)
-        {
-            healthUIManager.Display20PerHealth();
-        }
-        else if(currentDamage >= 60)
-        {
-            healthUIManager.Display40PerHealth();
-        }
-        else if(currentDamage >= 40)
-        {
-            healthUIManager.Display60PerHealth();
-        }
-        else if(currentDamage >= 20)
-        {
-            healthUIManager.Display80PerHealth();
-        }
-        else
-        {
-            healthUIManager.Display100PerHealth();
+            isAlive = false;
         }
     }
 
-    public void UpdateDamage(float boatSpeed)
-    {
-        currentDamage = currentDamage+boatSpeed * updateValue*Time.deltaTime;
-    }
 }
