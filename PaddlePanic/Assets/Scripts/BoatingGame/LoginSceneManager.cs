@@ -57,6 +57,11 @@ public class LoginSceneManager : MonoBehaviour
     public void OnClickAcceptMeme()
     {
         DisableMemeInfoPanel();
+        
+        UserData userData = new UserData();
+        userData.isMemeAccepted = true;
+        if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo(userData);
+
         if (MemeManager.instance != null) MemeManager.instance.EnableAcceptingMeme();
         StartCoroutine(LoginInfoPanel());
     }
@@ -65,6 +70,11 @@ public class LoginSceneManager : MonoBehaviour
     {
         DisableMemeInfoPanel();
         EnableLoginInfoPanel();
+
+        UserData userData = new UserData();
+        userData.isMemeAccepted = false;
+        if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo(userData);
+
         if (MemeManager.instance != null) MemeManager.instance.memesEnabled = false;
         memeManagerPanel.SetActive(false);
     }

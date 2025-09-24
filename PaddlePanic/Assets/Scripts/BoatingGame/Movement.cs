@@ -204,7 +204,7 @@ public class Movement : MonoBehaviour
     {
         if (transform.position.y > playerStartingPosition.y + maxJump)
         {
-            Debug.Log("jumped");
+            //Debug.Log("jumped");
             rb.velocity = new Vector3((rb.velocity.x / rb.velocity.magnitude) * maxJump, 0f, (rb.velocity.z / rb.velocity.magnitude) * maxJump);
             //rb.AddForce(-transform.up * overallPaddleForce, ForceMode.Force);
         }
@@ -384,16 +384,18 @@ public class Movement : MonoBehaviour
     #region
 
     [Header("Score")]
+    public GameUIManager gameUIManager;
     public float score;
     public float minVelocityToUpdateScore=1f;
 
 
     public void UpdateScore()
     {
-        if(rb.velocity.magnitude> minVelocityToUpdateScore)
+        if(rb.velocity.magnitude> minVelocityToUpdateScore  && healthManager.isAlive)
         {
             //Debug.Log(score);
             score += Time.deltaTime;
+            gameUIManager.UpdateScore();
         }
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -58,14 +59,25 @@ public class GameUIManager : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject memesOnImage;
     public GameObject memesOffImage;
+    public UserData userData;
 
     public void OnClickSettings()
     {
         if (!isPauseOpen)
         {
             settingsPanel.SetActive(true);
-            if (MemeManager.instance != null && !MemeManager.instance.memesEnabled) OnClickDisableMemes();
-            StopGame();
+
+            if (MemeManager.instance != null && UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
+            if (userData.isMemeAccepted)
+            {
+                memesOnImage.SetActive(true);
+                memesOffImage.SetActive(false);
+            }
+            else
+            {
+                memesOnImage.SetActive(false);
+                memesOffImage.SetActive(true);
+            }
             isSettingsOpen = true;
         }
     }
@@ -78,20 +90,23 @@ public class GameUIManager : MonoBehaviour
     }
 
 
-    public void OnClickEnableMemes()
+    public void OnClickMemesControl()
     {
-        if (MemeManager.instance != null) MemeManager.instance.gameObject.SetActive(true);
-        if(MemeManager.instance !=null) MemeManager.instance.memesEnabled = true;
-        memesOnImage.SetActive(true);
-        memesOffImage.SetActive(false);
-    }
+        if (MemeManager.instance != null && UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
+        if (userData.isMemeAccepted)
+        {
+            memesOffImage.SetActive(true);
+            memesOnImage.SetActive(false);
+            userData.isMemeAccepted = false;
+        }
+        else
+        {
+            memesOffImage.SetActive(false);
+            memesOnImage.SetActive(true);
+            userData.isMemeAccepted = true;
+        }
 
-    public void OnClickDisableMemes()
-    {
-        if (MemeManager.instance != null) MemeManager.instance.gameObject.SetActive(false); 
-        if (MemeManager.instance != null) MemeManager.instance.memesEnabled = false;
-        memesOnImage.SetActive(false);
-        memesOffImage.SetActive(true);
+        if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo(userData);
     }
 
     #endregion
@@ -106,28 +121,42 @@ public class GameUIManager : MonoBehaviour
     public GameObject gameOverPanel;
     public TMP_Text score;
     public TMP_Text highScore;
+    public int currScore;
 
 
     public void OpenGameOverPanel()
     {
-        StopGame();
         isPauseOpen = true;
-        gameOverPanel.SetActive(true);
-        int currScore = System.Convert.ToInt32(movement.score);
-        score.text=currScore.ToString();
-        Debug.Log("Curr Score "+currScore);
+        StartCoroutine(DisplayGameOverPanel());
+    }
+
+    IEnumerator DisplayGameOverPanel()
+    {
+        yield return new WaitForSeconds(3f);
+        gameOverPanel.SetActive(true); 
+        score.text = scorePanel.text;
+        //Debug.Log("Curr Score " + currScore);
 
         UserData userData = new UserData();
         if (UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
 
-        Debug.Log("High Score " + userData.playerScore);
+        //Debug.Log("High Score " + userData.playerScore);
         if (currScore > userData.playerScore)
         {
             userData.playerScore = currScore;
             if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo(userData);
 
         }
-        highScore.text=userData.playerScore.ToString();
+        highScore.text = userData.playerScore.ToString();
+        if (MemeManager.instance != null) MemeManager.instance.EnableGameOverMeme();
+        StartCoroutine(DisableGameOverMeme());
+    }
+
+    IEnumerator DisableGameOverMeme()
+    {
+        yield return new WaitForSeconds(3);
+        if (MemeManager.instance != null) MemeManager.instance.DisableGameOverMeme();
+        StopGame();
     }
 
     #endregion
@@ -138,18 +167,49 @@ public class GameUIManager : MonoBehaviour
 
     [Header("Health")]
 
+    public TMP_Text health;
     public Image healthRef;
     public HealthManager healthManager;
     public float maxAlpha = 1f;
-    public float healthCoefficient = 0.1f;
+    public float healthCoefficient = 0.5f;
+    public bool once = true;
 
     public void UpdateHealth()
     {
-        float healthPrecentage = (healthManager.currHealth / healthManager.maxHealth)*healthCoefficient;
-        Debug.Log(healthPrecentage);
+        health.text=Mathf.Max(0,System.Convert.ToInt32(healthManager.currHealth)).ToString();
+        float healthPrecentage = (healthManager.currHealth / healthManager.maxHealth);
+        //Debug.Log(healthPrecentage);
         float alphaValue = Mathf.Lerp(maxAlpha, 0f, healthPrecentage);
-        healthRef.color = new Color(1f, 0f, 0f, alphaValue);
+        healthRef.color = new Color(1f, 0f, 0f, alphaValue*healthCoefficient);
 
+        if (healthManager.currHealth < 50f && once)
+        {
+            if (MemeManager.instance != null) MemeManager.instance.EnableHealthLessThan50Meme();
+            StartCoroutine(DisableHealthLessThan50Meme());
+        }
+
+    }
+
+    IEnumerator DisableHealthLessThan50Meme()
+    {
+        yield return new WaitForSeconds(2);
+        if (MemeManager.instance != null) MemeManager.instance.DisableHealthLessThan50Meme();
+        once = false;
+    }
+
+    #endregion
+
+    //ScorePanel
+
+    #region
+
+    [Header("Score")]
+    public TMP_Text scorePanel;
+
+    public void UpdateScore()
+    {
+        currScore=System.Convert.ToInt32(movement.score);
+        scorePanel.text=currScore.ToString();
     }
 
     #endregion

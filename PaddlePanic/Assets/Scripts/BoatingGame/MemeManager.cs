@@ -13,8 +13,8 @@ public class MemeManager : MonoBehaviour
     public GameObject beforeLogin;
     public GameObject waitingForLongTime;
     public GameObject tryingToExit;
-    public GameObject hittingObstacles;
-    public GameObject crash;
+    public GameObject healthLessThan50;
+    public GameObject gameOver;
 
     public void Awake()
     {
@@ -79,23 +79,23 @@ public class MemeManager : MonoBehaviour
         tryingToExit.SetActive(false);
     }
 
-    public void EnableHittingObstaclesMeme()
+    public void EnableHealthLessThan50Meme()
     {
-        hittingObstacles.SetActive(true);
+        healthLessThan50.SetActive(true);
     }
 
-    public void DisableHittingObstaclesMeme()
+    public void DisableHealthLessThan50Meme()
     {
-        hittingObstacles.SetActive(false);
+        healthLessThan50.SetActive(false);
     }
 
-    public void EnableCrashedMeme()
+    public void EnableGameOverMeme()
     {
-        crash.SetActive(true);
+        gameOver.SetActive(true);
     }
 
-    public void DisableCrashedMeme()
+    public void DisableGameOverMeme()
     {
-        crash.SetActive(false);
+        gameOver.SetActive(false);
     }
 }
