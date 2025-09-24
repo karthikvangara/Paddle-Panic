@@ -109,6 +109,7 @@ public class HealthManager : MonoBehaviour
     {
         currHealth -= boatSpeed * impactReduceBy;
         impactCounts += 1;
+        gameUIManager.UpdateHealth();
         //Debug.Log(currHealth);
         if (currHealth <= 0f)
         {

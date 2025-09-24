@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -127,6 +128,28 @@ public class GameUIManager : MonoBehaviour
 
         }
         highScore.text=userData.playerScore.ToString();
+    }
+
+    #endregion
+
+    //HealthPanel
+
+    #region
+
+    [Header("Health")]
+
+    public Image healthRef;
+    public HealthManager healthManager;
+    public float maxAlpha = 1f;
+    public float healthCoefficient = 0.1f;
+
+    public void UpdateHealth()
+    {
+        float healthPrecentage = (healthManager.currHealth / healthManager.maxHealth)*healthCoefficient;
+        Debug.Log(healthPrecentage);
+        float alphaValue = Mathf.Lerp(maxAlpha, 0f, healthPrecentage);
+        healthRef.color = new Color(1f, 0f, 0f, alphaValue);
+
     }
 
     #endregion
