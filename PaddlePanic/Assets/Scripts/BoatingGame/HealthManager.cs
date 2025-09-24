@@ -90,6 +90,7 @@ public class HealthManager : MonoBehaviour
      }*/
 
     public Movement movement;
+    public GameUIManager gameUIManager;
     public float currHealth;
     public float maxHealth = 100f;
     public float maxBoatSpeed;
@@ -108,9 +109,10 @@ public class HealthManager : MonoBehaviour
     {
         currHealth -= boatSpeed * impactReduceBy;
         impactCounts += 1;
-        Debug.Log(currHealth);
+        //Debug.Log(currHealth);
         if (currHealth <= 0f)
         {
+            gameUIManager.OpenGameOverPanel();
             isAlive = false;
         }
     }

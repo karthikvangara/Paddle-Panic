@@ -694,6 +694,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrackyCliffs_LargeStone_4
       objectReference: {fileID: 0}
+    - target: {fileID: 1250744785913712, guid: c3155adbac9d5df44802481617bd1d2e, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 4648687617083822, guid: c3155adbac9d5df44802481617bd1d2e, type: 3}
       propertyPath: m_LocalScale.x
       value: 20
@@ -886,6 +890,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_AFS_Log12_Mobile
       objectReference: {fileID: 0}
+    - target: {fileID: 4491702472505333789, guid: 9d54d5d5d71523a4885d538f3f158dc0, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1064,6 +1072,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_AFS_Log19_Mobile
       objectReference: {fileID: 0}
+    - target: {fileID: 9180249763526888852, guid: ed4949cb997e6a74b908bfe98fb3bc0a, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1119,6 +1131,10 @@ PrefabInstance:
     - target: {fileID: 6057352931415658826, guid: 8fac32a8c8e9c3240b8e721051348038, type: 3}
       propertyPath: m_Name
       value: SM_AFS_Log06_Mobile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057352931415658826, guid: 8fac32a8c8e9c3240b8e721051348038, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 6871326214490147824, guid: 8fac32a8c8e9c3240b8e721051348038, type: 3}
       propertyPath: m_LocalScale.x
@@ -1288,6 +1304,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_AFS_Log12_Mobile (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4491702472505333789, guid: 9d54d5d5d71523a4885d538f3f158dc0, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1396,6 +1416,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_AFS_Log10_Mobile
       objectReference: {fileID: 0}
+    - target: {fileID: 1134274836760760257, guid: 36de87c46521e394baf28aea6ba5a575, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 3430926627694458183, guid: 36de87c46521e394baf28aea6ba5a575, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1455,6 +1479,10 @@ PrefabInstance:
     - target: {fileID: 1600084259162459596, guid: 81a04eb80ab260549b37a26597b23822, type: 3}
       propertyPath: m_Name
       value: SM_AFS_Log05_Mobile
+      objectReference: {fileID: 0}
+    - target: {fileID: 1600084259162459596, guid: 81a04eb80ab260549b37a26597b23822, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 2125545691314050934, guid: 81a04eb80ab260549b37a26597b23822, type: 3}
       propertyPath: m_LocalScale.x
@@ -1563,6 +1591,10 @@ PrefabInstance:
     - target: {fileID: 1250744785913712, guid: c3155adbac9d5df44802481617bd1d2e, type: 3}
       propertyPath: m_Name
       value: CrackyCliffs_LargeStone_4 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250744785913712, guid: c3155adbac9d5df44802481617bd1d2e, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 4648687617083822, guid: c3155adbac9d5df44802481617bd1d2e, type: 3}
       propertyPath: m_LocalScale.x

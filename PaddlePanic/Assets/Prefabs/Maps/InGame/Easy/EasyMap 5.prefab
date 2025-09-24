@@ -691,6 +691,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrackyCliffs_LargeStone_2
       objectReference: {fileID: 0}
+    - target: {fileID: 1048407400241956, guid: 09ce02c2523f3a64dafa421541d3cf19, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 4155303980947634, guid: 09ce02c2523f3a64dafa421541d3cf19, type: 3}
       propertyPath: m_LocalScale.x
       value: 20
@@ -822,6 +826,10 @@ PrefabInstance:
     - target: {fileID: 1654905907226558, guid: e51e9a8beddac9a4895c09d699d6b6c6, type: 3}
       propertyPath: m_Name
       value: Cliffs_LargeStone_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1654905907226558, guid: e51e9a8beddac9a4895c09d699d6b6c6, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 4794663260403966, guid: e51e9a8beddac9a4895c09d699d6b6c6, type: 3}
       propertyPath: m_LocalScale.x
@@ -1015,6 +1023,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_AFS_Log01_Mobile
       objectReference: {fileID: 0}
+    - target: {fileID: 5628933346285740627, guid: 6d52264ad66a0c04190644a7634dd290, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1070,6 +1082,10 @@ PrefabInstance:
     - target: {fileID: 8381977575020396424, guid: d2dda2ce85151dc4da84c7a8ef75301e, type: 3}
       propertyPath: m_Name
       value: SM_AFS_Log07_Mobile
+      objectReference: {fileID: 0}
+    - target: {fileID: 8381977575020396424, guid: d2dda2ce85151dc4da84c7a8ef75301e, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 9158373983804007730, guid: d2dda2ce85151dc4da84c7a8ef75301e, type: 3}
       propertyPath: m_LocalScale.x
@@ -1178,6 +1194,10 @@ PrefabInstance:
     - target: {fileID: 1327185925968594, guid: d6a78d392a35a9049954084cffebb1e7, type: 3}
       propertyPath: m_Name
       value: SnowCliffs_LargeStone_3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327185925968594, guid: d6a78d392a35a9049954084cffebb1e7, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 4064459029905576, guid: d6a78d392a35a9049954084cffebb1e7, type: 3}
       propertyPath: m_LocalScale.x

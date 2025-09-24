@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,10 @@ public class GameUIManager : MonoBehaviour
 
     private bool isPauseOpen;
     private bool isSettingsOpen;
+
+    //Pause Panel
+
+    #region
 
     [Header("Pause")]
     public GameObject pausePanel;
@@ -40,6 +45,12 @@ public class GameUIManager : MonoBehaviour
     {
         SceneManager.LoadScene(mainMenuSceneName);
     }
+
+    #endregion
+
+    //Settings Panel
+
+    #region
 
     [Header("Settings")]
 
@@ -81,7 +92,45 @@ public class GameUIManager : MonoBehaviour
         memesOnImage.SetActive(false);
         memesOffImage.SetActive(true);
     }
-    
+
+    #endregion
+
+    //GameOverPanel
+
+    #region
+
+    [Header("GameOver")]
+
+    public Movement movement;
+    public GameObject gameOverPanel;
+    public TMP_Text score;
+    public TMP_Text highScore;
+
+
+    public void OpenGameOverPanel()
+    {
+        StopGame();
+        isPauseOpen = true;
+        gameOverPanel.SetActive(true);
+        int currScore = System.Convert.ToInt32(movement.score);
+        score.text=currScore.ToString();
+        Debug.Log("Curr Score "+currScore);
+
+        UserData userData = new UserData();
+        if (UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
+
+        Debug.Log("High Score " + userData.playerScore);
+        if (currScore > userData.playerScore)
+        {
+            userData.playerScore = currScore;
+            if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo(userData);
+
+        }
+        highScore.text=userData.playerScore.ToString();
+    }
+
+    #endregion
+
     public void StopGame()
     {
         Time.timeScale = 0f;
