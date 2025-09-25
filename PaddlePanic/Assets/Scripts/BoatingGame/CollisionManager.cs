@@ -8,7 +8,7 @@ public class CollisionManager : MonoBehaviour
     public HealthManager healthManager;
     public void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collided");
+        //Debug.Log("Collided");
         if (collision.gameObject.CompareTag("Obstacles"))
         {
             //healthManager.UpdateDamage(movement.currMovementSpeed);

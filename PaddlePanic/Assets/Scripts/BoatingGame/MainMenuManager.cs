@@ -79,11 +79,23 @@ public class MainMenuManager : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject memesOnImage;
     public GameObject memesOffImage;
+    public UserData userData;
 
     public void OnClickSettings()
     {
         settingsPanel.SetActive(true);
-        if (MemeManager.instance!=null && !MemeManager.instance.memesEnabled) OnClickDisableMemes();
+
+        if (MemeManager.instance != null && UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
+        if (userData.isMemeAccepted)
+        {
+            memesOnImage.SetActive(true);
+            memesOffImage.SetActive(false);
+        }
+        else
+        {
+            memesOnImage.SetActive(false);
+            memesOffImage.SetActive(true);
+        }
     }
 
     public void OnCloseSettings()
@@ -91,21 +103,25 @@ public class MainMenuManager : MonoBehaviour
         settingsPanel.SetActive(false);
     }
 
-    public void OnClickEnableMemes()
+    public void OnClickMemesControl()
     {
-        if(MemeManager.instance!=null) MemeManager.instance.gameObject.SetActive(true);
-        if (MemeManager.instance != null) MemeManager.instance.memesEnabled = true;
-        memesOnImage.SetActive(true);
-        memesOffImage.SetActive(false);
+        if (MemeManager.instance != null && UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
+        if (userData.isMemeAccepted)
+        {
+            memesOffImage.SetActive(true);
+            memesOnImage.SetActive(false);
+            userData.isMemeAccepted = false;
+        }
+        else
+        {
+            memesOffImage.SetActive(false);
+            memesOnImage.SetActive(true);
+            userData.isMemeAccepted = true;
+        }
+
+        if(UserDataManager.instance!=null) UserDataManager.instance.UpdatePlayerInfo(userData);
     }
 
-    public void OnClickDisableMemes()
-    {
-        if(MemeManager.instance!=null) MemeManager.instance.gameObject.SetActive(false);
-        if (MemeManager.instance != null) MemeManager.instance.memesEnabled = false;
-        memesOnImage.SetActive(false);
-        memesOffImage.SetActive(true);
-    }
     #endregion
 
     //Exit

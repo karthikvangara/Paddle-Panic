@@ -492,7 +492,7 @@ GameObject:
   m_Component:
   - component: {fileID: 227896537}
   m_Layer: 0
-  m_Name: HittingObstacles
+  m_Name: HealthLessThan50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -513,8 +513,8 @@ RectTransform:
   - {fileID: 215272289}
   m_Father: {fileID: 883483471}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.37032554, y: 0.3511633}
-  m_AnchorMax: {x: 0.62967443, y: 0.6488367}
+  m_AnchorMin: {x: 0.67071617, y: 0.3511633}
+  m_AnchorMax: {x: 0.93006504, y: 0.6488367}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2982,8 +2982,8 @@ MonoBehaviour:
   beforeLogin: {fileID: 703221394}
   waitingForLongTime: {fileID: 622481433}
   tryingToExit: {fileID: 1439637290}
-  hittingObstacles: {fileID: 227896536}
-  crash: {fileID: 1370854520}
+  healthLessThan50: {fileID: 227896536}
+  gameOver: {fileID: 1370854520}
 --- !u!1 &857580554
 GameObject:
   m_ObjectHideFlags: 0
@@ -4411,7 +4411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1370854521}
   m_Layer: 0
-  m_Name: Crash
+  m_Name: GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4432,8 +4432,8 @@ RectTransform:
   - {fileID: 1050502549}
   m_Father: {fileID: 883483471}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.37032554, y: 0.3511633}
-  m_AnchorMax: {x: 0.62967443, y: 0.6488367}
+  m_AnchorMin: {x: 0.6511849, y: 0.3511633}
+  m_AnchorMax: {x: 0.9105338, y: 0.6488367}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
