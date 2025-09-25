@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public static Movement instance;
     public RiverMapController riverMapController;
     public Rigidbody rb;
     public GameObject player1InputController;
@@ -19,6 +20,7 @@ public class Movement : MonoBehaviour
     private TouchField player2TouchField;
     public void Awake()
     {
+        instance = this;
         playerStartingPosition = transform.position;
         player1TouchField = player1InputController.GetComponent<TouchField>();
         player2TouchField = player2InputController.GetComponent<TouchField>();

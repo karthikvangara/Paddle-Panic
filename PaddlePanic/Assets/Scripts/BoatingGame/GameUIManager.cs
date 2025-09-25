@@ -148,7 +148,7 @@ public class GameUIManager : MonoBehaviour
 
         }
         highScore.text = userData.playerScore.ToString();
-        if (MemeManager.instance != null) MemeManager.instance.EnableGameOverMeme();
+        if (MemeManager.instance != null && userData != null && userData.isMemeAccepted) MemeManager.instance.EnableGameOverMeme();
         StartCoroutine(DisableGameOverMeme());
     }
 
@@ -184,7 +184,9 @@ public class GameUIManager : MonoBehaviour
 
         if (healthManager.currHealth < 50f && once)
         {
-            if (MemeManager.instance != null) MemeManager.instance.EnableHealthLessThan50Meme();
+            UserData userData=new UserData();
+            if (UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
+            if (MemeManager.instance != null && userData!=null && userData.isMemeAccepted) MemeManager.instance.EnableHealthLessThan50Meme();
             StartCoroutine(DisableHealthLessThan50Meme());
         }
 

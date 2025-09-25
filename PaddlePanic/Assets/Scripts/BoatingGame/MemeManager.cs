@@ -15,6 +15,7 @@ public class MemeManager : MonoBehaviour
     public GameObject tryingToExit;
     public GameObject healthLessThan50;
     public GameObject gameOver;
+    UserData userData = new UserData();
 
     public void Awake()
     {
@@ -23,7 +24,8 @@ public class MemeManager : MonoBehaviour
 
     public void Start()
     {
-        EnableWelcomeMeme();
+        if (UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
+        if (userData != null && userData.isMemeAccepted) EnableWelcomeMeme();
     }
 
     public void EnableWelcomeMeme()

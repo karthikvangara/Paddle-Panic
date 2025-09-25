@@ -117,7 +117,6 @@ public class LoginSceneManager : MonoBehaviour
 
     public void LoadMainMenuScene()
     {
-        if (userData != null) userData.isFirstTime = false;
         if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo(userData);
         SceneManager.LoadScene(menuScene);
     }

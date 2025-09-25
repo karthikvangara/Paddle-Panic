@@ -15,7 +15,10 @@ public class MainMenuManager : MonoBehaviour
     private IEnumerator Idle()
     {
         yield return new WaitForSeconds(30);
-        if(MemeManager.instance != null) MemeManager.instance.EnableWaitingForLongTimeMeme();
+
+        UserData userData = new UserData();
+        if (UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
+        if(MemeManager.instance != null && userData!=null && userData.isMemeAccepted) MemeManager.instance.EnableWaitingForLongTimeMeme();
         yield return new WaitForSeconds(30);
         if(MemeManager.instance != null) MemeManager.instance.DisableWaitingForLongTimeMeme();
     }
@@ -134,7 +137,10 @@ public class MainMenuManager : MonoBehaviour
     public void OnClickExit()
     {
         ExitPanel.SetActive(true);
-        if (MemeManager.instance != null) MemeManager.instance.EnableTryingToExit();
+
+        UserData userData = new UserData();
+        if(UserDataManager.instance!=null) userData= UserDataManager.instance.LoadPlayerInfo();
+        if (MemeManager.instance != null && userData!=null && userData.isMemeAccepted) MemeManager.instance.EnableTryingToExit();
     }
 
     public void OnClickYes()
