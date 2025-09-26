@@ -5,7 +5,9 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public static Movement instance;
+    public GameObject boat;
     public RiverMapController riverMapController;
+    public CameraRespawnHelper cameraRespawnHelper;
     public Rigidbody rb;
     public GameObject player1InputController;
     public GameObject player2InputController;
@@ -95,6 +97,7 @@ public class Movement : MonoBehaviour
     {
         playerPositionBeforeRespawn = transform.position;
         transform.position = new Vector3(playerPositionBeforeRespawn.x, playerPositionBeforeRespawn.y, playerStartingPosition.z);
+        cameraRespawnHelper.Respawn(transform,boat);
     }
 
     //Movement

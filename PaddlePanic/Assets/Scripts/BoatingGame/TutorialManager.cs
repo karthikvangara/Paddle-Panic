@@ -178,8 +178,8 @@ public class TutorialManager : MonoBehaviour
     IEnumerator EnableHealthAndScorePanel()
     {
         //StopGame();
-        inputOnlyOnceChecked = true;
         rightSidePanel.SetActive(false);
+        inputOnlyOnceChecked = true;
         yield return new WaitForSeconds(1);
         healthAndScorePanel.SetActive(true);
     }
