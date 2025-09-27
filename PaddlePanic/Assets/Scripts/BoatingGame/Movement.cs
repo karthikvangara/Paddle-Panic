@@ -187,6 +187,7 @@ public class Movement : MonoBehaviour
             rb.velocity = rb.transform.forward * minVelocity;
         }*/
         rb.AddForce(-rb.transform.forward * overallPaddleForce / minPaddleForce, ForceMode.Force);
+        //rb.AddForce(-rb.transform.forward*maxVelocity/rb.velocity.magnitude, ForceMode.Force);
     }
 
     public void ControlDrift()

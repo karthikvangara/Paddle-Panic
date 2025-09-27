@@ -179,7 +179,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Using this you can Pause the game.
+  m_text: Tap here to pause the game.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
   m_sharedMaterial: {fileID: -2572787161729363358, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.9
+  m_fontSize: 43.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -483,7 +483,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Here you can change all the settings.
+  m_text: Here, you can adjust all your settings.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
   m_sharedMaterial: {fileID: -2572787161729363358, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
@@ -1341,8 +1341,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 369573499}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.11074162, y: -0.0021184655}
+  m_AnchorMax: {x: 0.88925767, y: 1.0021185}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1393,7 +1393,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 57.55
+  m_fontSize: 44.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1945,9 +1945,9 @@ RectTransform:
   - {fileID: 510733453}
   m_Father: {fileID: 1031890079}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.7230113, y: 0.42021346}
-  m_AnchorMax: {x: 1.0452952, y: 0.86525625}
-  m_AnchoredPosition: {x: -136, y: 90}
+  m_AnchorMin: {x: 0.6698863, y: 0.48271346}
+  m_AnchorMax: {x: 0.9921702, y: 0.92775625}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &409673418
@@ -3915,7 +3915,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Using this you can change the Settings of the game.
+  m_text: Tap here to adjust your game settings.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
   m_sharedMaterial: {fileID: -2572787161729363358, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
@@ -3942,7 +3942,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.8
+  m_fontSize: 38.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4121,9 +4121,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Thankyou for staying with Me.
-
-    Now you can Resume the game.'
+  m_text: "Thank you for staying with me. \nYou can now resume the game."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
   m_sharedMaterial: {fileID: -2572787161729363358, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
@@ -5729,7 +5727,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Here you can view your Health and Score
+  m_text: Here, you can view your health and score.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
   m_sharedMaterial: {fileID: -2572787161729363358, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
@@ -6752,8 +6750,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1616864397}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.106092855, y: -0.0021184655}
+  m_AnchorMax: {x: 0.8939074, y: 1.0021185}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6804,7 +6802,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 57.55
+  m_fontSize: 45.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6888,8 +6886,8 @@ RectTransform:
   m_AnchorMin: {x: 0.7558469, y: 0.45549136}
   m_AnchorMax: {x: 0.9542969, y: 0.7361753}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -0.000015258789}
-  m_Pivot: {x: 1, y: 0.5}
+  m_SizeDelta: {x: -0.000030517578, y: -0.0000038146973}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1454066191
 GameObject:
   m_ObjectHideFlags: 0
@@ -7031,8 +7029,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 674443830}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.1195822, y: -0.0021184655}
+  m_AnchorMax: {x: 0.88041806, y: 1.0021185}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7083,7 +7081,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 57.55
+  m_fontSize: 43.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7671,14 +7669,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to Paddle-Panic
+  m_text: 'Welcome to Paddle-Panic!
 
 
-    Let me give a Quick tour around here.
+    Let me give you a quick tour.
 
 
-    Wanna
-    Start the Tutorial.'
+    Would
+    you like to start the tutorial?'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
   m_sharedMaterial: {fileID: -2572787161729363358, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
@@ -7705,7 +7703,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.45
+  m_fontSize: 39.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8798,7 +8796,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "By Pressing here you can turn the boat \n\nLEFT\n\nPlease Press here."
+  m_text: Press here to turn the boat left.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
   m_sharedMaterial: {fileID: -2572787161729363358, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
@@ -8825,7 +8823,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.15
+  m_fontSize: 40.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9175,8 +9173,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1588030578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.11675785, y: -0.0021184655}
+  m_AnchorMax: {x: 0.8832424, y: 1.0021185}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9227,7 +9225,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 57.55
+  m_fontSize: 44.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9334,7 +9332,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Here you can Enter the Game.
+  m_text: Tap here to start the game.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
   m_sharedMaterial: {fileID: -2572787161729363358, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
@@ -9361,7 +9359,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.25
+  m_fontSize: 46.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9443,8 +9441,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 738668408}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.12328343, y: -0.0021184655}
+  m_AnchorMax: {x: 0.87671584, y: 1.0021185}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9495,7 +9493,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 57.55
+  m_fontSize: 43.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9922,8 +9920,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 168728573}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.097166605, y: 0.0028358607}
+  m_AnchorMax: {x: 0.9028332, y: 0.99716413}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9974,7 +9972,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71
+  m_fontSize: 57.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10227,8 +10225,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 486305352}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.12265321, y: -0.0021184655}
+  m_AnchorMax: {x: 0.8773471, y: 1.0021185}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10279,7 +10277,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 57.55
+  m_fontSize: 43.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10744,7 +10742,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Throught this you can exit the game.
+  m_text: Tap here to quit the game.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
   m_sharedMaterial: {fileID: -2572787161729363358, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
@@ -10771,7 +10769,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.05
+  m_fontSize: 49.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10889,8 +10887,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1562586296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.11439309, y: -0.0021184655}
+  m_AnchorMax: {x: 0.8856066, y: 1.0021185}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10941,7 +10939,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 57.55
+  m_fontSize: 44.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11048,7 +11046,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Click on this to display your Information
+  m_text: Tap this to view your info.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
   m_sharedMaterial: {fileID: -2572787161729363358, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
@@ -11075,7 +11073,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.9
+  m_fontSize: 49.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11526,7 +11524,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "By Pressing here you can turn the boat \n\nRIGHT\n\nPlease Press here."
+  m_text: Now, press here to steer the boat right.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
   m_sharedMaterial: {fileID: -2572787161729363358, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
@@ -11553,7 +11551,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.15
+  m_fontSize: 33.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
