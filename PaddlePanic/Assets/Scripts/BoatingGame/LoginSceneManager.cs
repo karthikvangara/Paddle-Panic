@@ -14,6 +14,7 @@ public class LoginSceneManager : MonoBehaviour
     public GameObject loginInfoPanel;
     public GameObject loginInputFieldError;
     public GameObject UserDataManagerObject;
+    public GameObject AudioManager;
     public TMP_InputField playerName;
     public string menuScene;
 
@@ -23,6 +24,7 @@ public class LoginSceneManager : MonoBehaviour
     {
         DontDestroyOnLoad(memeManagerPanel);
         DontDestroyOnLoad(UserDataManagerObject);
+        DontDestroyOnLoad(AudioManager);
         userData=new UserData();
     }
 

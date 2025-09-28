@@ -6,20 +6,11 @@ public class Movement : MonoBehaviour
 {
     public static Movement instance;
     public GameObject boat;
-    public RiverMapController riverMapController;
-    public CameraRespawnHelper cameraRespawnHelper;
+    //public RiverMapController riverMapController;
     public Rigidbody rb;
     public GameObject player1InputController;
     public GameObject player2InputController;
     public HealthManager healthManager;
-    public bool isInRiver;
-    public float rayLength = 2f;
-    public LayerMask layers;
-    public bool isLeftPressed;
-    public bool isRightPressed;
-
-    private TouchField player1TouchField;
-    private TouchField player2TouchField;
     public void Awake()
     {
         instance = this;
@@ -31,23 +22,11 @@ public class Movement : MonoBehaviour
         //currRotationSpeed = startRotationSpeed;
     }
 
-    public void Update()
-    {
-        /*CheckForInput();
-        if (isInRiver)
-        {
-            CheckForMovement();
-            CheckForRotation();
-        }
-        else
-        {
-            //healthManager.DecreaseHealth();
-        }*/
-    }
-
     public void FixedUpdate()
     {
         CheckForRiver();
+        AnimateLeftSidePaddling();
+        AnimateRightSidePaddling();
 
         if (healthManager.isAlive)
         {
@@ -64,6 +43,21 @@ public class Movement : MonoBehaviour
             //healthManager.DecreaseHealth();
         }
     }
+
+    //Input Handling
+
+
+    #region
+
+
+    public bool isInRiver;
+    public float rayLength = 2f;
+    public LayerMask layers;
+    public bool isLeftPressed;
+    public bool isRightPressed;
+
+    private TouchField player1TouchField;
+    private TouchField player2TouchField;
 
     public void CheckForInput()
     {
@@ -87,9 +81,16 @@ public class Movement : MonoBehaviour
         //Debug.Log(isInRiver);
     }
 
+    #endregion
+
+
+    //  Respawn
+
+    #region
 
     [Header("Respawn Map")]
 
+    public CameraRespawnHelper cameraRespawnHelper;
     public Vector3 playerStartingPosition;
     public Vector3 playerPositionBeforeRespawn;
 
@@ -99,6 +100,8 @@ public class Movement : MonoBehaviour
         transform.position = new Vector3(playerPositionBeforeRespawn.x, playerPositionBeforeRespawn.y, playerStartingPosition.z);
         cameraRespawnHelper.Respawn(transform,boat);
     }
+
+    #endregion
 
     //Movement
 
@@ -154,8 +157,8 @@ public class Movement : MonoBehaviour
 
         //drag = dragCoefficient * rb.velocity.magnitude;
 
-        velocityMagnitude = rb.velocity.magnitude;
         if (isLeftPressed || isRightPressed) ApplyForwardForceToBoat();
+        velocityMagnitude = rb.velocity.magnitude;
         ControlVelocity();   //  Control Moving Forward
         //ControlVelocity();  // Control Max and Min velocity
         //ApplyAngularDrag();
@@ -403,6 +406,35 @@ public class Movement : MonoBehaviour
             score += Time.deltaTime;
             gameUIManager.UpdateScore();
         }
+    }
+
+    #endregion
+
+
+    //Animation
+
+    #region
+
+    [Header("Animations")]
+
+    public float optimizeAnimBy;
+
+    public Animator leftAnimator;
+
+    public void AnimateLeftSidePaddling()
+    {
+        if (leftPaddleForce > 0) leftPaddleForce = Mathf.Max(leftPaddleForce, 1);
+        leftAnimator.speed = leftPaddleForce/optimizeAnimBy;
+        //leftAnimator.SetFloat("Speed",leftPaddleForce);
+    }
+
+    public Animator rightAnimator;
+
+    public void AnimateRightSidePaddling()
+    {
+        if (rightPaddleForce > 0) rightPaddleForce = Mathf.Max(rightPaddleForce, 1);
+        rightAnimator.speed=rightPaddleForce/optimizeAnimBy;
+        //rightAnimator.SetFloat("Speed", rightPaddleForce);
     }
 
     #endregion

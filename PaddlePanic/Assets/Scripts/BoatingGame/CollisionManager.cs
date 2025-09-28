@@ -15,6 +15,11 @@ public class CollisionManager : MonoBehaviour
             //float damage = 90 * (movement.overallPaddleForce / (movement.minPaddleForce * 2)) * (collision.gameObject.transform.localScale.magnitude / 100);
             //Debug.Log(damage);
             healthManager.CalculateHealth(movement.velocityMagnitude);
+            if(AudioManager.instance!=null) AudioManager.instance.EnableHittingWoddenLogsEffect();
+        }
+        else
+        {
+            if (AudioManager.instance != null) AudioManager.instance.DisableHittingWoddenLogsEffect();
         }
     }
 
