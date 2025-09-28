@@ -168,7 +168,7 @@ public class GameUIManager : MonoBehaviour
     [Header("Health")]
 
     public TMP_Text health;
-    public Image healthRef;
+    //public Image healthRef;
     public HealthManager healthManager;
     public float maxAlpha = 1f;
     public float healthCoefficient = 0.5f;
@@ -177,10 +177,10 @@ public class GameUIManager : MonoBehaviour
     public void UpdateHealth()
     {
         health.text=Mathf.Max(0,System.Convert.ToInt32(healthManager.currHealth)).ToString();
-        float healthPrecentage = (healthManager.currHealth / healthManager.maxHealth);
+        //float healthPrecentage = (healthManager.currHealth / healthManager.maxHealth);
         //Debug.Log(healthPrecentage);
-        float alphaValue = Mathf.Lerp(maxAlpha, 0f, healthPrecentage);
-        healthRef.color = new Color(1f, 0f, 0f, alphaValue*healthCoefficient);
+        //float alphaValue = Mathf.Lerp(maxAlpha, 0f, healthPrecentage);
+        //healthRef.color = new Color(1f, 0f, 0f, alphaValue*healthCoefficient);
 
         if (healthManager.currHealth < 50f && once)
         {
