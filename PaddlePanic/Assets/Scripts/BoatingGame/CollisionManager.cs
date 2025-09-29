@@ -17,10 +17,11 @@ public class CollisionManager : MonoBehaviour
             healthManager.CalculateHealth(movement.velocityMagnitude);
             if(AudioManager.instance!=null) AudioManager.instance.EnableHittingWoddenLogsEffect();
         }
-        else
-        {
-            if (AudioManager.instance != null) AudioManager.instance.DisableHittingWoddenLogsEffect();
-        }
+    }
+
+    public void OnCollisionExit(Collision collision)
+    {
+        if (AudioManager.instance != null) AudioManager.instance.DisableHittingWoddenLogsEffect();
     }
 
 
