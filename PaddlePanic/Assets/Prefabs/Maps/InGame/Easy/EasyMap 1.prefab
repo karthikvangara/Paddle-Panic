@@ -1409,6 +1409,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3846744547286977639}
     m_Modifications:
+    - target: {fileID: 1362325568888736714, guid: b25907001b05a544382928884d39689b, type: 3}
+      propertyPath: m_Size.x
+      value: 862.039
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362325568888736714, guid: b25907001b05a544382928884d39689b, type: 3}
+      propertyPath: m_Center.x
+      value: 578.4014
+      objectReference: {fileID: 0}
     - target: {fileID: 2678199186716129162, guid: b25907001b05a544382928884d39689b, type: 3}
       propertyPath: m_PolyMesh.m_Mesh
       value: 

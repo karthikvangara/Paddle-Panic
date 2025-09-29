@@ -5,6 +5,7 @@ using UnityEngine;
 public class RiverMapController : MonoBehaviour
 {
     public Movement movement;
+    public CameraRespawnHelper cameraRespawnHelper;
     public RiverMapsSO riverMapsSO;
     public List<RiverMap> riverMaps;
     public Vector3 startingMapPosition;
@@ -14,14 +15,25 @@ public class RiverMapController : MonoBehaviour
     public List<Vector3> mapPositionsToRespawn;
     public int enableNumberOfNextMaps = 2;
     public int disableNumberOfPreviousMaps = 2;
+    public bool isRiverMapsLoaded;
 
     public void Awake()
     {
         startingMapPosition = transform.position;
         previousMapEndPosition = startingMapPosition;
+        
+        StartCoroutine(StartLoadingRiverMaps());
+        
+        //LoadRiverMapsFromSO();
+        //SortAndLoadRiverMaps();
+        //ArrangeRiverMaps();
+    }
+
+    IEnumerator StartLoadingRiverMaps()
+    {
+        yield return new WaitForSeconds(1);
         LoadRiverMapsFromSO();
         SortAndLoadRiverMaps();
-        //ArrangeRiverMaps();
     }
 
     public void LoadRiverMapsFromSO()
@@ -63,7 +75,7 @@ public class RiverMapController : MonoBehaviour
                 riverMaps[i].SceneInstance.SetActive(false);
             }
         }
-
+        isRiverMapsLoaded = true;
     }
 
     /*public void ArrangeRiverMaps()
@@ -124,6 +136,7 @@ public class RiverMapController : MonoBehaviour
             riverMaps[i].SceneInstance.transform.position = mapPositionsToRespawn[i];
             riverMaps[randInt].SceneInstance.transform.position = mapPositionsToRespawn[randInt];
         }
+        cameraRespawnHelper.SaveCameraState();
         movement.RespawnPlayerForLoopFeel();
     }
 }

@@ -13,12 +13,6 @@ MonoBehaviour:
   m_Name: RiverMapsSO
   m_EditorClassIdentifier: 
   riverMapPrefabsFromEasyToHard:
-  - Map: {fileID: 5653209395537551727, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
-    mapDifficulty: 0
-    SceneInstance: {fileID: 0}
-  - Map: {fileID: 5653209395537551727, guid: ef18f564b3f863247b054716250f377d, type: 3}
-    mapDifficulty: 0
-    SceneInstance: {fileID: 0}
   - Map: {fileID: 5653209395537551727, guid: 89e0bc91ed3810848bd7bf0a58536f97, type: 3}
     mapDifficulty: 0
     SceneInstance: {fileID: 0}

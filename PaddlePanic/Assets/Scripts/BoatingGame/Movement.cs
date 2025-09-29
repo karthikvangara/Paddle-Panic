@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
     public void Awake()
     {
         instance = this;
+        //rb.isKinematic = true;
         playerStartingPosition = transform.position;
         player1TouchField = player1InputController.GetComponent<TouchField>();
         player2TouchField = player2InputController.GetComponent<TouchField>();
@@ -24,6 +25,7 @@ public class Movement : MonoBehaviour
 
     public void FixedUpdate()
     {
+        //if(riverMapController.isRiverMapsLoaded) rb.isKinematic=false;
         CheckForRiver();
         AnimateLeftSidePaddling();
         AnimateRightSidePaddling();
@@ -98,7 +100,7 @@ public class Movement : MonoBehaviour
     {
         playerPositionBeforeRespawn = transform.position;
         transform.position = new Vector3(playerPositionBeforeRespawn.x, playerPositionBeforeRespawn.y, playerStartingPosition.z);
-        cameraRespawnHelper.Respawn(transform,boat);
+        cameraRespawnHelper.RestoreCameraState();
     }
 
     #endregion

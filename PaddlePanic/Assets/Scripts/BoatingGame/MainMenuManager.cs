@@ -8,7 +8,7 @@ public class MainMenuManager : MonoBehaviour
 {
     public void Start()
     {
-        //StartCoroutine(LoadGameSceneInBackground());
+        StartCoroutine(LoadGameSceneInBackground());
         StartCoroutine(Idle());
     }
 
@@ -30,28 +30,28 @@ public class MainMenuManager : MonoBehaviour
     [Header("Play / Load Scene")]
     public string gameScene;
 
-    /*private AsyncOperation asyncOp;
+    private AsyncOperation asyncOp;
 
     private IEnumerator LoadGameSceneInBackground()
     {
         asyncOp = SceneManager.LoadSceneAsync(gameScene);
         asyncOp.allowSceneActivation = false;
         yield return null;
-    }*/
+    }
 
     public void OnClickPlay()
     {
-        //ActivateGameScene();
-        SceneManager.LoadScene(gameScene);
+        ActivateGameScene();
+        //SceneManager.LoadScene(gameScene);
     }
 
-    /*public void ActivateGameScene()
+    public void ActivateGameScene()
     {
         if (asyncOp != null)
         {
             asyncOp.allowSceneActivation = true;
         }
-    }*/
+    }
 
     #endregion
 
