@@ -136,7 +136,7 @@ public class RiverMapController : MonoBehaviour
             riverMaps[i].SceneInstance.transform.position = mapPositionsToRespawn[i];
             riverMaps[randInt].SceneInstance.transform.position = mapPositionsToRespawn[randInt];
         }
-        cameraRespawnHelper.SaveCameraState();
+        //cameraRespawnHelper.SaveCameraState();
         movement.RespawnPlayerForLoopFeel();
     }
 }
