@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -212,6 +213,23 @@ public class GameUIManager : MonoBehaviour
     {
         currScore=System.Convert.ToInt32(movement.score);
         scorePanel.text=currScore.ToString();
+    }
+
+    #endregion
+
+    //SpeedPanel
+
+    #region
+
+    [Header("Speed")]
+
+    public TMP_Text speedPanel;
+    public int currSpeed = 0;
+
+    public void UpdateSpeed()
+    {
+        currSpeed = Convert.ToInt32(movement.speed);
+        speedPanel.text=currSpeed.ToString();
     }
 
     #endregion

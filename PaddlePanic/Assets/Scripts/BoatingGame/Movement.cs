@@ -127,6 +127,7 @@ public class Movement : MonoBehaviour
     //public float angularDrag = 2f;
     public float driftFactor = 0.9f;
     public float maxJump = 5f;
+    public float speed;
 
     /*public float maxMovementSpeed = 5f;
     public float startMovementSpeed = 0.1f;
@@ -168,7 +169,8 @@ public class Movement : MonoBehaviour
         ControlDrift();  //  Controls velocity when only one side is pressed
         ControlJumpHeight();    // Controls player jump height 
 
-
+        speed = rb.velocity.magnitude;
+        gameUIManager.UpdateSpeed();
     }
 
     public void ApplyForwardForceToBoat()
