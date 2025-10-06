@@ -100,7 +100,7 @@ public class Movement : MonoBehaviour
     {
         playerPositionBeforeRespawn = transform.position;
         transform.position = new Vector3(playerPositionBeforeRespawn.x, playerPositionBeforeRespawn.y, playerStartingPosition.z);
-        cameraRespawnHelper.Respawn(transform,boat);
+        cameraRespawnHelper.SnapAfterRespawn(transform);
     }
 
     #endregion
