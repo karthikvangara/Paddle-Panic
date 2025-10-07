@@ -31,7 +31,7 @@ public class RiverMapController : MonoBehaviour
 
     IEnumerator StartLoadingRiverMaps()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.1f);
         LoadRiverMapsFromSO();
         SortAndLoadRiverMaps();
     }
