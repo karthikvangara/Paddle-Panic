@@ -13,6 +13,12 @@ public class Movement : MonoBehaviour
     public HealthManager healthManager;
     public void Awake()
     {
+        Debug.Log("Awake called");
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         instance = this;
         //rb.isKinematic = true;
         playerStartingPosition = transform.position;
@@ -23,8 +29,15 @@ public class Movement : MonoBehaviour
         //currRotationSpeed = startRotationSpeed;
     }
 
+    void OnDestroy()
+    {
+        if (instance == this) instance = null;
+    }
+
+
     public void FixedUpdate()
     {
+        //Debug.Log("FixedUpdate called");
         //if(riverMapController.isRiverMapsLoaded) rb.isKinematic=false;
         CheckForRiver();
         AnimateLeftSidePaddling();

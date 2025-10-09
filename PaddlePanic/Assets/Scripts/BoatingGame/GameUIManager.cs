@@ -46,6 +46,7 @@ public class GameUIManager : MonoBehaviour
 
     public void OnClickExit()
     {
+        ResumeGame();
         SceneManager.LoadScene(mainMenuSceneName);
     }
 

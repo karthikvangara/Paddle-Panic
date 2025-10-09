@@ -22,10 +22,10 @@ public class RiverMapController : MonoBehaviour
         startingMapPosition = transform.position;
         previousMapEndPosition = startingMapPosition;
         
-        StartCoroutine(StartLoadingRiverMaps());
+        //StartCoroutine(StartLoadingRiverMaps());
         
-        //LoadRiverMapsFromSO();
-        //SortAndLoadRiverMaps();
+        LoadRiverMapsFromSO();
+        SortAndLoadRiverMaps();
         //ArrangeRiverMaps();
     }
 

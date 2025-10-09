@@ -27,7 +27,7 @@ public class TutorialManager : MonoBehaviour
 
 
         if (Movement.instance!=null && Movement.instance.isLeftPressed && !inputOnlyOnceChecked && leftSidePanel.activeSelf) StartCoroutine(EnableRightSidePanel());
-        if (Movement.instance!=null && Movement.instance.isRightPressed && leftSidePanel.activeSelf==false && !inputOnlyOnceChecked) StartCoroutine(EnableHealthAndScorePanel());
+        if (Movement.instance!=null && Movement.instance.isRightPressed && rightSidePanel.activeSelf && !leftSidePanel.activeSelf && !inputOnlyOnceChecked) StartCoroutine(EnableHealthAndScorePanel());
 
     }
 
