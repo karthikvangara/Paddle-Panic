@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -78,6 +79,13 @@ public class Movement : MonoBehaviour
     {
         isLeftPressed = player1TouchField.Pressed;
         isRightPressed = player2TouchField.Pressed;
+
+        if(isLeftPressed) EnableLeftFeedback();
+        else DisableLeftFeedback();
+
+        if (isRightPressed) EnableRightFeedback();
+        else DisableRightFeedback();
+        
 
 #if UNITY_EDITOR
 
@@ -434,8 +442,44 @@ public class Movement : MonoBehaviour
 
     [Header("Animations")]
 
-    public float optimizeAnimBy;
+    //  FeedBack
 
+    #region
+    [Header("FeedBack")]
+
+
+    public GameObject leftFeedback;
+    public GameObject rightFeedback;
+    public void EnableLeftFeedback()
+    {
+        leftFeedback.transform.position = player1TouchField.touchPosition;
+        leftFeedback.SetActive(true);
+    }
+
+    public void DisableLeftFeedback()
+    {
+        leftFeedback.SetActive(false);
+    }
+
+    public void EnableRightFeedback()
+    {
+        rightFeedback.transform.position = player2TouchField.touchPosition;
+        rightFeedback.SetActive(true);
+    }
+
+    public void DisableRightFeedback()
+    {
+        rightFeedback.SetActive(false);
+    }
+    #endregion
+
+    //  Paddling
+
+    #region
+
+    [Header("Paddling")]
+
+    public float optimizeAnimBy;
     public Animator leftAnimator;
 
     public void AnimateLeftSidePaddling()
@@ -453,6 +497,8 @@ public class Movement : MonoBehaviour
         rightAnimator.speed=rightPaddleForce/optimizeAnimBy;
         //rightAnimator.SetFloat("Speed", rightPaddleForce);
     }
-
     #endregion
+
+
+#endregion
 }

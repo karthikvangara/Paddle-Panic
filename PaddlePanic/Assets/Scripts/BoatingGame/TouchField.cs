@@ -7,6 +7,7 @@ public class TouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     //public Vector2 PointerOld;
     //public int PointerId;
     public bool Pressed;
+    public Vector3 touchPosition;
     // Use this for initialization
     void Awake()
     {
@@ -37,6 +38,7 @@ public class TouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         Pressed = true;
+        touchPosition = eventData.position;
         //PointerId = eventData.pointerId;
         //PointerOld = eventData.position;
     }
