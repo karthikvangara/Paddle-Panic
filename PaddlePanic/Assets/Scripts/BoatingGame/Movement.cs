@@ -121,7 +121,7 @@ public class Movement : MonoBehaviour
     {
         playerPositionBeforeRespawn = transform.position;
         transform.position = new Vector3(playerPositionBeforeRespawn.x, playerPositionBeforeRespawn.y, playerStartingPosition.z);
-        cameraRespawnHelper.SnapAfterRespawn(transform);
+        //cameraRespawnHelper.SnapAfterRespawn(transform);
     }
 
     #endregion

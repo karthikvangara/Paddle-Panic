@@ -6,8 +6,21 @@ using System.Reflection;
 public class CameraRespawnHelper : MonoBehaviour
 {
     public CinemachineVirtualCamera virtualCam;
+    public Transform boat;
 
-    public void SnapAfterRespawn(Transform boat)
+    public void RemoveLookAt()
+    {
+        virtualCam.LookAt = null;
+        StartCoroutine(AssignLookAt());
+    }
+
+    public IEnumerator AssignLookAt()
+    {
+        yield return new WaitForSeconds(1);
+        virtualCam.LookAt = boat;
+    }
+
+    /*public void SnapAfterRespawn(Transform boat)
     {
         if (virtualCam == null || boat == null) return;
         StartCoroutine(SnapAtEndOfFrame(boat));
