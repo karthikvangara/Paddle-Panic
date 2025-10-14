@@ -17,7 +17,7 @@ public class CheckPointManager : MonoBehaviour
     {
         if (other.CompareTag("MapEnd"))
         {
-            //riverMapController.RespawnRiverMaps();
+            riverMapController.RespawnRiverMap();
             /*riverMapController.playerCurrentMapIndex += 1;
             riverMapController.EnableNextMaps();
             riverMapController.DisablePreviousMap();
