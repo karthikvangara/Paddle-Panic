@@ -27,7 +27,8 @@ public class TutorialManager : MonoBehaviour
 
 
         if (Movement.instance!=null && Movement.instance.isLeftPressed && !inputOnlyOnceChecked && leftSidePanel.activeSelf) StartCoroutine(EnableRightSidePanel());
-        if (Movement.instance!=null && Movement.instance.isRightPressed && rightSidePanel.activeSelf && !leftSidePanel.activeSelf && !inputOnlyOnceChecked) StartCoroutine(EnableHealthAndScorePanel());
+        if (Movement.instance!=null && Movement.instance.isRightPressed && rightSidePanel.activeSelf && !leftSidePanel.activeSelf) StartCoroutine(EnableBothSidesPanel());
+        if (Movement.instance != null && Movement.instance.isLeftPressed && Movement.instance.isRightPressed && bothSidesPanel.activeSelf && !rightSidePanel.activeSelf && !leftSidePanel.activeSelf && !inputOnlyOnceChecked) StartCoroutine(EnableHealthAndScorePanel());
 
     }
 
@@ -146,6 +147,7 @@ public class TutorialManager : MonoBehaviour
 
     public GameObject leftSidePanel;
     public GameObject rightSidePanel;
+    public GameObject bothSidesPanel;
     public string gameScene;
 
     public void CheckForGameSceneLoaded()
@@ -167,6 +169,13 @@ public class TutorialManager : MonoBehaviour
         rightSidePanel.SetActive(true);
     }
 
+    IEnumerator EnableBothSidesPanel()
+    {
+        rightSidePanel.SetActive(false);
+        yield return new WaitForSeconds(1);
+        bothSidesPanel.SetActive(true);
+    }
+
     #endregion
 
     //  Health and Score
@@ -178,7 +187,7 @@ public class TutorialManager : MonoBehaviour
     IEnumerator EnableHealthAndScorePanel()
     {
         //StopGame();
-        rightSidePanel.SetActive(false);
+        bothSidesPanel.SetActive(false);
         inputOnlyOnceChecked = true;
         yield return new WaitForSeconds(1);
         healthAndScorePanel.SetActive(true);

@@ -108,6 +108,7 @@ public class LoginSceneManager : MonoBehaviour
             if(UserDataManager.instance!=null) UserDataManager.instance.UpdatePlayerInfo(userData);
             DisableLoginInfoPanel();
             if (MemeManager.instance != null) MemeManager.instance.DisableLoginMeme();
+            DisableMemeInfoPanel();
             LoadMainMenuScene();
         }
         else
