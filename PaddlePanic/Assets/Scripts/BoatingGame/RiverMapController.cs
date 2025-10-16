@@ -13,6 +13,7 @@ public class RiverMapController : MonoBehaviour
     public List<Vector3> mapPositionToLoad;
     public int mapsToLoad;
     public int nextMapIdx;
+    public List<int> activeMapIdx;
 
     private MapsInfoController mapsInfoController;
 
@@ -41,48 +42,58 @@ public class RiverMapController : MonoBehaviour
             mapsInfoController = riverMaps[i].SceneInstance.GetComponent<MapsInfoController>();
             mapsInfoController.endPosition.tag = "MapEnd";
             if(i<mapsToLoad-1) mapPositionToLoad.Add(new Vector3(mapsInfoController.endPosition.position.x, 0f, mapsInfoController.endPosition.position.z));
+            activeMapIdx.Add(i);
         }
-        nextMapIdx = mapsToLoad;
     }
 
     public void RespawnRiverMap()
     {
-        riverMaps[nextMapIdx-mapsToLoad].SceneInstance.SetActive(false);    //Disabling 1st enabled map
+        riverMaps[activeMapIdx[0]].SceneInstance.SetActive(false);    //Disabling 1st enabled map
 
         int j = 0;
-        for(int i = nextMapIdx-mapsToLoad+1; i < nextMapIdx; i++)   //  repositioning enabled maps
+        for(int i = 1; i < activeMapIdx.Count; i++)   //  repositioning enabled maps
         {
-            riverMaps[i].SceneInstance.transform.position= mapPositionToLoad[j];
+            riverMaps[activeMapIdx[i]].SceneInstance.transform.position= mapPositionToLoad[j];
             j += 1;
         }
 
-        if (riverMaps[nextMapIdx].SceneInstance==null) riverMaps[nextMapIdx].SceneInstance = Instantiate(riverMaps[nextMapIdx].Map,mapPositionToLoad[j], Quaternion.identity);
-        else riverMaps[nextMapIdx].SceneInstance.transform.position= mapPositionToLoad[j];
+        nextMapIdx = activeMapIdx[^1]+1;
+        if (nextMapIdx >= riverMaps.Count)
+        {
+            nextMapIdx = 0;
+            RandomizeRiverMaps();
+        }
+
+        if (riverMaps[nextMapIdx].SceneInstance == null) riverMaps[nextMapIdx].SceneInstance = Instantiate(riverMaps[nextMapIdx].Map, mapPositionToLoad[j], Quaternion.identity);
+        else
+        {
+            riverMaps[nextMapIdx].SceneInstance.transform.position = mapPositionToLoad[j];
+            riverMaps[nextMapIdx].SceneInstance.SetActive(true);
+        }
+
+        activeMapIdx.RemoveAt(0);
+        activeMapIdx.Add(nextMapIdx);
 
         mapsInfoController = riverMaps[nextMapIdx].SceneInstance.GetComponent<MapsInfoController>();
         mapsInfoController.endPosition.tag = "MapEnd";
 
-        nextMapIdx += 1;
-
         cameraRespawnHelper.RemoveLookAt();
-        movement.RespawnPlayerForLoopFeel();
-
-        if (nextMapIdx >= riverMaps.Count)
-        {
-            RandomizeRiverMaps(0, nextMapIdx - mapsToLoad - 1);
-            nextMapIdx = 0;
-        }
-        
+        movement.RespawnPlayerForLoopFeel(); 
     }
 
-    public void RandomizeRiverMaps(int start,int end)
+    public void RandomizeRiverMaps()
     {
-        for(int i= start; i < end; i++)
+        for (int i = 0; i < riverMaps.Count; i++)
         {
-            RiverMap tempMap = riverMaps[i];
-            int randValue=(int)Random.Range(start,end);
-            riverMaps[i]=riverMaps[randValue];
-            riverMaps[randValue]=tempMap;
+            if (activeMapIdx.Contains(i)) continue;
+
+            int randIdx = Random.Range(0, riverMaps.Count - 1);
+
+            while(activeMapIdx.Contains(randIdx)) randIdx=Random.Range(0,riverMaps.Count - 1);
+
+            RiverMap temp=riverMaps[randIdx];
+            riverMaps[randIdx] = riverMaps[i];
+            riverMaps[i] = temp;
         }
     }
 
