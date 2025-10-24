@@ -29,8 +29,6 @@ SysInfo.txt
 Thumbs.db
 *.ma
 *.mb
-*.obj
-*.png
 *.zip
 
 # Android build files

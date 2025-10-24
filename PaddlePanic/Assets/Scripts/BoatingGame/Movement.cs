@@ -1,7 +1,9 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Movement : MonoBehaviour
 {
@@ -119,7 +121,11 @@ public class Movement : MonoBehaviour
 
     public void RespawnPlayerForLoopFeel()
     {
+        Vector3 distance = transform.position - cameraRespawnHelper.virtualCam.transform.position;
         playerPositionBeforeRespawn = transform.position;
+        Vector3 camPosition = playerStartingPosition - distance;
+        camPosition = new Vector3(cameraRespawnHelper.virtualCam.transform.position.x, cameraRespawnHelper.virtualCam.transform.position.y, camPosition.z);
+        cameraRespawnHelper.RepositionVirtualCamera(camPosition);
         transform.position = new Vector3(playerPositionBeforeRespawn.x, playerPositionBeforeRespawn.y, playerStartingPosition.z);
         //cameraRespawnHelper.SnapAfterRespawn(transform);
     }
@@ -183,7 +189,7 @@ public class Movement : MonoBehaviour
 
         if (isLeftPressed || isRightPressed) ApplyForwardForceToBoat();
         velocityMagnitude = rb.velocity.magnitude;
-        ControlVelocity();   //  Control Moving Forward
+        if(velocityMagnitude>15f) ControlVelocity();   //  Control Moving Forward
         //ControlVelocity();  // Control Max and Min velocity
         //ApplyAngularDrag();
         //if (!isLeftPressed && !isRightPressed && isInRiver) ApplyDragToBoat();   //  Controls veclocity when nothing is pressed

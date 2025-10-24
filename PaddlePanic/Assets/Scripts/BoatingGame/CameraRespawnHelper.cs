@@ -20,6 +20,11 @@ public class CameraRespawnHelper : MonoBehaviour
         virtualCam.LookAt = boat;
     }
 
+    public void RepositionVirtualCamera(Vector3 respawnPosition)
+    {
+        virtualCam.transform.position = respawnPosition;
+    }
+
     /*public void SnapAfterRespawn(Transform boat)
     {
         if (virtualCam == null || boat == null) return;

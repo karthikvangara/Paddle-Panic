@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virtualCam: {fileID: 2025268376}
   boat: {fileID: 1735128438}
+  camTarget: {fileID: 207958442}
 --- !u!4 &13729910
 Transform:
   m_ObjectHideFlags: 0

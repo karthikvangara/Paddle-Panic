@@ -3,13 +3,24 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
+    public static MainMenuManager instance;
+
+    public void Awake()
+    {
+        instance = this;
+    }
     public void Start()
     {
         //StartCoroutine(LoadLoadingSceneInBackground());
+        UserData userData = new UserData();
+        if (UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
+        if(userData.isFirstTime) playButton.interactable = false;
         StartCoroutine(Idle());
+      
     }
 
     private IEnumerator Idle()
@@ -38,11 +49,20 @@ public class MainMenuManager : MonoBehaviour
         yield return null;
     }*/
 
+    [Header("Play")]
+
+    public Button playButton;
+
     public void OnClickPlay()
     {
         //asyncOp.allowSceneActivation = true;
         //StartCoroutine(ActivateGameScene());
         SceneManager.LoadScene("LoadingScene");
+    }
+
+    public void ActivatePlayButton()
+    {
+        playButton.interactable = true;
     }
 
     /*public IEnumerator ActivateGameScene()

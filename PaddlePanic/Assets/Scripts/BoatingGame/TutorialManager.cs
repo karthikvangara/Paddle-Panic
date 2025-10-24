@@ -137,6 +137,7 @@ public class TutorialManager : MonoBehaviour
     public void OnClickPlayNext()
     {
         playPanel.SetActive(false);
+        MainMenuManager.instance.ActivatePlayButton();
     }
 
     #endregion
