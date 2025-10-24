@@ -5799,7 +5799,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Here, you can view your health and score.
+  m_text: Here, you can view your Health, Score and Speed.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
   m_sharedMaterial: {fileID: -2572787161729363358, guid: 43b36edf587990b418ece0a4c753b942, type: 2}
@@ -8895,7 +8895,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3a790eab4215dbc4db629b12a4eeca86, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7b21dd46630c5d947943cd45699f7c52, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

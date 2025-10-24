@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.6313726, g: 1, b: 1, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
@@ -926,7 +926,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 59cb2ae67bad24740849e3fb7ff9d579, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f80c5693c6b51df4d8aed8bb14d0e10f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3669,7 +3669,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 59cb2ae67bad24740849e3fb7ff9d579, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f80c5693c6b51df4d8aed8bb14d0e10f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6451,7 +6451,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 59cb2ae67bad24740849e3fb7ff9d579, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f80c5693c6b51df4d8aed8bb14d0e10f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6526,7 +6526,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 59cb2ae67bad24740849e3fb7ff9d579, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f80c5693c6b51df4d8aed8bb14d0e10f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7462,7 +7462,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 59cb2ae67bad24740849e3fb7ff9d579, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f80c5693c6b51df4d8aed8bb14d0e10f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9157,7 +9157,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 59cb2ae67bad24740849e3fb7ff9d579, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f80c5693c6b51df4d8aed8bb14d0e10f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9300,6 +9300,7 @@ MonoBehaviour:
   mapPositionToLoad: []
   mapsToLoad: 3
   nextMapIdx: 0
+  activeMapIdx: 
 --- !u!43 &1348379476
 Mesh:
   m_ObjectHideFlags: 0
@@ -12474,7 +12475,6 @@ MonoBehaviour:
   optimizeAnimBy: 20
   leftAnimator: {fileID: 2138844532}
   rightAnimator: {fileID: 1125297071}
-  swingAnimator: {fileID: 928171377}
 --- !u!65 &1735128447
 BoxCollider:
   m_ObjectHideFlags: 0

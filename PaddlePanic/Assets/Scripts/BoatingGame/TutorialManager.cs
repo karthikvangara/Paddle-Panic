@@ -26,7 +26,7 @@ public class TutorialManager : MonoBehaviour
         }
 
 
-        if (Movement.instance!=null && Movement.instance.isLeftPressed && !inputOnlyOnceChecked && leftSidePanel.activeSelf) StartCoroutine(EnableRightSidePanel());
+        if (Movement.instance!=null && Movement.instance.isLeftPressed && !inputOnlyOnceChecked && leftSidePanel.activeSelf) StartCoroutine(EnableLeftSidePanel());
         if (Movement.instance!=null && Movement.instance.isRightPressed && rightSidePanel.activeSelf && !leftSidePanel.activeSelf) StartCoroutine(EnableBothSidesPanel());
         if (Movement.instance != null && Movement.instance.isLeftPressed && Movement.instance.isRightPressed && bothSidesPanel.activeSelf && !rightSidePanel.activeSelf && !leftSidePanel.activeSelf && !inputOnlyOnceChecked) StartCoroutine(EnableHealthAndScorePanel());
 
@@ -153,18 +153,18 @@ public class TutorialManager : MonoBehaviour
     public void CheckForGameSceneLoaded()
     {
         Debug.Log(SceneManager.GetActiveScene().name);
-        StartCoroutine(EnableLeftSidePanel());
+        StartCoroutine(EnableRightSidePanel());
     }
 
     IEnumerator EnableLeftSidePanel()
     {
+        rightSidePanel.SetActive(false);
         yield return new WaitForSeconds(1);
         leftSidePanel.SetActive(true);
     }
 
     IEnumerator EnableRightSidePanel()
     {
-        leftSidePanel.SetActive(false);
         yield return new WaitForSeconds(1);
         rightSidePanel.SetActive(true);
     }
