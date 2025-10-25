@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RiverMapController : MonoBehaviour
 {
-    public Movement movement;
+    /*public Movement movement;
     public CameraRespawnHelper cameraRespawnHelper;
 
     public RiverMapsSO riverMapSO;
@@ -96,9 +96,9 @@ public class RiverMapController : MonoBehaviour
             riverMaps[i] = temp;
         }
     }
+    */
 
-
-    /*public Movement movement;
+    public Movement movement;
     public CameraRespawnHelper cameraRespawnHelper;
     public RiverMapsSO riverMapsSO;
     public List<RiverMap> riverMaps;
@@ -181,7 +181,7 @@ public class RiverMapController : MonoBehaviour
             currentMapDistance += defaultMapDistance;
         }
     }*/
-    /*public void EnableNextMaps()
+    public void EnableNextMaps()
     {
         for(int i = 1; i <= enableNumberOfNextMaps; i++)
         {
@@ -233,5 +233,5 @@ public class RiverMapController : MonoBehaviour
         //cameraRespawnHelper.SaveCameraState();
         cameraRespawnHelper.RemoveLookAt();
         movement.RespawnPlayerForLoopFeel();
-    }*/
+    }
 }

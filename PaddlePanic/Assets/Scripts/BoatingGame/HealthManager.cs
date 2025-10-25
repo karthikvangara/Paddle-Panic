@@ -111,7 +111,7 @@ public class HealthManager : MonoBehaviour
         impactCounts += 1;
         gameUIManager.UpdateHealth();
         //Debug.Log(currHealth);
-        if (currHealth <= 0f)
+        if (currHealth <= 0.9f)
         {
             gameUIManager.OpenGameOverPanel();
             isAlive = false;

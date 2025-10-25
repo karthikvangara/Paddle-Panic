@@ -17,11 +17,11 @@ public class CheckPointManager : MonoBehaviour
     {
         if (other.CompareTag("MapEnd"))
         {
-            riverMapController.RespawnRiverMap();
-            /*riverMapController.playerCurrentMapIndex += 1;
+            //riverMapController.RespawnRiverMap();
+            riverMapController.playerCurrentMapIndex += 1;
             riverMapController.EnableNextMaps();
             riverMapController.DisablePreviousMap();
-            if (riverMapController.playerCurrentMapIndex % riverMapController.mapPositionsToRespawn.Count == 0) riverMapController.RespawnHardRiverMaps();*/
+            if (riverMapController.playerCurrentMapIndex % riverMapController.mapPositionsToRespawn.Count == 0) riverMapController.RespawnHardRiverMaps();
             //recentCheckpointPosition = new Vector3(other.gameObject.transform.position.x, transform.position.y, other.gameObject.transform.position.z);
         }
     }

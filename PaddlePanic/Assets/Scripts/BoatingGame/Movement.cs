@@ -42,6 +42,7 @@ public class Movement : MonoBehaviour
     {
         //Debug.Log("FixedUpdate called");
         //if(riverMapController.isRiverMapsLoaded) rb.isKinematic=false;
+        if (TutorialManager.instance != null && !TutorialManager.instance.enableMovement) return;
         CheckForRiver();
         AnimateLeftSidePaddling();
         AnimateRightSidePaddling();
@@ -52,7 +53,6 @@ public class Movement : MonoBehaviour
         }
         if (isInRiver)
         {
-            UpdateScore();
             CheckForMovement();
             CheckForRotation();
         }
@@ -189,7 +189,7 @@ public class Movement : MonoBehaviour
 
         if (isLeftPressed || isRightPressed) ApplyForwardForceToBoat();
         velocityMagnitude = rb.velocity.magnitude;
-        if(velocityMagnitude>15f) ControlVelocity();   //  Control Moving Forward
+        if(velocityMagnitude>velocityMagnitude/2) ControlVelocity();   //  Control Moving Forward
         //ControlVelocity();  // Control Max and Min velocity
         //ApplyAngularDrag();
         //if (!isLeftPressed && !isRightPressed && isInRiver) ApplyDragToBoat();   //  Controls veclocity when nothing is pressed
@@ -206,6 +206,7 @@ public class Movement : MonoBehaviour
         //rb.AddForce(transform.forward*currMovementSpeed*2, ForceMode.Force);
         rb.AddForce(rb.transform.forward * overallPaddleForce, ForceMode.Force);
 
+        UpdateScore();
         Debug.DrawRay(rb.transform.position, rb.transform.forward * 3000f, Color.white);
 
     }
@@ -426,16 +427,19 @@ public class Movement : MonoBehaviour
     [Header("Score")]
     public GameUIManager gameUIManager;
     public float score;
-    public float minVelocityToUpdateScore=1f;
+    public float updateTime=3f;
+    public float updateTimer;
 
 
     public void UpdateScore()
     {
-        if(rb.velocity.magnitude> minVelocityToUpdateScore  && healthManager.isAlive)
+        updateTimer += Time.deltaTime;
+        if(updateTimer>updateTime  && healthManager.isAlive)
         {
             //Debug.Log(score);
-            score += Time.deltaTime;
+            score += 1f;
             gameUIManager.UpdateScore();
+            updateTimer = 0;
         }
     }
 

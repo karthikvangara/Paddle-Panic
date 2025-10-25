@@ -6,11 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
+    public static TutorialManager instance;
     public GameObject tutorialManager;
+    public bool enableMovement;
     UserData userData = new UserData();
 
     private bool once;
     private bool inputOnlyOnceChecked;
+
+    public void Awake()
+    {
+        instance = this;
+    }
     public void Start()
     {
         if (UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
@@ -26,9 +33,9 @@ public class TutorialManager : MonoBehaviour
         }
 
 
-        if (Movement.instance!=null && Movement.instance.isLeftPressed && !inputOnlyOnceChecked && leftSidePanel.activeSelf) StartCoroutine(EnableLeftSidePanel());
-        if (Movement.instance!=null && Movement.instance.isRightPressed && rightSidePanel.activeSelf && !leftSidePanel.activeSelf) StartCoroutine(EnableBothSidesPanel());
-        if (Movement.instance != null && Movement.instance.isLeftPressed && Movement.instance.isRightPressed && bothSidesPanel.activeSelf && !rightSidePanel.activeSelf && !leftSidePanel.activeSelf && !inputOnlyOnceChecked) StartCoroutine(EnableHealthAndScorePanel());
+        if (Movement.instance!=null && Movement.instance.isLeftPressed && !inputOnlyOnceChecked && rightSidePanel.activeSelf) StartCoroutine(EnableLeftSidePanel());
+        if (Movement.instance!=null && Movement.instance.isRightPressed && !rightSidePanel.activeSelf && leftSidePanel.activeSelf) StartCoroutine(EnableBothSidesPanel());
+        if (Movement.instance != null && Movement.instance.isLeftPressed && Movement.instance.isRightPressed && bothSidesPanel.activeSelf && !rightSidePanel.activeSelf && !leftSidePanel.activeSelf && !inputOnlyOnceChecked) StartCoroutine(EnableThanksPanel());
 
     }
 
@@ -53,6 +60,7 @@ public class TutorialManager : MonoBehaviour
 
     public void OnClickSkip()
     {
+        MainMenuManager.instance.ActivatePlayButton();
         introductionPanel.SetActive(false);
         UserData userData = new UserData();
         if(UserDataManager.instance != null) userData=UserDataManager.instance.LoadPlayerInfo();
@@ -154,7 +162,8 @@ public class TutorialManager : MonoBehaviour
     public void CheckForGameSceneLoaded()
     {
         Debug.Log(SceneManager.GetActiveScene().name);
-        StartCoroutine(EnableRightSidePanel());
+        //StartCoroutine(EnableRightSidePanel());
+        StartCoroutine(EnableHealthAndScorePanel());
     }
 
     IEnumerator EnableLeftSidePanel()
@@ -166,13 +175,14 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator EnableRightSidePanel()
     {
+        enableMovement = true;
         yield return new WaitForSeconds(1);
         rightSidePanel.SetActive(true);
     }
 
     IEnumerator EnableBothSidesPanel()
     {
-        rightSidePanel.SetActive(false);
+        leftSidePanel.SetActive(false);
         yield return new WaitForSeconds(1);
         bothSidesPanel.SetActive(true);
     }
@@ -188,8 +198,8 @@ public class TutorialManager : MonoBehaviour
     IEnumerator EnableHealthAndScorePanel()
     {
         //StopGame();
-        bothSidesPanel.SetActive(false);
-        inputOnlyOnceChecked = true;
+        //bothSidesPanel.SetActive(false);
+        //inputOnlyOnceChecked = true;
         yield return new WaitForSeconds(1);
         healthAndScorePanel.SetActive(true);
     }
@@ -237,7 +247,7 @@ public class TutorialManager : MonoBehaviour
     public void OnClickInGameSettingsPanelNext()
     {
         inGameSettingsPanel.SetActive(false);
-        StartCoroutine(EnableThanksPanel());
+        StartCoroutine(EnableRightSidePanel());
     }
     #endregion
 
@@ -249,6 +259,8 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator EnableThanksPanel()
     {
+        bothSidesPanel.SetActive(false);
+        inputOnlyOnceChecked = true;
         yield return new WaitForSeconds(1);
         thanksPanel.SetActive(true);
     }
