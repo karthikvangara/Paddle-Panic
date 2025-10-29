@@ -510,5 +510,20 @@ public class Movement : MonoBehaviour
     #endregion
 
 
-#endregion
+    #endregion
+
+    //Collectables
+
+    #region
+
+    [Header("Collectable")]
+
+    public int fishCount = 0;
+
+    public void UpdateFishCount()
+    {
+        fishCount++;
+    }
+
+    #endregion
 }

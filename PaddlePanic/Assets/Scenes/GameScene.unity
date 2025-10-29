@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.6313726, g: 1, b: 1, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
@@ -12415,6 +12415,7 @@ MonoBehaviour:
   optimizeAnimBy: 20
   leftAnimator: {fileID: 2138844532}
   rightAnimator: {fileID: 1125297071}
+  fishCount: 0
 --- !u!65 &1735128447
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20875,7 +20876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &5806969200505803265
 GameObject:
   m_ObjectHideFlags: 0
