@@ -98,6 +98,11 @@ public class HealthManager : MonoBehaviour
     public float impactReduceBy = 0.1f;
     public bool isAlive = true;
 
+    public float playCollisionEffectFor=3f;
+    public GameObject boat;
+    public GameObject collisionHandlers;
+    public float collisionTimer=0f;
+
     public void Start()
     {
         maxBoatSpeed = movement.maxVelocity;
@@ -116,6 +121,30 @@ public class HealthManager : MonoBehaviour
             gameUIManager.OpenGameOverPanel();
             isAlive = false;
         }
+        //handleCollisionEffect();
     }
+
+    public void handleCollisionEffect()
+    {
+        if (collisionTimer < playCollisionEffectFor) StartCoroutine(StartCollisionEffect());
+    }
+
+    public IEnumerator StartCollisionEffect()
+    {
+        yield return new WaitForSeconds(0.5f);
+        CollisionHandlers(false);
+        yield return new WaitForSeconds(0.5f);
+        CollisionHandlers(true);
+        collisionTimer += 1f;
+        handleCollisionEffect();
+    }
+
+    public void CollisionHandlers(bool status)
+    {
+        boat.SetActive(status);
+        collisionHandlers.SetActive(status);
+    }
+
+
 
 }

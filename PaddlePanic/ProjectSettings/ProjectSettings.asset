@@ -162,7 +162,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.DefaultCompany.PaddlePanic
+    Android: com.Karthik.PaddlePanic
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -288,7 +288,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: dd84daf5447e8d947bfe5fe729073d9e, type: 3}
+      m_Icon: {fileID: 2800000, guid: fc8d789b6f8b4e047a4e0d894d0939b7, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -746,7 +746,8 @@ PlayerSettings:
   webGLMemoryGeometricGrowthStep: 0.2
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: CREST_OCEAN
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
