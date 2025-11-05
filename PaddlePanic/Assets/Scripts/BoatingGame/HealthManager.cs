@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
@@ -98,16 +99,12 @@ public class HealthManager : MonoBehaviour
     public float impactReduceBy = 0.1f;
     public bool isAlive = true;
 
-    public float playCollisionEffectFor=3f;
-    public GameObject boat;
-    public GameObject collisionHandlers;
-    public float collisionTimer=0f;
-
     public void Start()
     {
         maxBoatSpeed = movement.maxVelocity;
         maxHealth = movement.maxVelocity;
         currHealth = maxHealth;
+
     }
 
     public void CalculateHealth(float boatSpeed)
@@ -121,30 +118,43 @@ public class HealthManager : MonoBehaviour
             gameUIManager.OpenGameOverPanel();
             isAlive = false;
         }
-        //handleCollisionEffect();
+        EnableInvincible();
     }
 
-    public void handleCollisionEffect()
+    [Header("Invinclibe Effect")]
+    public List<Collider> invincibleColliders= new List<Collider>();
+    public List<Renderer> invincibleRenders = new List<Renderer>();
+    public int boatLayer, obstacleLayer;
+    public float invincibleTime = 30f;
+    public float invincibleTimer = 0f;
+    public float alphaTime = 0.05f;
+
+    public void EnableInvincible()
     {
-        if (collisionTimer < playCollisionEffectFor) StartCoroutine(StartCollisionEffect());
+        Physics.IgnoreLayerCollision(boatLayer, obstacleLayer, true);
+        movement.rb.velocity = Vector3.zero;
+        StartCoroutine(StartInvincible());
+
+        if (invincibleTimer > invincibleTime)
+        {
+            invincibleTimer = 0;
+            for (int i = 0; i < invincibleRenders.Count; i++)
+            {
+                invincibleRenders[i].enabled = true;
+            }
+        }
     }
 
-    public IEnumerator StartCollisionEffect()
+    public IEnumerator StartInvincible()
     {
-        yield return new WaitForSeconds(0.5f);
-        CollisionHandlers(false);
-        yield return new WaitForSeconds(0.5f);
-        CollisionHandlers(true);
-        collisionTimer += 1f;
-        handleCollisionEffect();
+        for (invincibleTimer = 0; invincibleTimer < invincibleTime; invincibleTimer++)
+        {
+            for (int i = 0; i < invincibleRenders.Count; i++)
+            {
+                invincibleRenders[i].enabled = !invincibleRenders[i].enabled;
+            }
+            yield return new WaitForSeconds(alphaTime);
+        }
+        Physics.IgnoreLayerCollision(boatLayer, obstacleLayer, false);
     }
-
-    public void CollisionHandlers(bool status)
-    {
-        boat.SetActive(status);
-        collisionHandlers.SetActive(status);
-    }
-
-
-
 }

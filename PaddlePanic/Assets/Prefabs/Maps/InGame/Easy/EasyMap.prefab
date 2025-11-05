@@ -56,6 +56,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3846744547286977639}
     m_Modifications:
+    - target: {fileID: 1101845031714392755, guid: d9f15bfbb0dee6e4193de2d6bb466933, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4200159821315926843, guid: d9f15bfbb0dee6e4193de2d6bb466933, type: 3}
       propertyPath: m_Name
       value: Water Specular Mirror
@@ -70,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8009716672845229601, guid: d9f15bfbb0dee6e4193de2d6bb466933, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.13
+      value: 2.31
       objectReference: {fileID: 0}
     - target: {fileID: 8009716672845229601, guid: d9f15bfbb0dee6e4193de2d6bb466933, type: 3}
       propertyPath: m_LocalPosition.z
@@ -189,6 +193,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3846744547286977639}
     m_Modifications:
+    - target: {fileID: 9083722540697660457, guid: 7ada1ba9c311c33438be464c869efd50, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -3368.9583
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083722540697660457, guid: 7ada1ba9c311c33438be464c869efd50, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083722540697660457, guid: 7ada1ba9c311c33438be464c869efd50, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083722540697660457, guid: 7ada1ba9c311c33438be464c869efd50, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 406259
+      objectReference: {fileID: 0}
     - target: {fileID: 9083722540986495905, guid: 7ada1ba9c311c33438be464c869efd50, type: 3}
       propertyPath: m_Name
       value: Water
@@ -199,11 +219,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9083722540986495911, guid: 7ada1ba9c311c33438be464c869efd50, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -96.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9083722540986495911, guid: 7ada1ba9c311c33438be464c869efd50, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 245
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9083722540986495911, guid: 7ada1ba9c311c33438be464c869efd50, type: 3}
       propertyPath: m_LocalRotation.w
