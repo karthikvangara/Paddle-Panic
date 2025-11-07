@@ -19,10 +19,10 @@ public class GridHandler : MonoBehaviour
     Vector2 xRange;
     Vector2 yRange;
 
-    public Node [,] grid;
+    public Node[,] grid;
     public List<Node> path;
-    
-    
+
+
 
     public void Start()
     {
@@ -41,19 +41,19 @@ public class GridHandler : MonoBehaviour
 
     public void CreateGrid()
     {
-        pos = Vector3.left * (xWidth/2-nodeSize/2) - Vector3.forward * (yHeight/2-nodeSize/2);
+        pos = Vector3.left * (xWidth / 2 - nodeSize / 2) - Vector3.forward * (yHeight / 2 - nodeSize / 2);
 
         for (int i = 0; i < xWidth; i++)
         {
             for (int j = 0; j < yHeight; j++)
             {
-                Vector3 tempPos = pos - Vector3.left * (i * nodeSize ) + Vector3.forward * (j * nodeSize);
-                Node temp = new Node(i,j,true, tempPos,0,0);
-                if (Physics.CheckSphere(tempPos, nodeSize/2, layers))
+                Vector3 tempPos = pos - Vector3.left * (i * nodeSize) + Vector3.forward * (j * nodeSize);
+                Node temp = new Node(i, j, true, tempPos, 0, 0);
+                if (Physics.CheckSphere(tempPos, nodeSize / 2, layers))
                 {
                     temp.traversable = false;
                 }
-                grid[i,j] = temp;
+                grid[i, j] = temp;
             }
         }
 
@@ -75,14 +75,14 @@ public class GridHandler : MonoBehaviour
 
         Debug.Log(xRange + " " + yRange);
         */
-        
-        float percentX = (gameObject.position.x + xWidth/2) / xWidth;
+
+        float percentX = (gameObject.position.x + xWidth / 2) / xWidth;
         float percentY = (gameObject.position.z + yHeight / 2) / yHeight;
 
         percentX = Mathf.Clamp01(percentX);
         percentY = Mathf.Clamp01(percentY);
 
-        int x = Mathf.RoundToInt((xWidth - 1)*percentX);
+        int x = Mathf.RoundToInt((xWidth - 1) * percentX);
         int y = Mathf.RoundToInt((yHeight - 1) * percentY);
 
         //Debug.Log(x + " " + y);
@@ -93,11 +93,11 @@ public class GridHandler : MonoBehaviour
     {
         List<Node> neighbours = new List<Node>();
 
-        for(int i = -1; i <= 1; i++)
+        for (int i = -1; i <= 1; i++)
         {
             for (int j = -1; j <= 1; j++)
             {
-                if ((i==0 && j==0)||currentNode.row + i < 0 || currentNode.row + i >= xWidth || currentNode.column+j<0 || currentNode.column+j>=yHeight)
+                if ((i == 0 && j == 0) || currentNode.row + i < 0 || currentNode.row + i >= xWidth || currentNode.column + j < 0 || currentNode.column + j >= yHeight)
                 {
                     continue;
                 }
@@ -113,9 +113,9 @@ public class GridHandler : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(transform.position, new Vector3(xWidth, 5, yHeight));
 
-        for(int i = 0; i < xWidth/nodeSize; i++)
+        for (int i = 0; i < xWidth / nodeSize; i++)
         {
-            for(int j = 0; j < yHeight/nodeSize; j++)
+            for (int j = 0; j < yHeight / nodeSize; j++)
             {
                 Node playerNode = GetPositionOnGrid(playerPosition);
                 Gizmos.color = Color.cyan;
@@ -128,12 +128,12 @@ public class GridHandler : MonoBehaviour
                     Gizmos.color = Color.black;
                 }*/
 
-                if (path.Contains(grid[i,j]))
+                if (path.Contains(grid[i, j]))
                 {
                     Gizmos.color = Color.black;
                 }
-                
-                Gizmos.DrawCube(grid[i, j].worldPosition, Vector3.one*nodeSize);
+
+                Gizmos.DrawCube(grid[i, j].worldPosition, Vector3.one * nodeSize);
             }
         }
     }
@@ -151,7 +151,7 @@ public class Node
     public float hCost;
     public Node parent;
 
-    public Node(int _row,int _column ,bool canTraverse, Vector3 worldPos,float _gCost, float _hCost)
+    public Node(int _row, int _column, bool canTraverse, Vector3 worldPos, float _gCost, float _hCost)
     {
         row = _row;
         column = _column;

@@ -494,8 +494,9 @@ public class Movement : MonoBehaviour
 
     public void AnimateLeftSidePaddling()
     {
-        if (leftPaddleForce > 0) leftPaddleForce = Mathf.Max(leftPaddleForce, 1);
+        if (leftPaddleForce > 0) leftPaddleForce = Mathf.Max(leftPaddleForce, 1f);
         leftAnimator.speed = leftPaddleForce/optimizeAnimBy;
+        //Debug.Log(leftAnimator.speed);
         //leftAnimator.SetFloat("Speed",leftPaddleForce);
     }
 
@@ -503,8 +504,9 @@ public class Movement : MonoBehaviour
 
     public void AnimateRightSidePaddling()
     {
-        if (rightPaddleForce > 0) rightPaddleForce = Mathf.Max(rightPaddleForce, 1);
+        if (rightPaddleForce > 0) rightPaddleForce = Mathf.Max(rightPaddleForce, 1f);
         rightAnimator.speed=rightPaddleForce/optimizeAnimBy;
+        //Debug.Log(rightAnimator.speed);
         //rightAnimator.SetFloat("Speed", rightPaddleForce);
     }
     #endregion
