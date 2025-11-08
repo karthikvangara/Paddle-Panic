@@ -1241,6 +1241,10 @@ PrefabInstance:
       propertyPath: m_PolyMesh.m_Mesh
       value: 
       objectReference: {fileID: 1201695408}
+    - target: {fileID: 4499494844155397049, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4530075233423355520, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1293,6 +1297,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 5.5900044
       objectReference: {fileID: 0}
+    - target: {fileID: 6779002035241920299, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6952002238598611687, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1318,6 +1326,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8481953141828208241, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
+      propertyPath: spawnPercentage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481953141828208241, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
       propertyPath: gridDimensions.y
       value: 500
       objectReference: {fileID: 0}
@@ -1325,6 +1337,14 @@ PrefabInstance:
       propertyPath: obstacleLayers.m_Bits
       value: 14336
       objectReference: {fileID: 0}
+    - target: {fileID: 8481953141828208241, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
+      propertyPath: collectables.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481953141828208241, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
+      propertyPath: collectables.Array.data[0]
+      value: 
+      objectReference: {fileID: 104517609856167801, guid: 94c015d94f6e5364e9b36b960bbe1b77, type: 3}
     - target: {fileID: 8615822441513963307, guid: 5b113bcebeea7f84cbf2f5bc0c067354, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -10276,7 +10296,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.6
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -12523,7 +12543,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.85
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -13192,7 +13212,7 @@ GameObject:
   - component: {fileID: 1735128444}
   m_Layer: 12
   m_Name: BoatPivot
-  m_TagString: Untagged
+  m_TagString: Boat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14217,7 +14237,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.85
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -14387,7 +14407,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.1
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -14653,7 +14673,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.1
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -14998,6 +15018,51 @@ Transform:
   - {fileID: 1688481223}
   m_Father: {fileID: 1601302973}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1989312756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1989312758}
+  - component: {fileID: 1989312757}
+  m_Layer: 0
+  m_Name: CollectablesManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1989312757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989312756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a36098820214684a92e9acac67d0ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectablesCount: 0
+--- !u!4 &1989312758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989312756}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.705658, y: -4.2497215, z: -442.2901}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1994491716
 GameObject:
   m_ObjectHideFlags: 0
@@ -15287,7 +15352,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65.45
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -23876,3 +23941,4 @@ SceneRoots:
   - {fileID: 3846744545647187319}
   - {fileID: 13729910}
   - {fileID: 161750473}
+  - {fileID: 1989312758}

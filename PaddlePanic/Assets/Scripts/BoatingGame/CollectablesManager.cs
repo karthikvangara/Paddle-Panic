@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class CollectablesManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static CollectablesManager instance;
+
+    public int collectablesCount;
+    public void Awake()
     {
-        
+        instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateCollectablesCount()
     {
-        
+        collectablesCount++;
+        Debug.Log("Collectables Earned : " + collectablesCount);
     }
 }

@@ -543,6 +543,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 14336
   validPositions: []
+  collectables:
+  - {fileID: 104517609856167801, guid: 94c015d94f6e5364e9b36b960bbe1b77, type: 3}
+  spawnPercentage: 10
+  spawingCount: 0
+  spawingPositions: []
+  instantiatedCollectables: []
 --- !u!1 &5094711417260066516
 GameObject:
   m_ObjectHideFlags: 0
