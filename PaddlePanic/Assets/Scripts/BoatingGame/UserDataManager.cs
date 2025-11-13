@@ -60,5 +60,7 @@ public class UserData
     public int playerScore;
     public bool isFirstTime = true;
     public bool isMemeAccepted = true;
+    public int collectablesCount=0;
+    public int currBoatId=0;
 }
 

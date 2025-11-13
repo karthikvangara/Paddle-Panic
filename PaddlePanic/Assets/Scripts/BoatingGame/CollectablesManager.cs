@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CollectablesManager : MonoBehaviour
 {
+    public GameUIManager gameUIManager;
     public static CollectablesManager instance;
 
     public int collectablesCount;
@@ -16,5 +17,6 @@ public class CollectablesManager : MonoBehaviour
     {
         collectablesCount++;
         Debug.Log("Collectables Earned : " + collectablesCount);
+        gameUIManager.UpdateCollectables();
     }
 }

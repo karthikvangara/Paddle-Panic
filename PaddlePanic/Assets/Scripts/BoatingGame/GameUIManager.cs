@@ -235,6 +235,23 @@ public class GameUIManager : MonoBehaviour
 
     #endregion
 
+    //CollectablesPanel
+
+    #region
+
+    [Header("Collectables")]
+
+    public TMP_Text collectablesPanel;
+    public int collectablesCount = 0;
+
+    public void UpdateCollectables()
+    {
+        collectablesCount=CollectablesManager.instance.collectablesCount;
+        collectablesPanel.text=collectablesCount.ToString();
+    }
+
+    #endregion
+
     public void StopGame()
     {
         Time.timeScale = 0f;
