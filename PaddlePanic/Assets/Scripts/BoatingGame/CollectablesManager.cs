@@ -6,8 +6,6 @@ public class CollectablesManager : MonoBehaviour
 {
     public GameUIManager gameUIManager;
     public static CollectablesManager instance;
-
-    public int collectablesCount;
     public void Awake()
     {
         instance = this;
@@ -15,8 +13,10 @@ public class CollectablesManager : MonoBehaviour
 
     public void UpdateCollectablesCount()
     {
-        collectablesCount++;
-        Debug.Log("Collectables Earned : " + collectablesCount);
-        gameUIManager.UpdateCollectables();
+        UserData userData = new UserData();
+        userData = UserDataManager.instance.LoadPlayerInfo();
+        userData.collectablesCount++;
+        UserDataManager.instance.UpdatePlayerInfo(userData);
+        gameUIManager.UpdateCollectables(userData.collectablesCount);
     }
 }

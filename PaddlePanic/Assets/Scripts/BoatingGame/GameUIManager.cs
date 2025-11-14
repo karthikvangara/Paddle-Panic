@@ -242,12 +242,10 @@ public class GameUIManager : MonoBehaviour
     [Header("Collectables")]
 
     public TMP_Text collectablesPanel;
-    public int collectablesCount = 0;
 
-    public void UpdateCollectables()
+    public void UpdateCollectables(int count)
     {
-        collectablesCount=CollectablesManager.instance.collectablesCount;
-        collectablesPanel.text=collectablesCount.ToString();
+        collectablesPanel.text=count.ToString();
     }
 
     #endregion

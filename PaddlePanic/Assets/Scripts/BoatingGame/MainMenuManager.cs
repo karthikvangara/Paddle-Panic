@@ -20,6 +20,7 @@ public class MainMenuManager : MonoBehaviour
         if (UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
         if(userData.isFirstTime) playButton.interactable = false;
         StartCoroutine(Idle());
+        LoadCollectabels();
       
     }
 
@@ -33,6 +34,22 @@ public class MainMenuManager : MonoBehaviour
         yield return new WaitForSeconds(30);
         if(MemeManager.instance != null) MemeManager.instance.DisableWaitingForLongTimeMeme();
     }
+
+    //Collectables
+
+    #region
+
+    [Header("Collectables")]
+
+    public TMP_Text collectabelsPanel;
+
+    public void LoadCollectabels()
+    {
+        UserData userData=UserDataManager.instance.LoadPlayerInfo();
+        collectabelsPanel.text = "Collectables : " + userData.collectablesCount.ToString();
+    }
+
+    #endregion
 
     //Play
 
@@ -88,6 +105,17 @@ public class MainMenuManager : MonoBehaviour
     public void OnCloseMultiplayer()
     {
         multiplayerPanel.SetActive(false);
+    }
+
+    #endregion
+
+    // Store
+
+    #region
+
+    public void OnClickStore()
+    {
+        SceneManager.LoadSceneAsync("StoreScene");
     }
 
     #endregion
