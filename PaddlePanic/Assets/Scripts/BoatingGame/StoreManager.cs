@@ -22,14 +22,14 @@ public class StoreManager : MonoBehaviour
 
     public void Start()
     {
-        storeData=LoadStoreData();
+        LoadStoreData();
         UpdateStoreData();
-        LoadStoreItemsInGame();
+        LoadStoreItemsInStore();
     }
 
-    public void LoadStoreItemsInGame()
+    public void LoadStoreItemsInStore()
     {
-        storeData = LoadStoreData();
+        LoadStoreData();
         Transform content=scrollRect.content;
 
         for (int i = 0; i < storeData.storeItemInfos.Count; i++)
@@ -41,13 +41,14 @@ public class StoreManager : MonoBehaviour
             storeItem.itemCost = storeData.storeItemInfos[i].itemCost;
             storeItem.isPurchased = storeData.storeItemInfos[i].isPurchased;
             storeItem.isSelected = storeData.storeItemInfos[i].isSelected;
+            storeItem.paddleForce = storeData.storeItemInfos[i].paddleForce;
             storeItem.UpdateItemInfo();
         }
     }
 
     public void UpdateStoreData()
     {
-        Debug.Log("UpdatePlayerInfo called");
+        //Debug.Log("UpdatePlayerInfo called");
         string json;
         if (!File.Exists(path))
         {
@@ -68,9 +69,9 @@ public class StoreManager : MonoBehaviour
         //Debug.Log("Player data file Updatad");
     }
 
-    public StoreData LoadStoreData()
+    public void LoadStoreData()
     {
-        Debug.Log("LoadPlayerInfo Called");
+       // Debug.Log("LoadPlayerInfo Called");
         if (storeData == null) Debug.Log("StoreData is Null");
         if (File.Exists(path))
         {
@@ -78,7 +79,26 @@ public class StoreManager : MonoBehaviour
             storeData = JsonUtility.FromJson<StoreData>(loadedJson);
             //Debug.Log("Player Data Loaded");
         }
-        return storeData;
+    }
+
+    public void UpdateStoreInfoData(int itemId,bool isPurchased,bool isSelected)
+    {
+        UserDataManager.instance.LoadPlayerInfo();
+        for (int i = 0; i < storeData.storeItemInfos.Count; i++)
+        {
+            storeData.storeItemInfos[i].isSelected = false;
+            if (storeData.storeItemInfos[i].itemId == UserDataManager.instance.userData.currCharacterId)
+            {
+                storeData.storeItemInfos[i].isSelected = true;
+            }
+
+            if (storeData.storeItemInfos[i].itemId == itemId)
+            {
+                storeData.storeItemInfos[i].isPurchased = isPurchased;
+            }
+        }
+        UpdateStoreData();
+        LoadStoreItemsInStore();
     }
 
     public void OnClickBack()
@@ -104,4 +124,5 @@ public class StoreItemInfo
     public bool isPurchased;
     public int itemCost;
     public bool isSelected;
+    public float paddleForce;
 }

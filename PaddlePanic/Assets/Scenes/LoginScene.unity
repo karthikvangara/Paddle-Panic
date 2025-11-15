@@ -4187,11 +4187,6 @@ MonoBehaviour:
   AudioManager: {fileID: 49362708}
   playerName: {fileID: 1167926397}
   menuScene: MainMenu
-  userData:
-    playerName: 
-    playerScore: 0
-    isFirstTime: 1
-    isMemeAccepted: 1
 --- !u!4 &1128764998
 Transform:
   m_ObjectHideFlags: 0
@@ -4237,6 +4232,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0287bf2193adaea4a9e17bccc05b0d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  userData:
+    playerName: 
+    playerScore: 0
+    isFirstTime: 1
+    isMemeAccepted: 1
+    collectablesCount: 0
+    currCharacterId: 0
 --- !u!4 &1129160723
 Transform:
   m_ObjectHideFlags: 0

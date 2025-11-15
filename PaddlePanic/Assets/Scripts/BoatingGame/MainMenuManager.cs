@@ -16,9 +16,8 @@ public class MainMenuManager : MonoBehaviour
     public void Start()
     {
         //StartCoroutine(LoadLoadingSceneInBackground());
-        UserData userData = new UserData();
-        if (UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
-        if(userData.isFirstTime) playButton.interactable = false;
+        if (UserDataManager.instance != null) UserDataManager.instance.LoadPlayerInfo();
+        if(UserDataManager.instance.userData.isFirstTime) playButton.interactable = false;
         StartCoroutine(Idle());
         LoadCollectabels();
       
@@ -28,9 +27,8 @@ public class MainMenuManager : MonoBehaviour
     {
         yield return new WaitForSeconds(30);
 
-        UserData userData = new UserData();
-        if (UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
-        if(MemeManager.instance != null && userData!=null && userData.isMemeAccepted) MemeManager.instance.EnableWaitingForLongTimeMeme();
+        if (UserDataManager.instance != null) UserDataManager.instance.LoadPlayerInfo();
+        if(MemeManager.instance != null && UserDataManager.instance.userData !=null && UserDataManager.instance.userData.isMemeAccepted) MemeManager.instance.EnableWaitingForLongTimeMeme();
         yield return new WaitForSeconds(30);
         if(MemeManager.instance != null) MemeManager.instance.DisableWaitingForLongTimeMeme();
     }
@@ -45,8 +43,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void LoadCollectabels()
     {
-        UserData userData=UserDataManager.instance.LoadPlayerInfo();
-        collectabelsPanel.text = "Collectables : " + userData.collectablesCount.ToString();
+        UserDataManager.instance.LoadPlayerInfo();
+        collectabelsPanel.text = "Collectables : " + UserDataManager.instance.userData.collectablesCount.ToString();
     }
 
     #endregion
@@ -128,14 +126,13 @@ public class MainMenuManager : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject memesOnImage;
     public GameObject memesOffImage;
-    public UserData userData;
 
     public void OnClickSettings()
     {
         settingsPanel.SetActive(true);
 
-        if (MemeManager.instance != null && UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
-        if (userData.isMemeAccepted)
+        if (MemeManager.instance != null && UserDataManager.instance != null) UserDataManager.instance.LoadPlayerInfo();
+        if (UserDataManager.instance.userData.isMemeAccepted)
         {
             memesOnImage.SetActive(true);
             memesOffImage.SetActive(false);
@@ -154,21 +151,21 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnClickMemesControl()
     {
-        if (MemeManager.instance != null && UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
-        if (userData.isMemeAccepted)
+        if (MemeManager.instance != null && UserDataManager.instance != null) UserDataManager.instance.LoadPlayerInfo();
+        if (UserDataManager.instance.userData.isMemeAccepted)
         {
             memesOffImage.SetActive(true);
             memesOnImage.SetActive(false);
-            userData.isMemeAccepted = false;
+            UserDataManager.instance.userData.isMemeAccepted = false;
         }
         else
         {
             memesOffImage.SetActive(false);
             memesOnImage.SetActive(true);
-            userData.isMemeAccepted = true;
+            UserDataManager.instance.userData.isMemeAccepted = true;
         }
 
-        if(UserDataManager.instance!=null) UserDataManager.instance.UpdatePlayerInfo(userData);
+        if(UserDataManager.instance!=null) UserDataManager.instance.UpdatePlayerInfo();
     }
 
     #endregion
@@ -184,9 +181,8 @@ public class MainMenuManager : MonoBehaviour
     {
         ExitPanel.SetActive(true);
 
-        UserData userData = new UserData();
-        if(UserDataManager.instance!=null) userData= UserDataManager.instance.LoadPlayerInfo();
-        if (MemeManager.instance != null && userData!=null && userData.isMemeAccepted) MemeManager.instance.EnableTryingToExit();
+        if(UserDataManager.instance!=null)  UserDataManager.instance.LoadPlayerInfo();
+        if (MemeManager.instance != null && UserDataManager.instance.userData !=null && UserDataManager.instance.userData.isMemeAccepted) MemeManager.instance.EnableTryingToExit();
     }
 
     public void OnClickYes()
@@ -228,12 +224,11 @@ public class MainMenuManager : MonoBehaviour
     private void OpenPlayerProfile()
     {
         animator.Play("PlayerProfileOpen");
-        UserData userData = new UserData();
         //if (UserDataManager.instance == null) Debug.Log("UserDataManager is NUll");
-        if (UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
+        if (UserDataManager.instance != null)  UserDataManager.instance.LoadPlayerInfo();
         //Debug.Log(userData.playerName);
-        playerNamePanel.text=userData.playerName;
-        highScore.text=userData.playerScore.ToString();
+        playerNamePanel.text=UserDataManager.instance.userData.playerName;
+        highScore.text=UserDataManager.instance.userData.playerScore.ToString();
         
     }
 

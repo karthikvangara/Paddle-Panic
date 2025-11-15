@@ -10,6 +10,7 @@ public class StoreItem : MonoBehaviour
     public int itemId;
     public bool isPurchased;
     public bool isSelected;
+    public float paddleForce;
 
     public TMP_Text itemNamePanel;
     public TMP_Text itemCostPanel;
@@ -30,10 +31,9 @@ public class StoreItem : MonoBehaviour
         DisableAllOptions();
         if (isPurchased)
         {
-            UserData userData = UserDataManager.instance.LoadPlayerInfo();
-            if (userData.currBoatId == itemId)
+            UserDataManager.instance.LoadPlayerInfo();
+            if (UserDataManager.instance.userData.currCharacterId == itemId)
             {
-                isSelected = true;
                 selected.SetActive(true);
             }
             else select.SetActive(true);
@@ -50,13 +50,10 @@ public class StoreItem : MonoBehaviour
     {
         DisableAllOptions();
         selected.SetActive(true);
-        isSelected = true;
-        UserData userData = new UserData();
-        userData = UserDataManager.instance.LoadPlayerInfo();
-        userData.currBoatId = itemId;
-        UserDataManager.instance.UpdatePlayerInfo(userData);
-        UpdateStoreData();
-        StoreManager.instance.LoadStoreItemsInGame();
+        UserDataManager.instance.LoadPlayerInfo();
+        UserDataManager.instance.userData.currCharacterId = itemId;
+        UserDataManager.instance.UpdatePlayerInfo();
+        StoreManager.instance.UpdateStoreInfoData(itemId, isPurchased, isSelected);
     }
 
     public void OnClickDeselectItem()
@@ -76,34 +73,20 @@ public class StoreItem : MonoBehaviour
 
     public void ProcessPayment()
     {
-        UserData userData = new UserData();
-        userData = UserDataManager.instance.LoadPlayerInfo();
-        if (userData.collectablesCount >= itemCost)
+        UserDataManager.instance.LoadPlayerInfo();
+        if (UserDataManager.instance.userData.collectablesCount >= itemCost)
         {
             isPurchased = true;
             DisableAllOptions();
             select.SetActive(true);
 
-            userData.collectablesCount -= itemCost;
-            UserDataManager.instance.UpdatePlayerInfo(userData);
-            UpdateStoreData();
+            UserDataManager.instance.userData.collectablesCount -= itemCost;
+            UserDataManager.instance.UpdatePlayerInfo();
+            StoreManager.instance.UpdateStoreInfoData(itemId,isPurchased,isSelected);   
         }
         else
         {
             Debug.Log("Insufficient Funds");
         }
     }
-
-    public void UpdateStoreData()
-    { 
-        for(int i=0;i< StoreManager.instance.storeData.storeItemInfos.Count;i++)
-        {
-            if (itemId == StoreManager.instance.storeData.storeItemInfos[i].itemId)
-            {
-                StoreManager.instance.storeData.storeItemInfos[i].isPurchased = isPurchased;
-                StoreManager.instance.storeData.storeItemInfos[i].isSelected = isSelected;
-            }
-        }
-    }
-
 }

@@ -18,19 +18,17 @@ public class LoginSceneManager : MonoBehaviour
     public TMP_InputField playerName;
     public string menuScene;
 
-    public UserData userData;
 
     public void Awake()
     {
         DontDestroyOnLoad(memeManagerPanel);
         DontDestroyOnLoad(UserDataManagerObject);
         DontDestroyOnLoad(AudioManager);
-        userData=new UserData();
     }
 
     public void Update()
     {
-        if(UserDataManager.instance!=null) userData=UserDataManager.instance.LoadPlayerInfo();
+        if(UserDataManager.instance!=null) UserDataManager.instance.LoadPlayerInfo();
         //if (userData == null) Debug.Log("User Data is Null");
         StartCoroutine(MemeInfo());
         
@@ -42,7 +40,7 @@ public class LoginSceneManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         if(MemeManager.instance!=null) MemeManager.instance.DisableWelcomeMeme();
 
-        if (userData != null && !userData.isFirstTime) LoadMainMenuScene();
+        if (UserDataManager.instance.userData != null && !UserDataManager.instance.userData.isFirstTime) LoadMainMenuScene();
         else EnableMemeInfoPanel();
     }
 
@@ -60,9 +58,8 @@ public class LoginSceneManager : MonoBehaviour
     {
         DisableMemeInfoPanel();
         
-        UserData userData = new UserData();
-        userData.isMemeAccepted = true;
-        if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo(userData);
+        UserDataManager.instance.userData.isMemeAccepted = true;
+        if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo();
 
         if (MemeManager.instance != null) MemeManager.instance.EnableAcceptingMeme();
         StartCoroutine(LoginInfoPanel());
@@ -73,9 +70,8 @@ public class LoginSceneManager : MonoBehaviour
         DisableMemeInfoPanel();
         EnableLoginInfoPanel();
 
-        UserData userData = new UserData();
-        userData.isMemeAccepted = false;
-        if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo(userData);
+        UserDataManager.instance.userData.isMemeAccepted = false;
+        if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo();
 
         if (MemeManager.instance != null) MemeManager.instance.memesEnabled = false;
         memeManagerPanel.SetActive(false);
@@ -104,8 +100,8 @@ public class LoginSceneManager : MonoBehaviour
         string playerNameWithoutSpaces = Regex.Replace(playerName.text, @"\s+", "");
         if (playerNameWithoutSpaces.Length > 0)
         {
-            if (userData != null) userData.playerName = playerName.text;
-            if(UserDataManager.instance!=null) UserDataManager.instance.UpdatePlayerInfo(userData);
+            if (UserDataManager.instance.userData != null) UserDataManager.instance.userData.playerName = playerName.text;
+            if(UserDataManager.instance!=null) UserDataManager.instance.UpdatePlayerInfo();
             DisableLoginInfoPanel();
             if (MemeManager.instance != null) MemeManager.instance.DisableLoginMeme();
             DisableMemeInfoPanel();
@@ -120,7 +116,7 @@ public class LoginSceneManager : MonoBehaviour
 
     public void LoadMainMenuScene()
     {
-        if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo(userData);
+        if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo();
         SceneManager.LoadScene(menuScene);
     }
     /*public void DisableLoadingUIAndEnableAcceptingMemeUI()

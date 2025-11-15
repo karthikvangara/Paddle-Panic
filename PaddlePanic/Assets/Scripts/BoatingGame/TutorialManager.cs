@@ -9,7 +9,6 @@ public class TutorialManager : MonoBehaviour
     public static TutorialManager instance;
     public GameObject tutorialManager;
     public bool enableMovement;
-    UserData userData = new UserData();
 
     private bool once;
     private bool inputOnlyOnceChecked;
@@ -20,13 +19,13 @@ public class TutorialManager : MonoBehaviour
     }
     public void Start()
     {
-        if (UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
-        if(userData!=null && userData.isFirstTime) StartCoroutine(EnableIntroductionPanel());
+        if (UserDataManager.instance != null) UserDataManager.instance.LoadPlayerInfo();
+        if(UserDataManager.instance.userData !=null && UserDataManager.instance.userData.isFirstTime) StartCoroutine(EnableIntroductionPanel());
     }
 
     public void Update()
     {
-        if (userData != null && userData.isFirstTime && !once && SceneManager.GetActiveScene().name == gameScene)
+        if (UserDataManager.instance.userData != null && UserDataManager.instance.userData.isFirstTime && !once && SceneManager.GetActiveScene().name == gameScene)
         {
             CheckForGameSceneLoaded();
             once = true;
@@ -62,10 +61,10 @@ public class TutorialManager : MonoBehaviour
     {
         MainMenuManager.instance.ActivatePlayButton();
         introductionPanel.SetActive(false);
-        UserData userData = new UserData();
-        if(UserDataManager.instance != null) userData=UserDataManager.instance.LoadPlayerInfo();
-        if(userData != null && userData.isFirstTime) userData.isFirstTime = false;
-        if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo(userData);
+
+        if(UserDataManager.instance != null)UserDataManager.instance.LoadPlayerInfo();
+        if(UserDataManager.instance.userData != null && UserDataManager.instance.userData.isFirstTime) UserDataManager.instance.userData.isFirstTime = false;
+        if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo();
     }
 
     #endregion
@@ -269,11 +268,10 @@ public class TutorialManager : MonoBehaviour
     {
         thanksPanel.SetActive(false);
         //ResumeGame();
-        
-        UserData userData=new UserData();
-        if (UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
-        if (userData != null) userData.isFirstTime = false;
-        if(UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo(userData);
+
+        if (UserDataManager.instance != null)  UserDataManager.instance.LoadPlayerInfo();
+        if (UserDataManager.instance.userData != null) UserDataManager.instance.userData.isFirstTime = false;
+        if(UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo();
     }
 
     #endregion

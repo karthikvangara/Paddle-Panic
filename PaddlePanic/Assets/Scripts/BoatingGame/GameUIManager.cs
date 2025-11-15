@@ -61,7 +61,6 @@ public class GameUIManager : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject memesOnImage;
     public GameObject memesOffImage;
-    public UserData userData;
 
     public void OnClickSettings()
     {
@@ -69,8 +68,8 @@ public class GameUIManager : MonoBehaviour
         {
             settingsPanel.SetActive(true);
 
-            if (MemeManager.instance != null && UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
-            if (userData.isMemeAccepted)
+            if (MemeManager.instance != null && UserDataManager.instance != null) UserDataManager.instance.LoadPlayerInfo();
+            if (UserDataManager.instance.userData.isMemeAccepted)
             {
                 memesOnImage.SetActive(true);
                 memesOffImage.SetActive(false);
@@ -94,21 +93,21 @@ public class GameUIManager : MonoBehaviour
 
     public void OnClickMemesControl()
     {
-        if (MemeManager.instance != null && UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
-        if (userData.isMemeAccepted)
+        if (MemeManager.instance != null && UserDataManager.instance != null) UserDataManager.instance.LoadPlayerInfo();
+        if (UserDataManager.instance.userData.isMemeAccepted)
         {
             memesOffImage.SetActive(true);
             memesOnImage.SetActive(false);
-            userData.isMemeAccepted = false;
+            UserDataManager.instance.userData.isMemeAccepted = false;
         }
         else
         {
             memesOffImage.SetActive(false);
             memesOnImage.SetActive(true);
-            userData.isMemeAccepted = true;
+            UserDataManager.instance.userData.isMemeAccepted = true;
         }
 
-        if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo(userData);
+        if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo();
     }
 
     #endregion
@@ -139,18 +138,17 @@ public class GameUIManager : MonoBehaviour
         score.text = scorePanel.text;
         //Debug.Log("Curr Score " + currScore);
 
-        UserData userData = new UserData();
-        if (UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
+        if (UserDataManager.instance != null) UserDataManager.instance.LoadPlayerInfo();
 
         //Debug.Log("High Score " + userData.playerScore);
-        if (currScore > userData.playerScore)
+        if (currScore > UserDataManager.instance.userData.playerScore)
         {
-            userData.playerScore = currScore;
-            if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo(userData);
+            UserDataManager.instance.userData.playerScore = currScore;
+            if (UserDataManager.instance != null) UserDataManager.instance.UpdatePlayerInfo();
 
         }
-        highScore.text = userData.playerScore.ToString();
-        if (MemeManager.instance != null && userData != null && userData.isMemeAccepted) MemeManager.instance.EnableGameOverMeme();
+        highScore.text = UserDataManager.instance.userData.playerScore.ToString();
+        if (MemeManager.instance != null && UserDataManager.instance.userData != null && UserDataManager.instance.userData.isMemeAccepted) MemeManager.instance.EnableGameOverMeme();
         StartCoroutine(DisableGameOverMeme());
     }
 
@@ -186,9 +184,8 @@ public class GameUIManager : MonoBehaviour
 
         if (healthManager.currHealth < 50f && once)
         {
-            UserData userData=new UserData();
-            if (UserDataManager.instance != null) userData = UserDataManager.instance.LoadPlayerInfo();
-            if (MemeManager.instance != null && userData!=null && userData.isMemeAccepted) MemeManager.instance.EnableHealthLessThan50Meme();
+            if (UserDataManager.instance != null) UserDataManager.instance.LoadPlayerInfo();
+            if (MemeManager.instance != null && UserDataManager.instance.userData !=null && UserDataManager.instance.userData.isMemeAccepted) MemeManager.instance.EnableHealthLessThan50Meme();
             StartCoroutine(DisableHealthLessThan50Meme());
         }
 

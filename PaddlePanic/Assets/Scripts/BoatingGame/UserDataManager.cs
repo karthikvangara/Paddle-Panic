@@ -6,6 +6,7 @@ using UnityEngine;
 public class UserDataManager : MonoBehaviour
 {
     public static UserDataManager instance;
+    public UserData userData;
     private string path;
 
     public void Awake()
@@ -13,15 +14,14 @@ public class UserDataManager : MonoBehaviour
         instance = this;
         path = Application.persistentDataPath + "/UserData.json";
     }
-    public void UpdatePlayerInfo(UserData userData)
+    public void UpdatePlayerInfo()
     {
         //Debug.Log("UpdatePlayerInfo called");
         string json;
         if (!File.Exists(path))
         {
-            UserData defaultData = new UserData();
-            defaultData.playerName = "Hi Bro";
-            json = JsonUtility.ToJson(defaultData, true);
+            userData.playerName = "Hi Bro";
+            json = JsonUtility.ToJson(userData, true);
             File.WriteAllText(path, json);
             //Debug.Log("Player data File created");
         }
@@ -41,7 +41,6 @@ public class UserDataManager : MonoBehaviour
     public UserData LoadPlayerInfo()
     {
         //Debug.Log("LoadPlayerInfo Called");
-        UserData userData = new UserData();
         if (userData == null) Debug.Log("UserData is Null");
         if (File.Exists(path))
         {
@@ -61,6 +60,6 @@ public class UserData
     public bool isFirstTime = true;
     public bool isMemeAccepted = true;
     public int collectablesCount=0;
-    public int currBoatId=0;
+    public int currCharacterId=0;
 }
 

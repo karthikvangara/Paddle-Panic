@@ -1975,7 +1975,7 @@ GameObject:
   m_Component:
   - component: {fileID: 625748222}
   m_Layer: 5
-  m_Name: BoatImg
+  m_Name: Img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1996,10 +1996,10 @@ RectTransform:
   - {fileID: 1650885481}
   m_Father: {fileID: 887119410}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.16681479, y: 0.40710214}
-  m_AnchorMax: {x: 0.83318514, y: 0.7974401}
+  m_AnchorMin: {x: 0.39476234, y: 0.40709898}
+  m_AnchorMax: {x: 0.6052376, y: 0.79743695}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -0.0000076293945}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &642214225
 GameObject:
@@ -3645,7 +3645,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1198755092}
   m_Layer: 5
-  m_Name: BoatImg
+  m_Name: Img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3666,10 +3666,10 @@ RectTransform:
   - {fileID: 1367454215}
   m_Father: {fileID: 1060044257}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.16681479, y: 0.40710214}
-  m_AnchorMax: {x: 0.83318514, y: 0.7974401}
+  m_AnchorMin: {x: 0.40732658, y: 0.40710214}
+  m_AnchorMax: {x: 0.59267336, y: 0.7974401}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -0.0000076293945}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1219371772
 GameObject:
@@ -3995,7 +3995,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9ebc67ce2e9a3004f87115948a93fab5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 49b613ec912ec8b4089bdc0618c9cc0f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4909,7 +4909,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1540657636}
   m_Layer: 5
-  m_Name: BoatNamePanel
+  m_Name: NamePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5397,9 +5397,9 @@ RectTransform:
   m_Children:
   - {fileID: 249685489424865502}
   - {fileID: 1224361385}
-  - {fileID: 1053269947}
   - {fileID: 887119410}
   - {fileID: 1060044257}
+  - {fileID: 1053269947}
   m_Father: {fileID: 421978970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -5502,7 +5502,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9ebc67ce2e9a3004f87115948a93fab5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3fe7abdc140a1584798dcc4a37106e56, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6581,7 +6581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1866869888}
   m_Layer: 5
-  m_Name: BoatNamePanel
+  m_Name: NamePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -13,10 +13,9 @@ public class CollectablesManager : MonoBehaviour
 
     public void UpdateCollectablesCount()
     {
-        UserData userData = new UserData();
-        userData = UserDataManager.instance.LoadPlayerInfo();
-        userData.collectablesCount++;
-        UserDataManager.instance.UpdatePlayerInfo(userData);
-        gameUIManager.UpdateCollectables(userData.collectablesCount);
+        UserDataManager.instance.LoadPlayerInfo();
+        UserDataManager.instance.userData.collectablesCount++;
+        UserDataManager.instance.UpdatePlayerInfo();
+        gameUIManager.UpdateCollectables(UserDataManager.instance.userData.collectablesCount);
     }
 }
